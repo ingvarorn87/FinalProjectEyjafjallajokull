@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="599.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Button layoutX="21.0" layoutY="193.0" mnemonicParsing="false" prefWidth="94.0" text="Add a picture" />
+    <VBox layoutX="292.0" layoutY="59.0" prefHeight="281.0" prefWidth="236.0">
+      <children>
+        <HBox prefHeight="40.0" prefWidth="293.0000999999975">
+          <children>
+            <TextField prefWidth="236.0" promptText="Name" />
+          </children>
+        </HBox>
+        <HBox prefHeight="40.0" prefWidth="293.0000999999975">
+          <children>
+            <TextField prefWidth="236.0" promptText="Address" />
+          </children>
+        </HBox>
+        <HBox prefHeight="40.0" prefWidth="293.0000999999975">
+          <children>
+            <TextField prefWidth="236.0" promptText="Email" />
+          </children>
+        </HBox>
+        <HBox prefHeight="40.0" prefWidth="293.0000999999975">
+          <children>
+            <TextField prefWidth="236.0" promptText="Phone Number" />
+          </children>
+        </HBox>
+        <HBox prefHeight="74.0" prefWidth="236.0" spacing="0.0">
+          <children>
+            <TextField alignment="TOP_LEFT" prefHeight="78.0" prefWidth="236.0" promptText="Information" rotate="0.0">
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </TextField>
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+    <ImageView fitHeight="173.0" fitWidth="173.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@SampleImage.jpg" />
+      </image>
+    </ImageView>
+    <HBox layoutX="21.0" layoutY="256.0" prefHeight="129.0" prefWidth="112.0">
+      <children>
+        <ComboBox prefHeight="21.0" prefWidth="112.0" promptText="Select Guild">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+      </children>
+    </HBox>
+    <Button layoutX="478.0" layoutY="347.0" mnemonicParsing="false" prefWidth="64.0" text="Add">
+      <font>
+        <Font size="12.0" />
+      </font>
+    </Button>
+  </children>
 </AnchorPane>
