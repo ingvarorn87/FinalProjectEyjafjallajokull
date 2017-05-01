@@ -56,10 +56,10 @@ public class LoginWindowController implements Initializable
     @FXML
     private void login(ActionEvent event) throws IOException
       {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/SelectedVolunteerWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
                 Parent root = loader.load();
-                SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
-                
+                //SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
+                AdminWindowController aController = (AdminWindowController) loader.getController();
 
                 Stage subStage = new Stage();
                 subStage.setScene(new Scene(root));
