@@ -4,10 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="447.0" layoutY="33.0" mnemonicParsing="false" text="Admin Login" />
       <VBox layoutX="300.0" layoutY="136.0" prefHeight="198.0" prefWidth="212.0" spacing="20.0">
@@ -18,5 +19,6 @@
             <Button mnemonicParsing="false" text="Log in" />
          </children>
       </VBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

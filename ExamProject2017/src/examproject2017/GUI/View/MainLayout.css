@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-Apr-2017, 13:52:50
+    Author     : gudla
+*/
+.root {
+    -fx-font-family: 'Calibri'; 
+    -fx-background-color:#eeebeb
+    
+}
+
+.button{
+    -fx-background-color:#cb9343;
+    -fx-background-radius: 10px;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    
+    
+   
+}
+.button:hover{
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
+    
+}
+
+.label{
+    -fx-text-fill:#cb9343;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.text-field {
+    -fx-font-size: 14pt;
+}
