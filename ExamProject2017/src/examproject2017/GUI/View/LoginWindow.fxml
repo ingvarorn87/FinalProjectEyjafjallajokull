@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.LoginWindowController">
    <children>
-      <Button layoutX="447.0" layoutY="33.0" mnemonicParsing="false" text="Admin Login" />
+      <Button fx:id="btnAdminLogin" layoutX="447.0" layoutY="33.0" mnemonicParsing="false" onAction="#adminLogin" text="Admin Login" />
       <VBox layoutX="300.0" layoutY="136.0" prefHeight="198.0" prefWidth="212.0" spacing="20.0">
          <children>
             <Label text="Name/ID number:" />
-            <TextField />
-            <PasswordField promptText="Password" />
-            <Button mnemonicParsing="false" text="Log in" />
+            <TextField fx:id="txtName" />
+            <PasswordField fx:id="txtPass" promptText="Password" />
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="Log in" />
          </children>
       </VBox>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
