@@ -56,9 +56,15 @@ public class LoginWindowController implements Initializable
     @FXML
     private void login(ActionEvent event) throws IOException
       {
+       volunteerWindowLoader();
+        
+      }
+    
+    
+    private void adminWindowLoader() throws IOException
+      {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
                 Parent root = loader.load();
-                //SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
                 AdminWindowController aController = (AdminWindowController) loader.getController();
 
                 Stage subStage = new Stage();
@@ -68,7 +74,22 @@ public class LoginWindowController implements Initializable
                 subStage.show();
                 Stage stage = (Stage) btnLogin.getScene().getWindow();
                 stage.close();
-        
+      }
+    
+    private void volunteerWindowLoader() throws IOException
+      {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/SelectedVolunteerWindow.fxml"));
+                Parent root = loader.load();
+                SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
+                
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnLogin.getScene().getWindow();
+                stage.close();
       }
     
 }
