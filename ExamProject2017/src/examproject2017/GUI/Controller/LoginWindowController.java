@@ -5,7 +5,8 @@
  */
 package examproject2017.GUI.Controller;
 
-import examproject2017.DAL.VolunteerHandler;
+
+import examproject2017.GUI.Model.VolLoginModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +39,9 @@ public class LoginWindowController implements Initializable
     @FXML
     private Button btnLogin;
     
-    private VolunteerHandler volHandler = new VolunteerHandler();
+    
+    
+    private VolLoginModel volLoginModel = new VolLoginModel();
 
     /**
      * Initializes the controller class.
@@ -61,8 +64,8 @@ public class LoginWindowController implements Initializable
       {
        volunteerWindowLoader();
        
-          System.out.println(volHandler.getVolName());
-          System.out.println(volHandler.getHours());
+          System.out.println(volLoginModel.getVolName());
+          //System.out.println(volLoginModel.getHours());
         
       }
     

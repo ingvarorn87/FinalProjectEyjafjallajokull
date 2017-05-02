@@ -5,11 +5,18 @@
  */
 package examproject2017.GUI.Model;
 
+import examproject2017.BLL.VolLoginManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author gudla
  */
 public class VolLoginModel
 {
+    public VolLoginManager volLoginManager = new VolLoginManager();
     
+    public ArrayList<String> getVolName(){
+        return volLoginManager.getVolName();
+    }
 }
