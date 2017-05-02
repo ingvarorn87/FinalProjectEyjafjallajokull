@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -13,9 +20,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="599.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="599.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.VolunteerEditWindowController">
   <children>
-    <Button layoutX="21.0" layoutY="193.0" mnemonicParsing="false" prefWidth="94.0" text="Add a picture" />
+    <Button fx:id="btnAddimg" layoutX="21.0" layoutY="193.0" mnemonicParsing="false" onAction="#btnAddimg" prefWidth="94.0" text="Add a picture" />
     <VBox layoutX="292.0" layoutY="59.0" prefHeight="281.0" prefWidth="236.0">
       <children>
         <HBox prefHeight="40.0" prefWidth="293.0000999999975">
