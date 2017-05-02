@@ -5,6 +5,7 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.DAL.VolunteerHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,6 +37,8 @@ public class LoginWindowController implements Initializable
     private PasswordField txtPass;
     @FXML
     private Button btnLogin;
+    
+    private VolunteerHandler volHandler = new VolunteerHandler();
 
     /**
      * Initializes the controller class.
@@ -57,6 +60,8 @@ public class LoginWindowController implements Initializable
     private void login(ActionEvent event) throws IOException
       {
        volunteerWindowLoader();
+       
+          System.out.println(volHandler.getVolName());
         
       }
     
