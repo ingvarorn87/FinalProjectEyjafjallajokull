@@ -62,6 +62,7 @@ public class LoginWindowController implements Initializable
        volunteerWindowLoader();
        
           System.out.println(volHandler.getVolName());
+          System.out.println(volHandler.getHours());
         
       }
     
