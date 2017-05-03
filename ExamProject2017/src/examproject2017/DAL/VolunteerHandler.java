@@ -17,14 +17,15 @@ import java.util.ArrayList;
  */
 public class VolunteerHandler
 {
+
     SQLConnectionHandler conManager;
 
     public VolunteerHandler()
       {
         conManager = new SQLConnectionHandler();
       }
-    
-  public ArrayList<String> getVolName()
+
+    public ArrayList<String> getVolName()
       {
         try (Connection con = conManager.getConnection())
           {
@@ -41,15 +42,14 @@ public class VolunteerHandler
                 volunteers.add(volString);
               }
             return volunteers;
-          }
-        catch (SQLException sqle)
+          } catch (SQLException sqle)
           {
             System.err.println(sqle);
             return null;
           }
       }
-  
-  public ArrayList<String> getHours()
+
+    public ArrayList<String> getHours()
       {
         try (Connection con = conManager.getConnection())
           {
@@ -66,11 +66,83 @@ public class VolunteerHandler
                 volunteers.add(volString);
               }
             return volunteers;
-          }
-        catch (SQLException sqle)
+          } catch (SQLException sqle)
           {
             System.err.println(sqle);
             return null;
           }
       }
+
+    public ArrayList<String> getVolEmail()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("Email");
+
+                volunteers.add(volString);
+              }
+            return volunteers;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+
+    public ArrayList<String> getVolAddress()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("Address");
+
+                volunteers.add(volString);
+              }
+            return volunteers;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+
+    public ArrayList<String> getVolID()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("ID");
+
+                volunteers.add(volString);
+              }
+            return volunteers;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+
 }

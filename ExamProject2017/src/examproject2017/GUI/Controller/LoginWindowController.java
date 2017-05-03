@@ -62,6 +62,7 @@ public class LoginWindowController implements Initializable
     @FXML
     private void login(ActionEvent event) throws IOException
       {
+        //txtName.getText().trim();
        volunteerWindowLoader();
        
           System.out.println(volLoginModel.getVolName());
