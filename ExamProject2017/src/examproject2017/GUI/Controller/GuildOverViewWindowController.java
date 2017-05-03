@@ -6,12 +6,16 @@
 package examproject2017.GUI.Controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -26,6 +30,9 @@ public class GuildOverViewWindowController implements Initializable {
     @FXML
     private Button btnexportguild;
     @FXML
+    private Insets x1;
+    @FXML
+    private Button btnaddguild;
     
 
     /**
@@ -47,6 +54,21 @@ public class GuildOverViewWindowController implements Initializable {
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
         File file = fileChooser.showSaveDialog(primaryStage);
+    }
+
+    @FXML
+    private void addGuildWindowLoader(ActionEvent event) throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AddGuildWindow.fxml"));
+                Parent root = loader.load();
+                AddGuildWindowController addguildController = (AddGuildWindowController) loader.getController();
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnaddguild.getScene().getWindow();
+                stage.close();
     }
 
     

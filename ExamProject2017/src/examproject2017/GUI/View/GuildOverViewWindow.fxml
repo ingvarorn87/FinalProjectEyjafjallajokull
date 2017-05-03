@@ -22,7 +22,7 @@
             <Insets top="20.0" fx:id="x1" />
           </VBox.margin>
         </Button>
-        <Button mnemonicParsing="false" text="Add a Guild" VBox.margin="$x1" />
+        <Button fx:id="btnaddguild" mnemonicParsing="false" onAction="#addGuildWindowLoader" text="Add a Guild" VBox.margin="$x1" />
         
       </children>
     </VBox>
