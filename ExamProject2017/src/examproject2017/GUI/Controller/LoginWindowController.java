@@ -6,6 +6,7 @@
 package examproject2017.GUI.Controller;
 
 
+import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.VolLoginModel;
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +40,8 @@ public class LoginWindowController implements Initializable
     @FXML
     private Button btnLogin;
     
+    private Volunteer volunteer = null;
+    
     
     
     private VolLoginModel volLoginModel = new VolLoginModel();
@@ -63,6 +66,8 @@ public class LoginWindowController implements Initializable
     private void login(ActionEvent event) throws IOException
       {
         //txtName.getText().trim();
+        //volunteer = volLoginModel.getVolName(txtName.getText().trim());
+        
        volunteerWindowLoader();
        
           System.out.println(volLoginModel.getVolName());
