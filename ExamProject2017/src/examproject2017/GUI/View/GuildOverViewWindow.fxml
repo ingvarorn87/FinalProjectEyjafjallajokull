@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -9,17 +13,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.GuildOverViewWindowController">
   <children>
-    <VBox layoutX="459.0" layoutY="221.0" minHeight="101.0" prefHeight="122.0" prefWidth="83.0">
+    <VBox layoutX="467.0" layoutY="167.0" minHeight="101.0" prefHeight="122.0" prefWidth="83.0">
       <children>
-        <Button mnemonicParsing="false" prefWidth="83.0" text="Export">
+       <Button fx:id="btnexportguild" mnemonicParsing="false" onAction="#btnexportguild" prefHeight="44.0" prefWidth="103.0" text="Export">
           <VBox.margin>
             <Insets top="20.0" fx:id="x1" />
           </VBox.margin>
         </Button>
         <Button mnemonicParsing="false" text="Add a Guild" VBox.margin="$x1" />
-        <Button mnemonicParsing="false" prefWidth="83.0" text="Close" VBox.margin="$x1" />
+        
       </children>
     </VBox>
     <TextField layoutX="342.0" layoutY="41.0" prefWidth="200.0" promptText="Search" />
