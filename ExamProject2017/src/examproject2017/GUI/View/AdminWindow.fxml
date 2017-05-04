@@ -25,7 +25,7 @@
               </VBox.margin>
             </Button>
             <Button fx:id="btnAddVolunteer" mnemonicParsing="false" onAction="#addVolunteerWindowLoader" text="Add a volunteer" VBox.margin="$x1" />
-            <Button mnemonicParsing="false" prefWidth="105.0" text="Close" VBox.margin="$x1" />
+            <Button fx:id="btnCloseAW" mnemonicParsing="false" onAction="#closeAdminWindow" prefWidth="105.0" text="Close" VBox.margin="$x1" />
           </children>
         </VBox>
         <TextField layoutX="342.0" layoutY="41.0" prefWidth="200.0" promptText="Search" />

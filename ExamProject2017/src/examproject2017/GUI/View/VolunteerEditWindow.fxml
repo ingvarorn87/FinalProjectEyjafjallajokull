@@ -74,10 +74,11 @@
         </ComboBox>
       </children>
     </HBox>
-    <Button layoutX="478.0" layoutY="347.0" mnemonicParsing="false" prefWidth="64.0" text="Add">
+    <Button layoutX="363.0" layoutY="341.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="94.0" text="Add">
       <font>
         <Font size="12.0" />
       </font>
     </Button>
+      <Button fx:id="btnCloseVEW" layoutX="465.0" layoutY="341.0" mnemonicParsing="false" onAction="#closeVolunteerEditWindow" prefHeight="44.0" prefWidth="94.0" text="Close" />
   </children>
 </AnchorPane>

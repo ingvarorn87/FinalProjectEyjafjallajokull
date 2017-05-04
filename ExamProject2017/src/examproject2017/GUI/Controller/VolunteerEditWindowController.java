@@ -6,11 +6,15 @@
 package examproject2017.GUI.Controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -24,6 +28,8 @@ public class VolunteerEditWindowController implements Initializable {
 
     @FXML
     private Button btnAddimg;
+    @FXML
+    private Button btnCloseVEW;
 
     /**
      * Initializes the controller class.
@@ -44,6 +50,21 @@ public class VolunteerEditWindowController implements Initializable {
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
         File file = fileChooser.showOpenDialog(primaryStage);
+    }
+
+    @FXML
+    private void closeVolunteerEditWindow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
+                Parent root = loader.load();
+                AdminWindowController gotoAdminWindowController = (AdminWindowController) loader.getController();
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnCloseVEW.getScene().getWindow();
+                stage.close();
     }
     
 }
