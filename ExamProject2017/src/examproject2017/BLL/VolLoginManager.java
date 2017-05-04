@@ -5,6 +5,7 @@
  */
 package examproject2017.BLL;
 
+import examproject2017.BE.Volunteer;
 import examproject2017.DAL.VolunteerHandler;
 import examproject2017.DAL.VolunteerLoginHandler;
 import java.util.ArrayList;
@@ -16,8 +17,14 @@ import java.util.ArrayList;
 public class VolLoginManager
 {
     private VolunteerHandler volHandler = new VolunteerHandler();
+    private VolunteerLoginHandler volLoginHandler = new VolunteerLoginHandler();
     
     public ArrayList<String> getVolName(){
         return volHandler.getVolName();
     }
+    
+    public Volunteer LoginChecker(String name)
+      {
+        return volLoginHandler.LoginChecker(name);
+      }
 }

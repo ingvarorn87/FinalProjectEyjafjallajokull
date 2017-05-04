@@ -40,7 +40,7 @@ public class LoginWindowController implements Initializable
     @FXML
     private Button btnLogin;
     
-    private Volunteer volunteer = null;
+    private Volunteer volunteer;
     
     
     
@@ -66,11 +66,11 @@ public class LoginWindowController implements Initializable
     private void login(ActionEvent event) throws IOException
       {
         //txtName.getText().trim();
-        //volunteer = volLoginModel.getVolName(txtName.getText().trim());
+        volunteer = volLoginModel.LoginChecker(txtName.getText().trim());
         
        volunteerWindowLoader();
        
-          System.out.println(volLoginModel.getVolName());
+          System.out.println(volunteer.getName());
           //System.out.println(volLoginModel.getHours());
         
       }

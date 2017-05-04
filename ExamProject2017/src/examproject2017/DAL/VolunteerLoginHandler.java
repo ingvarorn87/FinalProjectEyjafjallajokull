@@ -5,11 +5,27 @@
  */
 package examproject2017.DAL;
 
+import examproject2017.BE.Volunteer;
+
 /**
  *
  * @author gudla
  */
 public class VolunteerLoginHandler
 {
-    
+
+    VolunteerHandler volHandler = new VolunteerHandler();
+
+    public Volunteer LoginChecker(String name)
+      {
+        for (String string : volHandler.getVolName())
+          {
+            if (string.equals(name))
+              {
+                return volHandler.getVolunteerBasedOnName(string);
+
+              }
+          }
+        return null;
+      }
 }

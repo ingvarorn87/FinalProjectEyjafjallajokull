@@ -5,11 +5,19 @@
  */
 package examproject2017.DAL;
 
+import examproject2017.BE.Volunteer;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -143,6 +151,60 @@ public class VolunteerHandler
             System.err.println(sqle);
             return null;
           }
+      }
+    
+    public Volunteer getVolunteerBasedOnName(String name)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers] WHERE name = ?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, name);
+
+            return getVolunteerFromResults(pstmt);
+          }
+        catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+    
+    public Volunteer getVolunteerFromResults(PreparedStatement pstmt) throws SQLException
+      {
+        ResultSet rs = pstmt.executeQuery();
+        rs.next();
+        int idVol = rs.getInt("Id");
+        String nameVol = rs.getString("Name");
+        String emailVol = rs.getString("Email");
+        String addressVol = rs.getString("Address");
+        String phoneVol = rs.getString("PhoneNumber");
+        int hoursVol = rs.getInt("Hours");
+        String infoVol = rs.getString("Information");
+        
+        //byte[] bytes = rs.getBytes("image");
+//        BufferedImage newImage;
+//        if (bytes != null)
+//          {
+//            try
+//              {
+//                ByteArrayInputStream bais;
+//                bais = new ByteArrayInputStream(rs.getBytes("image"));
+//
+//                newImage = ImageIO.read(bais);
+//              }
+//            catch (IOException ex)
+//              {
+//                Logger.getLogger(StudentHandler.class.getName()).log(Level.SEVERE, null, ex);
+//                newImage = null;
+//              }
+//          }
+//        else
+//          {
+//            newImage = null;
+//          }
+        Volunteer volunteer = new Volunteer(idVol, nameVol, emailVol, addressVol, phoneVol, hoursVol, infoVol);
+        return volunteer;
       }
 
 }

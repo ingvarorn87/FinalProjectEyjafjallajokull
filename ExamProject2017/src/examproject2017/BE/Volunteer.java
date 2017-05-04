@@ -17,19 +17,24 @@ public class Volunteer
     private String info;
     private String phone;
     private String address;
-    private String hours;
+    private int hours;
     
     
 
-    public Volunteer(String name, String email, int id, String info, String phone, String address, String hours ) {
-        this.name = name;
-        this.email = email;
-        this.id = id;
-        this.info = info;
-        this.phone = phone;
-        this.address = address;
-        this.hours = hours;
-    }
+   
+
+    public Volunteer(int idVol, String nameVol, String emailVol, String addressVol, String phoneVol, int hoursVol, String infoVol)
+      {
+        this.id = idVol;
+        this.name = nameVol;
+        this.email = emailVol;
+        this.address = addressVol;
+        this.phone = phoneVol;
+        this.hours = hoursVol;
+        this.info = infoVol;
+        
+
+      }
 
     public String getName()
       {
@@ -91,12 +96,12 @@ public class Volunteer
         this.address = address;
       }
 
-    public String getHours()
+    public int getHours()
       {
         return hours;
       }
 
-    public void setHours(String hours)
+    public void setHours(int hours)
       {
         this.hours = hours;
       }

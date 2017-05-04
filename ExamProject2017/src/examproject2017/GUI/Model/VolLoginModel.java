@@ -5,6 +5,7 @@
  */
 package examproject2017.GUI.Model;
 
+import examproject2017.BE.Volunteer;
 import examproject2017.BLL.VolLoginManager;
 import java.util.ArrayList;
 
@@ -19,4 +20,9 @@ public class VolLoginModel
     public ArrayList<String> getVolName(){
         return volLoginManager.getVolName();
     }
+    
+    public Volunteer LoginChecker(String name)
+      {
+        return volLoginManager.LoginChecker(name);
+      }
 }
