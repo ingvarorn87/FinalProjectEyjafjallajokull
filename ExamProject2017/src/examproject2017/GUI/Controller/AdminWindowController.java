@@ -33,6 +33,8 @@ public class AdminWindowController implements Initializable
     
     @FXML
     private Button btnAddVolunteer;
+    @FXML
+    private Button btnCloseAW;
 
     /**
      * Initializes the controller class.
@@ -70,6 +72,21 @@ public class AdminWindowController implements Initializable
 
                 subStage.show();
                 Stage stage = (Stage) btnAddVolunteer.getScene().getWindow();
+                stage.close();
+    }
+
+    @FXML
+    private void closeAdminWindow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
+                Parent root = loader.load();
+                LoginWindowController goToLoginWindowController = (LoginWindowController) loader.getController();
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnCloseAW.getScene().getWindow();
                 stage.close();
     }
     

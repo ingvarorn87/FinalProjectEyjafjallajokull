@@ -53,7 +53,10 @@ public class GuildOverViewWindowController implements Initializable {
         fileChooser.getExtensionFilters().add(extFilter);
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
+         
+        
         File file = fileChooser.showSaveDialog(primaryStage);
+        
     }
 
     @FXML

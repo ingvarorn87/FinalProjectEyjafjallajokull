@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
@@ -7,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AddGuildWindowController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AddGuildWindowController">
   <children>
     <VBox layoutX="181.0" layoutY="154.0" prefHeight="92.0" prefWidth="228.0">
       <children>
@@ -30,7 +34,7 @@
             <Insets right="20.0" />
           </HBox.margin>
         </Button>
-        <Button mnemonicParsing="false" prefWidth="65.0" text="Cancel" />
+        <Button fx:id="btnCloseAGW" mnemonicParsing="false" onAction="#closeAddGuildWindow" prefWidth="65.0" text="Cancel" />
       </children>
     </HBox>
   </children>
