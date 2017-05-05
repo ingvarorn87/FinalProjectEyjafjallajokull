@@ -5,7 +5,10 @@
  */
 package examproject2017.GUI.Controller;
 
+
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -38,6 +42,8 @@ public class SelectedGuildWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+ 
+     
 
     @FXML
     private void exportsingleguild(ActionEvent event) {
@@ -50,6 +56,13 @@ public class SelectedGuildWindowController implements Initializable {
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
         File file = fileChooser.showSaveDialog(primaryStage);
+         try (BufferedWriter bw
+                = new BufferedWriter(
+                        new FileWriter(file.getAbsoluteFile()))) {
+            bw.write("Here we need to print the appropiate infi");
+        } catch (IOException ex) {
+            //
+        }
     }
 
     @FXML

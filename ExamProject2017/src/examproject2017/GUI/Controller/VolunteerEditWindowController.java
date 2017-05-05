@@ -5,7 +5,9 @@
  */
 package examproject2017.GUI.Controller;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -50,6 +52,13 @@ public class VolunteerEditWindowController implements Initializable {
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
         File file = fileChooser.showOpenDialog(primaryStage);
+        try (BufferedWriter bw
+                = new BufferedWriter(
+                        new FileWriter(file.getAbsoluteFile()))) {
+            bw.write("Here we need to print the appropiate infi");
+        } catch (IOException ex) {
+            //
+        }
     }
 
     @FXML
