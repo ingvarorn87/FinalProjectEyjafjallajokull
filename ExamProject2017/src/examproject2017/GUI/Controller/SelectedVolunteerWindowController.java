@@ -7,10 +7,7 @@ package examproject2017.GUI.Controller;
 
 
 import examproject2017.BE.Volunteer;
-import examproject2017.GUI.Model.VolLoginModel;
-
 import java.io.IOException;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
