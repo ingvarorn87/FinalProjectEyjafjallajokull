@@ -5,12 +5,12 @@
  */
 package examproject2017.GUI.Controller;
 
-<<<<<<< HEAD
+
 import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.VolLoginModel;
-=======
+
 import java.io.IOException;
->>>>>>> origin/master
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -20,11 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-<<<<<<< HEAD
+
 import javafx.scene.control.Label;
-=======
+
 import javafx.stage.Stage;
->>>>>>> origin/master
+
 
 /**
  * FXML Controller class
@@ -37,7 +37,7 @@ public class SelectedVolunteerWindowController implements Initializable
     @FXML
     private Button btnRegister;
     @FXML
-<<<<<<< HEAD
+
     private Label lblName;
     
     @FXML
@@ -50,9 +50,10 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblPhone;
     @FXML
     private Label lblInfo;
-=======
+
     private Button btnCloseSVW;
->>>>>>> origin/master
+
+    
 
     /**
      * Initializes the controller class.
