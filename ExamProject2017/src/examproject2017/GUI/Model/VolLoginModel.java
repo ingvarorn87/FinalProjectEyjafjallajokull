@@ -15,14 +15,22 @@ import java.util.ArrayList;
  */
 public class VolLoginModel
 {
+
     public VolLoginManager volLoginManager = new VolLoginManager();
-    
-    public ArrayList<String> getVolName(){
+    private static final VolLoginModel volLoginModel = new VolLoginModel();
+
+    public ArrayList<String> getVolName()
+      {
         return volLoginManager.getVolName();
-    }
-    
+      }
+
     public Volunteer LoginChecker(String name)
       {
         return volLoginManager.LoginChecker(name);
+      }
+
+    public static VolLoginModel getVolLoginModel()
+      {
+        return volLoginModel;
       }
 }
