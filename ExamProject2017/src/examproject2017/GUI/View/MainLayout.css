@@ -28,6 +28,10 @@ and open the template in the editor.
     
 }
 
+.button-small{
+    -fx-font-size: 15px;
+}
+
 .label{
     -fx-text-fill:#cb9343;
     -fx-font-weight: bold;
