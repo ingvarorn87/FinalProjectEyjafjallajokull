@@ -5,7 +5,7 @@
  */
 package examproject2017.GUI.Controller;
 
-
+import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.VolLoginModel;
 import java.io.IOException;
@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -39,12 +40,20 @@ public class LoginWindowController implements Initializable
     private PasswordField txtPass;
     @FXML
     private Button btnLogin;
-    
+
     private Volunteer volunteer;
-    
-    
-    
+
     private VolLoginModel volLoginModel = new VolLoginModel();
+    @FXML
+    private Label lblWrong;
+
+    private static final int NOT_LOGGED_IN = 1;
+    private static final int LOGGED_IN_VOLUNTEER = 2;
+    private static final int LOGGED_IN_ADMIN = 3;
+    private static final int WRONG_PASSWORD = 4;
+
+    private int loginState = NOT_LOGGED_IN;
+    private Person person = null;
 
     /**
      * Initializes the controller class.
@@ -53,8 +62,9 @@ public class LoginWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         txtPass.setVisible(false);
+        lblWrong.setVisible(false);
         // TODO
-      }    
+      }
 
     @FXML
     private void adminLogin(ActionEvent event)
@@ -66,45 +76,66 @@ public class LoginWindowController implements Initializable
     private void login(ActionEvent event) throws IOException
       {
         //txtName.getText().trim();
-        volunteer = volLoginModel.LoginChecker(txtName.getText().trim());
-        
-       volunteerWindowLoader();
-       
-          System.out.println(volunteer.getName());
-          //System.out.println(volLoginModel.getHours());
-        
+
+        if (person == null)
+          {
+            person = volLoginModel.LoginChecker(txtName.getText().trim());
+          }
+        volunteerWindowLoader();
+
+        System.out.println(volunteer.getName());
+        //System.out.println(volLoginModel.getHours());
+
       }
-    
-    
+
     private void adminWindowLoader() throws IOException
       {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
-                Parent root = loader.load();
-                AdminWindowController aController = (AdminWindowController) loader.getController();
+        Parent root = loader.load();
+        AdminWindowController aController = (AdminWindowController) loader.getController();
 
-                Stage subStage = new Stage();
-                subStage.setScene(new Scene(root));
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
 
-
-                subStage.show();
-                Stage stage = (Stage) btnLogin.getScene().getWindow();
-                stage.close();
+        subStage.show();
+        Stage stage = (Stage) btnLogin.getScene().getWindow();
+        stage.close();
       }
-    
+
     private void volunteerWindowLoader() throws IOException
       {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/SelectedVolunteerWindow.fxml"));
-                Parent root = loader.load();
-                SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
-                vController.populateFields(volunteer);
+        Parent root = loader.load();
+        SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
+        vController.populateFields(volunteer);
 
-                Stage subStage = new Stage();
-                subStage.setScene(new Scene(root));
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
 
-
-                subStage.show();
-                Stage stage = (Stage) btnLogin.getScene().getWindow();
-                stage.close();
+        subStage.show();
+        Stage stage = (Stage) btnLogin.getScene().getWindow();
+        stage.close();
       }
-    
+
+    public void activeState()
+      {
+        switch (loginState)
+          {
+            case NOT_LOGGED_IN:
+                break;
+
+            case LOGGED_IN_VOLUNTEER:
+                break;
+
+            case LOGGED_IN_ADMIN:
+                txtPass.setVisible(true);
+                break;
+
+            case WRONG_PASSWORD:
+                lblWrong.setVisible(true);
+                break;
+
+          }
+      }
+
 }

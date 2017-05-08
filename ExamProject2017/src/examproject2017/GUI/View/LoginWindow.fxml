@@ -10,12 +10,13 @@
 <AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="303.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.LoginWindowController">
    <children>
       <Button fx:id="btnAdminLogin" layoutX="156.0" layoutY="43.0" mnemonicParsing="false" onAction="#adminLogin" prefHeight="30.0" prefWidth="102.0" styleClass="button-small" text="Admin Login" />
-      <VBox layoutX="46.0" layoutY="135.0" prefHeight="198.0" prefWidth="212.0" spacing="20.0">
+      <VBox layoutX="46.0" layoutY="110.0" prefHeight="198.0" prefWidth="212.0" spacing="20.0">
          <children>
             <Label text="Name/ID number:" />
             <TextField fx:id="txtName" />
             <PasswordField fx:id="txtPass" promptText="Password" />
             <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="Log in" />
+            <Label fx:id="lblWrong" text="No such name" />
          </children>
       </VBox>
    </children>
