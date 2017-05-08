@@ -68,8 +68,9 @@ public class SelectedVolunteerWindowController implements Initializable
                 Parent root = loader.load();
                 LoginWindowController gotoLoginWindowController = (LoginWindowController) loader.getController();
 
-                Stage subStage = new Stage();
+                 Stage subStage = new Stage();
                 subStage.setScene(new Scene(root));
+
 
                 subStage.show();
                 Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
