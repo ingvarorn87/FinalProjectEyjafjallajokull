@@ -5,11 +5,28 @@
  */
 package examproject2017.DAL;
 
+import examproject2017.BE.Admin;
+
 /**
  *
  * @author gudla
  */
 public class AdminLoginHandler
 {
+    AdminHandler adHandler = new AdminHandler();
     
+    public Admin LoginChecker(String name, String password)
+      {
+        for (String string : adHandler.getAdName())
+          {
+            if (string.equals(name))
+              {
+                if (adHandler.checkRightPassword(string, password))
+                  {
+                    return adHandler.getAdminBasedOnName(string);
+                  }
+              }
+          }
+        return null;
+      }
 }

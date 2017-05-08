@@ -5,31 +5,32 @@
  */
 package examproject2017.GUI.Model;
 
+import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
-import examproject2017.BLL.VolLoginManager;
+import examproject2017.BLL.LoginManager;
 import java.util.ArrayList;
 
 /**
  *
  * @author gudla
  */
-public class VolLoginModel
+public class LoginModel
 {
 
-    public VolLoginManager volLoginManager = new VolLoginManager();
-    private static final VolLoginModel volLoginModel = new VolLoginModel();
+    public LoginManager LoginManager = new LoginManager();
+    private static final LoginModel volLoginModel = new LoginModel();
 
     public ArrayList<String> getVolName()
       {
-        return volLoginManager.getVolName();
+        return LoginManager.getVolName();
       }
 
-    public Volunteer LoginChecker(String name)
+    public Person LoginChecker(String name, String password)
       {
-        return volLoginManager.LoginChecker(name);
+        return LoginManager.LoginChecker(name, password);
       }
 
-    public static VolLoginModel getVolLoginModel()
+    public static LoginModel getVolLoginModel()
       {
         return volLoginModel;
       }

@@ -174,13 +174,13 @@ public class VolunteerHandler
       {
         ResultSet rs = pstmt.executeQuery();
         rs.next();
-        int idVol = rs.getInt("Id");
-        String nameVol = rs.getString("Name");
-        String emailVol = rs.getString("Email");
-        String addressVol = rs.getString("Address");
-        String phoneVol = rs.getString("PhoneNumber");
-        int hoursVol = rs.getInt("Hours");
-        String infoVol = rs.getString("Information");
+        int id = rs.getInt("Id");
+        String name = rs.getString("Name");
+        String email = rs.getString("Email");
+        String address = rs.getString("Address");
+        String phone = rs.getString("PhoneNumber");
+        int hours = rs.getInt("Hours");
+        String info = rs.getString("Information");
         
         //byte[] bytes = rs.getBytes("image");
 //        BufferedImage newImage;
@@ -203,7 +203,7 @@ public class VolunteerHandler
 //          {
 //            newImage = null;
 //          }
-        Volunteer volunteer = new Volunteer(idVol, nameVol, emailVol, addressVol, phoneVol, hoursVol, infoVol);
+        Volunteer volunteer = new Volunteer(id, name, email, address, phone, hours, info);
         return volunteer;
       }
 

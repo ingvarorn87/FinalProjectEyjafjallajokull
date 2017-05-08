@@ -5,9 +5,10 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.Admin;
 import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
-import examproject2017.GUI.Model.VolLoginModel;
+import examproject2017.GUI.Model.LoginModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -43,7 +43,7 @@ public class LoginWindowController implements Initializable
 
     private Volunteer volunteer;
 
-    private VolLoginModel volLoginModel = new VolLoginModel();
+    private LoginModel loginModel = new LoginModel();
     @FXML
     private Label lblWrong;
 
@@ -76,16 +76,38 @@ public class LoginWindowController implements Initializable
     private void login(ActionEvent event) throws IOException
       {
         //txtName.getText().trim();
+        //volunteer = loginModel.LoginChecker(txtName.getText().trim());
 
         if (person == null)
           {
-            person = volLoginModel.LoginChecker(txtName.getText().trim());
+            person = loginModel.LoginChecker(txtName.getText().trim(), txtPass.getText().trim());
           }
-        volunteerWindowLoader();
+        if (loginState != LOGGED_IN_VOLUNTEER && person != null)
+          {
+            if (person.getClass() == Volunteer.class)
+              {
+                System.out.println(person.getName());
+                volunteerWindowLoader();
+                loginState = LOGGED_IN_VOLUNTEER;
+                activeState();
+              } else if (person.getClass() == Admin.class)
+              {
+                activeState();
+                adminWindowLoader();
+                
+              }
+          } else if (loginState != LOGGED_IN_VOLUNTEER && person == null)
+          {
+            loginState = WRONG_PASSWORD;
+            activeState();
+          } else if (loginState == LOGGED_IN_VOLUNTEER)
+          {
 
-        System.out.println(volunteer.getName());
+          }
+
+        //volunteerWindowLoader();
+        //System.out.println(volunteer.getName());
         //System.out.println(volLoginModel.getHours());
-
       }
 
     private void adminWindowLoader() throws IOException
@@ -107,7 +129,7 @@ public class LoginWindowController implements Initializable
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/SelectedVolunteerWindow.fxml"));
         Parent root = loader.load();
         SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
-        vController.populateFields(volunteer);
+        vController.populateFields((Volunteer) person);
 
         Stage subStage = new Stage();
         subStage.setScene(new Scene(root));
