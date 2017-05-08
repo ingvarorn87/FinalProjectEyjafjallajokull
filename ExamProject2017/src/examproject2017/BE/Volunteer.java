@@ -9,61 +9,21 @@ package examproject2017.BE;
  *
  * @author gudla
  */
-public class Volunteer
+public class Volunteer extends Person
 {
-    private String name;
-    private String email;
-    private int id;
+    
     private String info;
-    private String phone;
-    private String address;
     private int hours;
     
     
-
-   
-
-    public Volunteer(int idVol, String nameVol, String emailVol, String addressVol, String phoneVol, int hoursVol, String infoVol)
+    public Volunteer(int id, String name, String email, String address, String phone, int hours, String info)
       {
-        this.id = idVol;
-        this.name = nameVol;
-        this.email = emailVol;
-        this.address = addressVol;
-        this.phone = phoneVol;
-        this.hours = hoursVol;
-        this.info = infoVol;
+        super(name, email, id, phone, address);
+
+        this.hours = hours;
+        this.info = info;
         
 
-      }
-
-    public String getName()
-      {
-        return name;
-      }
-
-    public void setName(String name)
-      {
-        this.name = name;
-      }
-
-    public String getEmail()
-      {
-        return email;
-      }
-
-    public void setEmail(String email)
-      {
-        this.email = email;
-      }
-
-    public int getId()
-      {
-        return id;
-      }
-
-    public void setId(int id)
-      {
-        this.id = id;
       }
 
     public String getInfo()
@@ -76,26 +36,6 @@ public class Volunteer
         this.info = info;
       }
 
-    public String getPhone()
-      {
-        return phone;
-      }
-
-    public void setPhone(String phone)
-      {
-        this.phone = phone;
-      }
-
-    public String getAddress()
-      {
-        return address;
-      }
-
-    public void setAddress(String address)
-      {
-        this.address = address;
-      }
-
     public int getHours()
       {
         return hours;
@@ -105,6 +45,8 @@ public class Volunteer
       {
         this.hours = hours;
       }
+
+    
 
     
 }
