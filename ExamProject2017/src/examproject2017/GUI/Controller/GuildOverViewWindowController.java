@@ -17,8 +17,10 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -33,6 +35,12 @@ public class GuildOverViewWindowController implements Initializable {
     private Insets x1;
     @FXML
     private Button btnaddguild;
+    @FXML
+    private TableColumn<?, String> clmGuild;
+    @FXML
+    private TableColumn<?, String> clmHours;
+    @FXML
+    private TableColumn<?, String> clmAdmin;
     
 
     /**
