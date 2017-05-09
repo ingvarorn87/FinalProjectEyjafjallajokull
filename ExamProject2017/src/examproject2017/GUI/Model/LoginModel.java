@@ -17,17 +17,17 @@ import java.util.ArrayList;
 public class LoginModel
 {
 
-    public LoginManager LoginManager = new LoginManager();
+    public LoginManager loginManager = new LoginManager();
     private static final LoginModel volLoginModel = new LoginModel();
 
     public ArrayList<String> getVolName()
       {
-        return LoginManager.getVolName();
+        return loginManager.getVolName();
       }
 
     public Person LoginChecker(String name, String password)
       {
-        return LoginManager.LoginChecker(name, password);
+        return loginManager.LoginChecker(name, password);
       }
 
     public static LoginModel getVolLoginModel()
