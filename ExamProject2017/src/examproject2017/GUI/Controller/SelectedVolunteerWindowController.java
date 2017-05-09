@@ -22,6 +22,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
 
@@ -70,6 +73,12 @@ public class SelectedVolunteerWindowController implements Initializable
         "11",
         "12"
     );
+    @FXML
+    private TableView<Volunteer> tblSeeHours;
+    @FXML
+    private TableColumn<?, ?> clmGuild;
+    @FXML
+    private TableColumn<Volunteer, String> clmHours;
 
     /**
      * Initializes the controller class.
@@ -108,6 +117,7 @@ public class SelectedVolunteerWindowController implements Initializable
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
 
+        
       }
 
 }

@@ -44,15 +44,5 @@ public class LoginManager
           }
       }
 
-//    public Person LoginChecker(String username, String password)
-//      {
-//
-//        if (studentLoginHandler.LoginChecker(username, password) != null)
-//          {
-//            return studentLoginHandler.LoginChecker(username, password);
-//          } else
-//          {
-//            return teacherLoginHandler.LoginChecker(username, password);
-//          }
-//      }
+
 }

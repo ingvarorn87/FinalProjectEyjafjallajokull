@@ -17,10 +17,10 @@
    <children>
       <HBox layoutX="4.0" layoutY="221.0" prefHeight="200.0" prefWidth="456.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tblSeeHours" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="115.0" text="Guild" />
-                <TableColumn prefWidth="84.0" text="Hours" />
+                <TableColumn fx:id="clmGuild" prefWidth="115.0" text="Guild" />
+                <TableColumn fx:id="clmHours" prefWidth="84.0" text="Hours" />
               </columns>
             </TableView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="245.0" spacing="20.0">
