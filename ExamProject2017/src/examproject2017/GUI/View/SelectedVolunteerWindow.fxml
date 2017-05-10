@@ -45,7 +45,7 @@
                <children>
                   <ImageView fitHeight="167.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@SampleImage.jpg" />
+                        <Image url="@Legolas.jpg" />
                      </image></ImageView>
                   <Label fx:id="lblID" styleClass="label-small" text="ID">
                      <opaqueInsets>

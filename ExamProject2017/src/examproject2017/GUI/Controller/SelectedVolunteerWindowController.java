@@ -124,8 +124,11 @@ public class SelectedVolunteerWindowController implements Initializable
     public void populateFields(Volunteer selectedVolunteer) //puts the right information into the lables
       {
         lblName.setText(selectedVolunteer.getName());
+        lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblAddress.setText(selectedVolunteer.getAddress());
+        lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.setText(selectedVolunteer.getEmail());
+        lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
 //        lblInfo.setText(selectedVolunteer.getInfo());
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
