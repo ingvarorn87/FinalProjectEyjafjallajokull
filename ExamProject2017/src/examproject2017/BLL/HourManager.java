@@ -5,6 +5,7 @@
  */
 package examproject2017.BLL;
 
+import examproject2017.BE.Hours;
 import examproject2017.DAL.HourHandler;
 import java.util.ArrayList;
 
@@ -16,5 +17,14 @@ public class HourManager
 {
     private HourHandler hourHandler = new HourHandler();
     
+     public ArrayList<String> getHours()
+       {
+         return hourHandler.getHours();
+       }
     
+     public Hours getHoursBasedOnGuildId(String guildId)
+       {
+         return hourHandler.getHoursBasedOnGuildId(guildId);
+       }
+     
 }

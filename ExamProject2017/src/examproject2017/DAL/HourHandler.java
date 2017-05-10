@@ -6,11 +6,13 @@
 package examproject2017.DAL;
 
 import examproject2017.BE.Hours;
-import examproject2017.BE.Person;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,9 +20,6 @@ import java.sql.SQLException;
  */
 public class HourHandler
 {
-    
-    private GuildHandler guildHandler = new GuildHandler();
-    private VolunteerHandler volHandler = new VolunteerHandler();
     
     SQLConnectionHandler conManager;
     public HourHandler()
@@ -44,30 +43,39 @@ public class HourHandler
       }
     
     
-//    public Hours getHoursBasedOnGuildId(String guildID) // gets all hours in one Guild
-//      {
-//        try (Connection con = conManager.getConnection())
-//          {
-//            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ?";
-//            PreparedStatement pstmt = con.prepareStatement(query);
-//            pstmt.setInt(1, guildID);
-//
-//            return getHoursFromResults(pstmt);
-//          }
-//        catch (SQLException sqle)
-//          {
-//            System.err.println(sqle);
-//            return null;
-//          }
-//      }
-    
-    public Hours getHoursBasedOnVolId(int volID) //gets Volunteer total hours in all guilds
+    public ArrayList<String> getHours()
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Volid= ?";
+            String query = "SELECT * FROM [GuildVolHours]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> hours = new ArrayList<>();
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("Hours");
+
+                hours.add(volString);
+              }
+            return hours;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+    
+    
+
+    public Hours getHoursBasedOnGuildId(String guildId)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setInt(1, volID);
+            pstmt.setString(1, guildId);
 
             return getHoursFromResults(pstmt);
           }
@@ -77,25 +85,5 @@ public class HourHandler
             return null;
           }
       }
-    
-    public Hours getVolHours(int hours) //gets Volunteer hours in one guild
-      {
-        try (Connection con = conManager.getConnection())
-          {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ? && Volid = ?";
-            
-            PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setInt(1, hours);
-
-            return getHoursFromResults(pstmt);
-          }
-        catch (SQLException sqle)
-          {
-            System.err.println(sqle);
-            return null;
-          }
-      }
-
-    
 
 }
