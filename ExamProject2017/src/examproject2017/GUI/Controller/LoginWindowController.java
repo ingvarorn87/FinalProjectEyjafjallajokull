@@ -130,6 +130,7 @@ public class LoginWindowController implements Initializable
         Parent root = loader.load();
         SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
         vController.populateFields((Volunteer) person);
+//        vController.populateTables(selectedHours);
 
         Stage subStage = new Stage();
         subStage.setScene(new Scene(root));
@@ -147,6 +148,7 @@ public class LoginWindowController implements Initializable
                 break;
 
             case LOGGED_IN_VOLUNTEER:
+                
                 break;
 
             case LOGGED_IN_ADMIN:
