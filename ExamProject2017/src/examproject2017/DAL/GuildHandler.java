@@ -46,28 +46,28 @@ public class GuildHandler
             return null;
           }
       }
-    public ArrayList<String> getGuildHours()
-      {
-        try (Connection con = conManager.getConnection())
-          {
-            String query = "SELECT * FROM [Guilds]";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            ArrayList<String> hours = new ArrayList<>();
-            while (rs.next())
-              {
-                String hoursString = "";
-                hoursString += rs.getString("Hours");
-
-                hours.add(hoursString);
-              }
-            return hours;
-          } catch (SQLException sqle)
-          {
-            System.err.println(sqle);
-            return null;
-          }
-      }
+//    public ArrayList<String> getGuildHours()
+//      {
+//        try (Connection con = conManager.getConnection())
+//          {
+//            String query = "SELECT * FROM [Guilds]";
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//
+//            ArrayList<String> hours = new ArrayList<>();
+//            while (rs.next())
+//              {
+//                String hoursString = "";
+//                hoursString += rs.getString("Hours");
+//
+//                hours.add(hoursString);
+//              }
+//            return hours;
+//          } catch (SQLException sqle)
+//          {
+//            System.err.println(sqle);
+//            return null;
+//          }
+//      }
     
 }

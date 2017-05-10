@@ -13,14 +13,13 @@ public class Volunteer extends Person
 {
     
     private String info;
-    private int hours;
     
     
-    public Volunteer(int id, String name, String email, String address, String phone, int hours, String info)
+    
+    public Volunteer(int id, String name, String email, String address, String phone, String info)
       {
         super(name, email, id, phone, address);
 
-        this.hours = hours;
         this.info = info;
         
 
@@ -36,16 +35,7 @@ public class Volunteer extends Person
         this.info = info;
       }
 
-    public int getHours()
-      {
-        return hours;
-      }
-
-    public void setHours(int hours)
-      {
-        this.hours = hours;
-      }
-
+    
     
 
     

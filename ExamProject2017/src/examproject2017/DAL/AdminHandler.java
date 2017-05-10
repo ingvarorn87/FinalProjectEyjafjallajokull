@@ -74,7 +74,7 @@ public class AdminHandler
         
         String name = rs.getString("Name");
         String email = rs.getString("Email");
-        int id = rs.getInt("Id");
+        int id = rs.getInt("Adminid");
         String phone = rs.getString("PhoneNumber");
         String address = rs.getString("Address");
         

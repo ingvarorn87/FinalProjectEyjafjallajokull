@@ -22,9 +22,9 @@ public class GuildModel {
           return guildManager.getGuildNames();
       }
     
-      public ArrayList<String> getGuildHours()
-      {
-          return guildManager.getGuildHours();
-      }
+//      public ArrayList<String> getGuildHours()
+//      {
+//          return guildManager.getGuildHours();
+//      }
       
 }

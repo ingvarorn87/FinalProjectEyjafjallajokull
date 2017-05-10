@@ -57,29 +57,29 @@ public class VolunteerHandler
           }
       }
 
-    public ArrayList<String> getHours()
-      {
-        try (Connection con = conManager.getConnection())
-          {
-            String query = "SELECT * FROM [Volunteers]";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next())
-              {
-                String volString = "";
-                volString += rs.getString("Hours");
-
-                volunteers.add(volString);
-              }
-            return volunteers;
-          } catch (SQLException sqle)
-          {
-            System.err.println(sqle);
-            return null;
-          }
-      }
+//    public ArrayList<String> getHours()
+//      {
+//        try (Connection con = conManager.getConnection())
+//          {
+//            String query = "SELECT * FROM [Volunteers]";
+//            Statement stmt = con.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//
+//            ArrayList<String> volunteers = new ArrayList<>();
+//            while (rs.next())
+//              {
+//                String volString = "";
+//                volString += rs.getString("Hours");
+//
+//                volunteers.add(volString);
+//              }
+//            return volunteers;
+//          } catch (SQLException sqle)
+//          {
+//            System.err.println(sqle);
+//            return null;
+//          }
+//      }
 
     public ArrayList<String> getVolEmail()
       {
@@ -174,12 +174,11 @@ public class VolunteerHandler
       {
         ResultSet rs = pstmt.executeQuery();
         rs.next();
-        int id = rs.getInt("Id");
+        int id = rs.getInt("Volid");
         String name = rs.getString("Name");
         String email = rs.getString("Email");
         String address = rs.getString("Address");
         String phone = rs.getString("PhoneNumber");
-        int hours = rs.getInt("Hours");
         String info = rs.getString("Information");
         
         //byte[] bytes = rs.getBytes("image");
@@ -203,7 +202,7 @@ public class VolunteerHandler
 //          {
 //            newImage = null;
 //          }
-        Volunteer volunteer = new Volunteer(id, name, email, address, phone, hours, info);
+        Volunteer volunteer = new Volunteer(id, name, email, address, phone, info);
         return volunteer;
       }
 

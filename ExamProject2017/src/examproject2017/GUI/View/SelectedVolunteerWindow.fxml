@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,14 +20,14 @@
          <children>
             <TableView fx:id="tblSeeHours" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="clmGuild" prefWidth="115.0" text="Guild" />
-                <TableColumn fx:id="clmHours" prefWidth="84.0" text="Hours" />
+                <TableColumn fx:id="clmGuild" prefWidth="110.0" text="Guild" />
+                <TableColumn fx:id="clmHours" prefWidth="89.0" text="Hours" />
               </columns>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="245.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="249.0" spacing="20.0">
                <children>
-                  <ComboBox fx:id="CBHours" layoutX="10.0" layoutY="72.0" prefWidth="150.0" promptText="Select Hours" />
-                  <ComboBox prefWidth="150.0" promptText="Select Guild" />
+                  <ComboBox fx:id="CBHours" layoutX="10.0" layoutY="72.0" prefHeight="36.0" prefWidth="220.0" promptText="Select Hours" />
+                  <ComboBox prefHeight="36.0" prefWidth="220.0" promptText="Select Guild" />
                   <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="44.0" prefWidth="120.0" text="Register" />
                </children>
             </VBox>
@@ -34,7 +35,7 @@
       </HBox>
       <HBox prefHeight="222.0" prefWidth="600.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="205.0" prefWidth="213.0">
+            <VBox alignment="CENTER" prefHeight="222.0" prefWidth="162.0">
                <children>
                   <ImageView fitHeight="167.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +51,7 @@
                   <Insets left="20.0" />
                </opaqueInsets>
             </VBox>
-            <VBox alignment="CENTER_LEFT" prefHeight="222.0" prefWidth="208.0" spacing="10.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="222.0" prefWidth="198.0" spacing="15.0">
                <children>
                   <Label fx:id="lblName" text="Name">
                      <font>
@@ -68,7 +69,7 @@
                   <Insets left="20.0" />
                </opaqueInsets>
             </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="196.0" prefWidth="205.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" prefHeight="222.0" prefWidth="246.0" spacing="20.0">
                <children>
                   <Label alignment="TOP_CENTER" text="Information">
                      <font>
@@ -78,7 +79,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <Label fx:id="lblInfo" text="text" />
+                  <TextArea fx:id="txtInformationInput" prefHeight="200.0" prefWidth="200.0" promptText="Insert volunteer information here" />
                </children>
                <opaqueInsets>
                   <Insets />

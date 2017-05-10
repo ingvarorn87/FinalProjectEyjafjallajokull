@@ -14,7 +14,8 @@ and open the template in the editor.
 }
 
 .button{
-    -fx-background-color:#cb9343;
+    -fx-background-color:#7a7dea;
+        
     -fx-background-radius: 10px;
     -fx-font-weight: bold;
     -fx-font-size: 20px;
@@ -33,7 +34,7 @@ and open the template in the editor.
 }
 
 .label{
-    -fx-text-fill:#cb9343;
+    -fx-text-fill:#7a7dea;
     -fx-font-weight: bold;
     -fx-font-size: 20px;
    

@@ -21,9 +21,9 @@ public class GuildManager {
        return guildHandler.getGuildName();
    }
    
-   public ArrayList<String> getGuildHours()
-   {
-       return guildHandler.getGuildHours();
-   }
+//   public ArrayList<String> getGuildHours()
+//   {
+//       return guildHandler.getGuildHours();
+//   }
     
 }

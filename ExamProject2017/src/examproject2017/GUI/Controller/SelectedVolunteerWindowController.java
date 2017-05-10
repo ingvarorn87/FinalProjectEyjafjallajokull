@@ -24,6 +24,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
@@ -50,7 +51,6 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblAddress;
     @FXML
     private Label lblPhone;
-    @FXML
     private Label lblInfo;
 
     @FXML
@@ -79,6 +79,8 @@ public class SelectedVolunteerWindowController implements Initializable
     private TableColumn<?, ?> clmGuild;
     @FXML
     private TableColumn<Volunteer, String> clmHours;
+    @FXML
+    private TextArea txtInformationInput;
 
     /**
      * Initializes the controller class.
@@ -113,9 +115,10 @@ public class SelectedVolunteerWindowController implements Initializable
         lblName.setText(selectedVolunteer.getName());
         lblAddress.setText(selectedVolunteer.getAddress());
         lblEmail.setText(selectedVolunteer.getEmail());
-        lblInfo.setText(selectedVolunteer.getInfo());
+//        lblInfo.setText(selectedVolunteer.getInfo());
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
+        txtInformationInput.setText(selectedVolunteer.getInfo());
 
         
       }
