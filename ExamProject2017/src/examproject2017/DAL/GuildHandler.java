@@ -17,12 +17,14 @@ import java.util.ArrayList;
  */
 public class GuildHandler
 {
+
     SQLConnectionHandler conManager;
+
     public GuildHandler()
       {
         conManager = new SQLConnectionHandler();
       }
-    
+
     public ArrayList<String> getGuildName()
       {
         try (Connection con = conManager.getConnection())
@@ -46,28 +48,28 @@ public class GuildHandler
             return null;
           }
       }
-//    public ArrayList<String> getGuildHours()
-//      {
-//        try (Connection con = conManager.getConnection())
-//          {
-//            String query = "SELECT * FROM [Guilds]";
-//            Statement stmt = con.createStatement();
-//            ResultSet rs = stmt.executeQuery(query);
-//
-//            ArrayList<String> hours = new ArrayList<>();
-//            while (rs.next())
-//              {
-//                String hoursString = "";
-//                hoursString += rs.getString("Hours");
-//
-//                hours.add(hoursString);
-//              }
-//            return hours;
-//          } catch (SQLException sqle)
-//          {
-//            System.err.println(sqle);
-//            return null;
-//          }
-//      }
-    
+
+    public ArrayList<String> getGuildId()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Guilds]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> guilds = new ArrayList<>();
+            while (rs.next())
+              {
+                String guildString = "";
+                guildString += rs.getString("Guildid");
+
+                guilds.add(guildString);
+              }
+            return guilds;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
 }

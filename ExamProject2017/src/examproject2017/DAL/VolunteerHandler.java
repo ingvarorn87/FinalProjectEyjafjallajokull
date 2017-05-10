@@ -57,29 +57,29 @@ public class VolunteerHandler
           }
       }
 
-//    public ArrayList<String> getHours()
-//      {
-//        try (Connection con = conManager.getConnection())
-//          {
-//            String query = "SELECT * FROM [Volunteers]";
-//            Statement stmt = con.createStatement();
-//            ResultSet rs = stmt.executeQuery(query);
-//
-//            ArrayList<String> volunteers = new ArrayList<>();
-//            while (rs.next())
-//              {
-//                String volString = "";
-//                volString += rs.getString("Hours");
-//
-//                volunteers.add(volString);
-//              }
-//            return volunteers;
-//          } catch (SQLException sqle)
-//          {
-//            System.err.println(sqle);
-//            return null;
-//          }
-//      }
+    public ArrayList<String> getVolId()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("Volid");
+
+                volunteers.add(volString);
+              }
+            return volunteers;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
 
     public ArrayList<String> getVolEmail()
       {

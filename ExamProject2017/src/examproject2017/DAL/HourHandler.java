@@ -20,6 +20,7 @@ public class HourHandler
 {
     
     private GuildHandler guildHandler = new GuildHandler();
+    private VolunteerHandler volHandler = new VolunteerHandler();
     
     SQLConnectionHandler conManager;
     public HourHandler()
@@ -43,7 +44,7 @@ public class HourHandler
       }
     
     
-    public Hours getHoursBasedOnGuildId(int guildID) // gets all hours in one Guild
+    public Hours getHoursBasedOnGuildId(String guildID) // gets all hours in one Guild
       {
         try (Connection con = conManager.getConnection())
           {
@@ -97,25 +98,27 @@ public class HourHandler
     
     public Hours guildHourChecker(int guildId)// checks the hours that a guild has
       {
-        for(int aint : guildHandler.)
+        for(String string : guildHandler.getGuildId())
           {
-            if(aint.equals(guildId))
+            if(string.equals(guildId))
               {
-                
+                return getHoursBasedOnGuildId(guildId);
               }
           }
+        return null;
       }
     
-//    public Volunteer LoginChecker(String name)
-//      {
-//        for (String string : volHandler.getVolName())
-//          {
-//            if (string.equals(name))
-//              {
-//                return volHandler.getVolunteerBasedOnName(string);
-//
-//              }
-//          }
-//        return null;
-//      }
+    public Hours volHourChecker(int volId)// checks the hours that a volunteer
+      {
+        for(String string : volHandler.getVolId())
+          {
+            if(string.equals(volId))
+              {
+                return getHoursBasedOnVolId(volId);
+              }
+          }
+        return null;
+      }
+    
+
 }
