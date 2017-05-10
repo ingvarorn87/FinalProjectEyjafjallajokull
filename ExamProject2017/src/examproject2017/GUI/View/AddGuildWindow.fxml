@@ -11,31 +11,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AddGuildWindowController">
+<AnchorPane id="AnchorPane" prefHeight="223.0" prefWidth="365.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AddGuildWindowController">
   <children>
-    <VBox layoutX="181.0" layoutY="154.0" prefHeight="92.0" prefWidth="228.0">
-      <children>
-        <HBox prefHeight="53.0" prefWidth="241.0">
-          <children>
-            <TextField prefWidth="215.0" promptText="Guild Name" />
-          </children>
-        </HBox>
-        <HBox prefHeight="53.0" prefWidth="241.0">
-          <children>
-            <TextField prefWidth="215.0" promptText="Administrator" />
-          </children>
-        </HBox>
-      </children>
-    </VBox>
-    <HBox layoutX="211.0" layoutY="251.0" prefHeight="46.0" prefWidth="152.0">
-      <children>
-        <Button mnemonicParsing="false" prefWidth="65.0" text="Add">
-          <HBox.margin>
-            <Insets right="20.0" />
-          </HBox.margin>
+    <VBox layoutX="119.0" layoutY="178.0" prefHeight="49.0" prefWidth="228.0" />
+<TextField layoutX="75.0" layoutY="32.0" prefWidth="215.0" promptText="Guild Name" />
+<TextField layoutX="75.0" layoutY="79.0" prefHeight="41.0" prefWidth="215.0" promptText="Administrator" />
+  <HBox layoutX="64.0" layoutY="147.0" prefHeight="44.0" prefWidth="260.0">
+         <children>
+        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="Add">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
         </Button>
-        <Button fx:id="btnCloseAGW" mnemonicParsing="false" onAction="#closeAddGuildWindow" prefWidth="65.0" text="Cancel" />
-      </children>
-    </HBox>
+        <Button fx:id="btnCloseAGW" mnemonicParsing="false" onAction="#closeAddGuildWindow" prefHeight="44.0" prefWidth="118.0" text="Cancel" />
+         </children>
+  </HBox>
   </children>
 </AnchorPane>

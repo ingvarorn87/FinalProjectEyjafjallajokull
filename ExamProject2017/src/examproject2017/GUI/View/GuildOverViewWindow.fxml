@@ -15,14 +15,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.GuildOverViewWindowController">
   <children>
-    <VBox layoutX="467.0" layoutY="167.0" minHeight="101.0" prefHeight="122.0" prefWidth="83.0">
+    <VBox layoutX="433.0" layoutY="167.0" minHeight="101.0" prefHeight="122.0" prefWidth="157.0">
       <children>
-       <Button fx:id="btnexportguild" mnemonicParsing="false" onAction="#btnexportguild" prefHeight="44.0" prefWidth="103.0" text="Export">
+       <Button fx:id="btnexportguild" mnemonicParsing="false" onAction="#btnexportguild" prefHeight="44.0" prefWidth="144.0" text="Export">
           <VBox.margin>
             <Insets top="20.0" fx:id="x1" />
           </VBox.margin>
         </Button>
-        <Button fx:id="btnaddguild" mnemonicParsing="false" onAction="#addGuildWindowLoader" text="Add a Guild" VBox.margin="$x1" />
+        <Button fx:id="btnaddguild" mnemonicParsing="false" onAction="#addGuildWindowLoader" prefHeight="44.0" prefWidth="145.0" text="Add a Guild" VBox.margin="$x1" />
         
       </children>
     </VBox>

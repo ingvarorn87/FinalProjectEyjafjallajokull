@@ -32,9 +32,9 @@
         <DatePicker layoutX="58.0" layoutY="41.0" />
             <TableView layoutX="58.0" layoutY="132.0" prefHeight="210.0" prefWidth="275.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="Hours" />
-                  <TableColumn prefWidth="75.0" text="Guild" />
+                <TableColumn prefWidth="100.0" text="Name" />
+                <TableColumn prefWidth="100.0" text="Hours" />
+                  <TableColumn prefWidth="100.0" text="Guild" />
               </columns>
             </TableView>
       </children>

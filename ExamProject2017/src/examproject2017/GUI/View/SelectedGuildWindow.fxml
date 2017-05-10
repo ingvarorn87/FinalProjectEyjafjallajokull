@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -16,16 +17,19 @@
   <children>
     <DatePicker layoutX="60.0" layoutY="45.0" />
     <TextField layoutX="350.0" layoutY="45.0" prefWidth="200.0" promptText="Search" />
-    <VBox layoutX="480.0" layoutY="289.0" prefHeight="61.0" prefWidth="70.0">
+    <VBox layoutX="383.0" layoutY="289.0" prefHeight="88.0" prefWidth="167.0">
       <children>
-        <HBox prefHeight="47.0" prefWidth="100.0">
+        <HBox prefHeight="49.0" prefWidth="157.0">
           <children>
-            <Button fx:id="btnexport" mnemonicParsing="false" onAction="#exportsingleguild" prefWidth="70.0" text="Export" />
+            <Button fx:id="btnexport" mnemonicParsing="false" onAction="#exportsingleguild" prefHeight="44.0" prefWidth="169.0" text="Export">
+                     <HBox.margin>
+                        <Insets bottom="5.0" />
+                     </HBox.margin></Button>
           </children>
         </HBox>
-        <HBox prefHeight="46.0" prefWidth="100.0">
+        <HBox prefHeight="45.0" prefWidth="162.0">
           <children>
-            <Button fx:id="btnCloseSGW" mnemonicParsing="false" onAction="#closeSelectedGuildWindow" prefWidth="70.0" text="Close" />
+            <Button fx:id="btnCloseSGW" mnemonicParsing="false" onAction="#closeSelectedGuildWindow" prefHeight="44.0" prefWidth="174.0" text="Close" />
           </children>
         </HBox>
       </children>
