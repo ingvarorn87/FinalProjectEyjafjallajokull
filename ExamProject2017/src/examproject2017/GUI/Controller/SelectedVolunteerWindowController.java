@@ -6,6 +6,8 @@
 package examproject2017.GUI.Controller;
 
 import examproject2017.BE.Volunteer;
+import examproject2017.DAL.GuildHandler;
+import examproject2017.GUI.Model.GuildModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -81,6 +83,14 @@ public class SelectedVolunteerWindowController implements Initializable
     private TableColumn<Volunteer, String> clmHours;
     @FXML
     private TextArea txtInformationInput;
+    @FXML
+    private ComboBox<String> CBselectGuild;
+    
+    public GuildModel guildModel = new GuildModel();
+    
+    ObservableList<String> getGuilds =
+            FXCollections.observableList(guildModel.getGuildName()
+            );
 
     /**
      * Initializes the controller class.
@@ -92,6 +102,7 @@ public class SelectedVolunteerWindowController implements Initializable
         //lblName.setText(volunteer.getName());
         
         CBHours.setItems(hours);
+        CBselectGuild.setItems(getGuilds);
 
       }
 

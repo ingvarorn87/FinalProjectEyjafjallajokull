@@ -44,22 +44,22 @@ public class HourHandler
       }
     
     
-    public Hours getHoursBasedOnGuildId(String guildID) // gets all hours in one Guild
-      {
-        try (Connection con = conManager.getConnection())
-          {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ?";
-            PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setInt(1, guildID);
-
-            return getHoursFromResults(pstmt);
-          }
-        catch (SQLException sqle)
-          {
-            System.err.println(sqle);
-            return null;
-          }
-      }
+//    public Hours getHoursBasedOnGuildId(String guildID) // gets all hours in one Guild
+//      {
+//        try (Connection con = conManager.getConnection())
+//          {
+//            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ?";
+//            PreparedStatement pstmt = con.prepareStatement(query);
+//            pstmt.setInt(1, guildID);
+//
+//            return getHoursFromResults(pstmt);
+//          }
+//        catch (SQLException sqle)
+//          {
+//            System.err.println(sqle);
+//            return null;
+//          }
+//      }
     
     public Hours getHoursBasedOnVolId(int volID) //gets Volunteer total hours in all guilds
       {
@@ -95,30 +95,7 @@ public class HourHandler
             return null;
           }
       }
-    
-    public Hours guildHourChecker(int guildId)// checks the hours that a guild has
-      {
-        for(String string : guildHandler.getGuildId())
-          {
-            if(string.equals(guildId))
-              {
-                return getHoursBasedOnGuildId(guildId);
-              }
-          }
-        return null;
-      }
-    
-    public Hours volHourChecker(int volId)// checks the hours that a volunteer
-      {
-        for(String string : volHandler.getVolId())
-          {
-            if(string.equals(volId))
-              {
-                return getHoursBasedOnVolId(volId);
-              }
-          }
-        return null;
-      }
+
     
 
 }
