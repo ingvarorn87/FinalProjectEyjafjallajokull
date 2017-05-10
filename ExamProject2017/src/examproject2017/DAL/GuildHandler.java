@@ -46,6 +46,8 @@ public class GuildHandler
             return null;
           }
       }
+    
+   
 //    public ArrayList<String> getGuildHours()
 //      {
 //        try (Connection con = conManager.getConnection())

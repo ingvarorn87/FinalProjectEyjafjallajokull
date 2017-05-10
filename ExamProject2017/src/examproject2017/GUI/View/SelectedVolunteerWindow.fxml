@@ -33,7 +33,7 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="249.0" spacing="20.0">
                <children>
                   <ComboBox fx:id="CBHours" layoutX="10.0" layoutY="72.0" prefHeight="36.0" prefWidth="220.0" promptText="Select Hours" />
-                  <ComboBox prefHeight="36.0" prefWidth="220.0" promptText="Select Guild" />
+                  <ComboBox fx:id="CBselectGuild" prefHeight="36.0" prefWidth="220.0" promptText="Select Guild" />
                   <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="44.0" prefWidth="110.0" text="Register" />
                </children>
             </VBox>
