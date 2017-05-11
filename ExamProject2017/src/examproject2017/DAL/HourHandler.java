@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class HourHandler
 {
     
+    
     SQLConnectionHandler conManager;
     public HourHandler()
       {
