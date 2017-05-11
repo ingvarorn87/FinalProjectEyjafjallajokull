@@ -129,7 +129,7 @@ public class SelectedVolunteerWindowController implements Initializable
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.setText(selectedVolunteer.getEmail());
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-//        lblInfo.setText(selectedVolunteer.getInfo());
+
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
