@@ -55,7 +55,7 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblAddress;
     @FXML
     private Label lblPhone;
-    private Label lblInfo;
+    
 
     @FXML
     private Button btnCloseSVW;
@@ -98,6 +98,8 @@ public class SelectedVolunteerWindowController implements Initializable
     ObservableList<String> getHours
             = FXCollections.observableList(hourModel.getHours()
             );
+    @FXML
+    private Label lblInformation;
 
     /**
      * Initializes the controller class.
@@ -114,6 +116,8 @@ public class SelectedVolunteerWindowController implements Initializable
         tblSeeHours.setItems(getHours);
 //        clmHours.setCellValueFactory(
 //                new PropertyValueFactory(getHours));
+        txtInformationInput.setVisible(false);
+        lblInformation.setVisible(false);
 
       }
 
