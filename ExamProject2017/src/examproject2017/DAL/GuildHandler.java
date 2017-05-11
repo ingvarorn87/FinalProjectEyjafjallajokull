@@ -5,6 +5,7 @@
  */
 package examproject2017.DAL;
 
+import examproject2017.BE.Guild;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class GuildHandler
         conManager = new SQLConnectionHandler();
       }
 
-    public ArrayList<String> getGuildName()
+    public ArrayList<Guild> getAllGuilds()
       {
         try (Connection con = conManager.getConnection())
           {
@@ -33,13 +34,13 @@ public class GuildHandler
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
-            ArrayList<String> guilds = new ArrayList<>();
+            ArrayList<Guild> guilds = new ArrayList<>();
             while (rs.next())
               {
                 String guildString = "";
                 guildString += rs.getString("Name");
 
-                guilds.add(guildString);
+                guilds.add(new Guild(rs.getInt("Guildid"), rs.getString("Name")));
               }
             return guilds;
           } catch (SQLException sqle)

@@ -5,9 +5,12 @@
  */
 package examproject2017.BLL;
 
-import examproject2017.BE.Hours;
+import examproject2017.BE.Guild;
+import examproject2017.BE.Hour;
+import examproject2017.BE.Volunteer;
 import examproject2017.DAL.HourHandler;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,9 +25,9 @@ public class HourManager
          return hourHandler.getHours();
        }
     
-     public Hours getHoursBasedOnGuildId(String guildId)
+     public List<Hour> getHourFromGuildidAndVol(Guild guildId, Volunteer volId)
        {
-         return hourHandler.getHoursBasedOnGuildId(guildId);
+         return hourHandler.getHourFromGuildidAndVol(guildId, volId);
        }
      
 }

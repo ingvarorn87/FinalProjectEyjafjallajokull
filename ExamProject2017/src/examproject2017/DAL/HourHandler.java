@@ -5,7 +5,9 @@
  */
 package examproject2017.DAL;
 
-import examproject2017.BE.Hours;
+import examproject2017.BE.Guild;
+import examproject2017.BE.Hour;
+import examproject2017.BE.Volunteer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,19 +31,20 @@ public class HourHandler
         conManager = new SQLConnectionHandler();
       }
     
-    public Hours getHoursFromResults(PreparedStatement pstmt) throws SQLException
+    public List<Hour> getHoursFromResults(PreparedStatement pstmt) throws SQLException
       {
         ResultSet rs = pstmt.executeQuery();
-        rs.next();
+        ArrayList<Hour> hours = new ArrayList();
+                while(rs.next()){
         
         int guildId = rs.getInt("Guildid");
         int volId = rs.getInt("Volid");
-        int hours = rs.getInt("Hours");
+        int hour = rs.getInt("Hours");
         
         
-        Hours ahours = new Hours(guildId, volId, hours);
-        
-        return ahours;
+        hours.add(new Hour(guildId, volId, hour)) ;
+        }
+        return hours;
       }
     
     
@@ -70,13 +74,14 @@ public class HourHandler
     
     
 
-    public Hours getHoursBasedOnGuildId(String guildId)
+    public List<Hour> getHourFromGuildidAndVol(Guild guildId, Volunteer volId )
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ?";
+            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ? AND WHERE Volid = ? ";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, guildId);
+            pstmt.setInt(1, guildId.getId());
+            pstmt.setInt(2, volId.getId());
 
             return getHoursFromResults(pstmt);
           }
@@ -86,5 +91,7 @@ public class HourHandler
             return null;
           }
       }
+    
+    
 
 }

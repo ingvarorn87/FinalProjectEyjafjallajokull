@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,9 +25,19 @@
                 <TableColumn fx:id="clmHours" prefWidth="89.0" text="Hours" />
               </columns>
             </TableView>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="249.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="187.0" spacing="20.0">
                <children>
-                  <ComboBox fx:id="CBHours" layoutX="10.0" layoutY="72.0" prefHeight="36.0" prefWidth="220.0" promptText="Select Hours" />
+                  <TextField fx:id="txtAddHours" prefHeight="36.0" prefWidth="117.0" promptText="Add Hours">
+                     <opaqueInsets>
+                        <Insets left="10.0" right="10.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="38.0" right="38.0" />
+                     </VBox.margin>
+                  </TextField>
                   <ComboBox fx:id="CBselectGuild" prefHeight="36.0" prefWidth="220.0" promptText="Select Guild" />
                   <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="44.0" prefWidth="110.0" text="Register" />
                </children>
@@ -78,8 +89,14 @@
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <TextArea fx:id="txtInformationInput" prefHeight="200.0" prefWidth="200.0" promptText="Insert volunteer information here" />
+                  <TextArea fx:id="txtInformationInput" prefHeight="200.0" prefWidth="200.0" promptText="Insert volunteer information here">
+                     <VBox.margin>
+                        <Insets right="10.0" />
+                     </VBox.margin></TextArea>
                </children>
                <opaqueInsets>
                   <Insets />

@@ -5,8 +5,12 @@
  */
 package examproject2017.GUI.Model;
 
+import examproject2017.BE.Guild;
+import examproject2017.BE.Hour;
+import examproject2017.BE.Volunteer;
 import examproject2017.BLL.HourManager;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,5 +24,10 @@ public class HourModel
     public ArrayList<String> getHours()
        {
          return hourManager.getHours();
+       }
+    
+    public List<Hour> getHourFromGuildidAndVol(Guild guildId, Volunteer volId)
+       {
+         return hourManager.getHourFromGuildidAndVol(guildId, volId);
        }
 }

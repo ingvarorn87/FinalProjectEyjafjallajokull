@@ -9,13 +9,13 @@ package examproject2017.BE;
  *
  * @author gudla
  */
-public class Hours
+public class Hour
 {
     private int guildId;
     private int volId;
     private int hours;
 
-    public Hours(int guildId, int volId, int hours)
+    public Hour(int guildId, int volId, int hours)
       {
         this.guildId = guildId;
         this.volId = volId;

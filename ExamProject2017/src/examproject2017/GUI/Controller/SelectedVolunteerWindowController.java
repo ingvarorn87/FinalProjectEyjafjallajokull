@@ -5,7 +5,8 @@
  */
 package examproject2017.GUI.Controller;
 
-import examproject2017.BE.Hours;
+import examproject2017.BE.Guild;
+import examproject2017.BE.Hour;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildHandler;
 import examproject2017.GUI.Model.GuildModel;
@@ -14,6 +15,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +32,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.stage.Stage;
@@ -55,51 +59,36 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblAddress;
     @FXML
     private Label lblPhone;
-    
 
     @FXML
     private Button btnCloseSVW;
-    @FXML
-    private ComboBox<String> CBHours;
+   
 
-    ObservableList<String> hours
-            = FXCollections.observableArrayList(
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "6",
-                    "7",
-                    "8",
-                    "9",
-                    "10",
-                    "11",
-                    "12"
-            );
+   
     @FXML
-    private TableView<String> tblSeeHours;
+    private TableView<Hour> tblSeeHours;
     @FXML
     private TableColumn<?, ?> clmGuild;
     @FXML
-    private TableColumn<Hours, String> clmHours;
+    private TableColumn<Hour, String> clmHours;
     @FXML
     private TextArea txtInformationInput;
     @FXML
-    private ComboBox<String> CBselectGuild;
+    private ComboBox<Guild> CBselectGuild;
 
     public GuildModel guildModel = new GuildModel();
     public HourModel hourModel = new HourModel();
 
-    ObservableList<String> getGuilds
-            = FXCollections.observableList(guildModel.getGuildName()
+    ObservableList<Guild> observableGuilds
+            = FXCollections.observableArrayList(guildModel.getAllGuilds()
             );
-    
-    ObservableList<String> getHours
-            = FXCollections.observableList(hourModel.getHours()
-            );
+
+//    ObservableList<Hour> observableHour
+//            = FXCollections.observableArrayList(hourModel.getHourFromGuildidAndVol(guildId, volId));
     @FXML
     private Label lblInformation;
+    @FXML
+    private TextField txtAddHours;
 
     /**
      * Initializes the controller class.
@@ -110,14 +99,15 @@ public class SelectedVolunteerWindowController implements Initializable
         // TODO
         //lblName.setText(volunteer.getName());
 
-        CBHours.setItems(hours);
-        CBselectGuild.setItems(getGuilds);
+        addTexListener();
+        CBselectGuild.setItems(observableGuilds);
 
-        tblSeeHours.setItems(getHours);
+//        tblSeeHours.setItems(observableHour);
 //        clmHours.setCellValueFactory(
 //                new PropertyValueFactory(getHours));
         txtInformationInput.setVisible(false);
         lblInformation.setVisible(false);
+        btnRegister.setVisible(false);
 
       }
 
@@ -147,7 +137,46 @@ public class SelectedVolunteerWindowController implements Initializable
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
+        addListener();
 
       }
 
+    public void addListener()
+      {
+        tblSeeHours.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Hour>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Hour> observable,
+                    Hour oldValue, Hour newValue)
+              {
+
+                System.out.println("LISTENER CHANGING");
+              }
+        });
+      }
+
+    public void addTexListener()
+      {
+        txtAddHours.textProperty().addListener(new ChangeListener<String>() 
+        {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+              {
+                try
+                  {
+                    if (newValue.matches("\\d*") && newValue.length() < 3)
+                      {
+                        int value = Integer.parseInt(newValue);
+                      } else
+                      {
+                        txtAddHours.setText(oldValue);
+                      }
+                  } catch (NumberFormatException ex)
+                  {
+                    //do nothing
+                  }
+              }
+            });
+            
+      }
 }

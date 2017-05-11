@@ -5,6 +5,7 @@
  */
 package examproject2017.GUI.Model;
 
+import examproject2017.BE.Guild;
 import examproject2017.BLL.GuildManager;
 import java.util.ArrayList;
 
@@ -17,9 +18,9 @@ public class GuildModel {
     
       public GuildManager guildManager = new GuildManager();
       
-      public ArrayList<String> getGuildName()
+      public ArrayList<Guild> getAllGuilds()
       {
-          return guildManager.getGuildNames();
+          return guildManager.getAllGuilds();
       }
     
 //      public ArrayList<String> getGuildHours()
