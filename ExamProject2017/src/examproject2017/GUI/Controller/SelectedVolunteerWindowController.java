@@ -5,9 +5,11 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.Hours;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildHandler;
 import examproject2017.GUI.Model.GuildModel;
+import examproject2017.GUI.Model.HourModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,37 +61,42 @@ public class SelectedVolunteerWindowController implements Initializable
     private Button btnCloseSVW;
     @FXML
     private ComboBox<String> CBHours;
-    
-    ObservableList<String> hours = 
-    FXCollections.observableArrayList(
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12"
-    );
+
+    ObservableList<String> hours
+            = FXCollections.observableArrayList(
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10",
+                    "11",
+                    "12"
+            );
     @FXML
-    private TableView<Volunteer> tblSeeHours;
+    private TableView<String> tblSeeHours;
     @FXML
     private TableColumn<?, ?> clmGuild;
     @FXML
-    private TableColumn<Volunteer, String> clmHours;
+    private TableColumn<Hours, String> clmHours;
     @FXML
     private TextArea txtInformationInput;
     @FXML
     private ComboBox<String> CBselectGuild;
-    
+
     public GuildModel guildModel = new GuildModel();
+    public HourModel hourModel = new HourModel();
+
+    ObservableList<String> getGuilds
+            = FXCollections.observableList(guildModel.getGuildName()
+            );
     
-    ObservableList<String> getGuilds =
-            FXCollections.observableList(guildModel.getGuildName()
+    ObservableList<String> getHours
+            = FXCollections.observableList(hourModel.getHours()
             );
 
     /**
@@ -100,9 +107,13 @@ public class SelectedVolunteerWindowController implements Initializable
       {
         // TODO
         //lblName.setText(volunteer.getName());
-        
+
         CBHours.setItems(hours);
         CBselectGuild.setItems(getGuilds);
+
+        tblSeeHours.setItems(getHours);
+//        clmHours.setCellValueFactory(
+//                new PropertyValueFactory(getHours));
 
       }
 
@@ -129,12 +140,10 @@ public class SelectedVolunteerWindowController implements Initializable
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.setText(selectedVolunteer.getEmail());
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-//        lblInfo.setText(selectedVolunteer.getInfo());
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
 
-        
       }
 
 }
