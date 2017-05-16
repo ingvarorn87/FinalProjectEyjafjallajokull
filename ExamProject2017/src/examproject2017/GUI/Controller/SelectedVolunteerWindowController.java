@@ -107,7 +107,7 @@ public class SelectedVolunteerWindowController implements Initializable
 //                new PropertyValueFactory(getHours));
         txtInformationInput.setVisible(false);
         lblInformation.setVisible(false);
-        btnRegister.setVisible(false);
+        
 
       }
 
