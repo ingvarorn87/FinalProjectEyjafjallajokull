@@ -6,7 +6,7 @@
 package examproject2017.DAL;
 
 import examproject2017.BE.Guild;
-import examproject2017.BE.Hour;
+import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
 
 import java.sql.Connection;
@@ -21,20 +21,20 @@ import java.util.List;
  *
  * @author gudla
  */
-public class HourHandler
+public class GuildVolHoursHandler
 {
     
     
     SQLConnectionHandler conManager;
-    public HourHandler()
+    public GuildVolHoursHandler()
       {
         conManager = new SQLConnectionHandler();
       }
     
-    public List<Hour> getHoursFromResults(PreparedStatement pstmt) throws SQLException
+    public List<GuildVolHours> getHoursFromResults(PreparedStatement pstmt) throws SQLException
       {
         ResultSet rs = pstmt.executeQuery();
-        ArrayList<Hour> hours = new ArrayList();
+        ArrayList<GuildVolHours> hours = new ArrayList();
                 while(rs.next()){
         
         int guildId = rs.getInt("Guildid");
@@ -42,7 +42,7 @@ public class HourHandler
         int hour = rs.getInt("Hours");
         
         
-        hours.add(new Hour(guildId, volId, hour)) ;
+        hours.add(new GuildVolHours(guildId, volId, hour)) ;
         }
         return hours;
       }
@@ -74,14 +74,14 @@ public class HourHandler
     
     
 
-    public List<Hour> getHourFromGuildidAndVol(Guild guildId, Volunteer volId )
+    public List<GuildVolHours> getVolHours(Volunteer volId )
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Guildid = ? AND WHERE Volid = ? ";
+            String query = "SELECT * FROM [GuildVolHours] WHERE Volid = ? ";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setInt(1, guildId.getId());
-            pstmt.setInt(2, volId.getId());
+            
+            pstmt.setInt(1, volId.getId());
 
             return getHoursFromResults(pstmt);
           }

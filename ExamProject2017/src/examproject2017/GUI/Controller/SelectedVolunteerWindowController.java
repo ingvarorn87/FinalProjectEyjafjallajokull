@@ -6,11 +6,11 @@
 package examproject2017.GUI.Controller;
 
 import examproject2017.BE.Guild;
-import examproject2017.BE.Hour;
+import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildHandler;
 import examproject2017.GUI.Model.GuildModel;
-import examproject2017.GUI.Model.HourModel;
+import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,25 +66,25 @@ public class SelectedVolunteerWindowController implements Initializable
 
    
     @FXML
-    private TableView<Hour> tblSeeHours;
+    private TableView<GuildVolHours> tblSeeHours;
     @FXML
-    private TableColumn<?, ?> clmGuild;
+    private TableColumn<GuildVolHours, String> clmGuild;
     @FXML
-    private TableColumn<Hour, String> clmHours;
+    private TableColumn<GuildVolHours, String> clmHours;
     @FXML
     private TextArea txtInformationInput;
     @FXML
     private ComboBox<Guild> CBselectGuild;
 
     public GuildModel guildModel = new GuildModel();
-    public HourModel hourModel = new HourModel();
+    public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
 
     ObservableList<Guild> observableGuilds
             = FXCollections.observableArrayList(guildModel.getAllGuilds()
             );
 
-//    ObservableList<Hour> observableHour
-//            = FXCollections.observableArrayList(hourModel.getHourFromGuildidAndVol(guildId, volId));
+    ObservableList<GuildVolHours> observableHour;
+   
     @FXML
     private Label lblInformation;
     @FXML
@@ -97,7 +97,7 @@ public class SelectedVolunteerWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
-        //lblName.setText(volunteer.getName());
+        
 
         addTexListener();
         CBselectGuild.setItems(observableGuilds);
@@ -137,17 +137,19 @@ public class SelectedVolunteerWindowController implements Initializable
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
-        addListener();
-
+//        addListener();
+//        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer.getId()));
+        
+        tblSeeHours.setItems(observableHour);
       }
 
     public void addListener()
       {
-        tblSeeHours.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Hour>()
+        tblSeeHours.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GuildVolHours>()
         {
             @Override
-            public void changed(ObservableValue<? extends Hour> observable,
-                    Hour oldValue, Hour newValue)
+            public void changed(ObservableValue<? extends GuildVolHours> observable,
+                    GuildVolHours oldValue, GuildVolHours newValue)
               {
 
                 System.out.println("LISTENER CHANGING");

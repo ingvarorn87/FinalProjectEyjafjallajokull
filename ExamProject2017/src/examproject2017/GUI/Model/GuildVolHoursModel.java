@@ -6,9 +6,9 @@
 package examproject2017.GUI.Model;
 
 import examproject2017.BE.Guild;
-import examproject2017.BE.Hour;
+import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
-import examproject2017.BLL.HourManager;
+import examproject2017.BLL.GuildVolHoursManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,18 +16,18 @@ import java.util.List;
  *
  * @author gudla
  */
-public class HourModel
+public class GuildVolHoursModel
 {
-    private HourManager hourManager = new HourManager();
+    private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
     
     
     public ArrayList<String> getHours()
        {
-         return hourManager.getHours();
+         return guildVolHoursManager.getHours();
        }
     
-    public List<Hour> getHourFromGuildidAndVol(Guild guildId, Volunteer volId)
+    public List<GuildVolHours> getVolHours(Volunteer volId)
        {
-         return hourManager.getHourFromGuildidAndVol(guildId, volId);
+         return guildVolHoursManager.getVolHours(volId);
        }
 }
