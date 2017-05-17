@@ -138,7 +138,8 @@ public class SelectedVolunteerWindowController implements Initializable
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
 //        addListener();
-//        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer.getId()));
+        
+        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer));
         
         tblSeeHours.setItems(observableHour);
       }
