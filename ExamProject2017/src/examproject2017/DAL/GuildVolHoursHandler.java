@@ -40,9 +40,11 @@ public class GuildVolHoursHandler
         int guildId = rs.getInt("Guildid");
         int volId = rs.getInt("Volid");
         int hour = rs.getInt("Hours");
+        GuildVolHours guildVolHours = new GuildVolHours(guildId, volId, hour);
+        String guildName = rs.getString("Name");
+        guildVolHours.setGuildName(guildName);
         
-        
-        hours.add(new GuildVolHours(guildId, volId, hour)) ;
+        hours.add(guildVolHours) ;
         }
         return hours;
       }
@@ -78,10 +80,11 @@ public class GuildVolHoursHandler
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] WHERE Volid = ? ";
+            String query = "SELECT * FROM [GuildVolHours] JOIN [Guilds] ON Guilds.Guildid = GuildVolHours.Guildid WHERE Volid = ? ";
             PreparedStatement pstmt = con.prepareStatement(query);
             
             pstmt.setInt(1, volId.getId());
+            
 
             return getHoursFromResults(pstmt);
           }

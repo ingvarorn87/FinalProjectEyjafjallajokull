@@ -115,7 +115,8 @@ public class SelectedVolunteerWindowController implements Initializable
         lblInformation.setVisible(false);
         
         clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
-        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guild"));
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildName"));
+        tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
         
 //        columnName.setCellValueFactory(new PropertyValueFactory<>("name"))
       }
@@ -137,6 +138,9 @@ public class SelectedVolunteerWindowController implements Initializable
 
     public void populateFields(Volunteer selectedVolunteer) //puts the right information into the lables
       {
+        guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
+        
+        
         lblName.setText(selectedVolunteer.getName());
         lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblAddress.setText(selectedVolunteer.getAddress());
@@ -146,10 +150,7 @@ public class SelectedVolunteerWindowController implements Initializable
         lblID.setText(Integer.toString(selectedVolunteer.getId()));
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
-//        addListener();
-        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer));
-        
-        tblSeeHours.setItems(observableHour);
+
         
       }
 

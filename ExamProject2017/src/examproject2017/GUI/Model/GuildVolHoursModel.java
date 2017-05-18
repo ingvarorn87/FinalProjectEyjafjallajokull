@@ -12,6 +12,7 @@ import examproject2017.BE.Volunteer;
 import examproject2017.BLL.GuildVolHoursManager;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -22,9 +23,23 @@ public class GuildVolHoursModel
 {
     
     private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
-            
+    private final ObservableList<GuildVolHours> observableHour;        
 
-    
+    public GuildVolHoursModel()
+      {
+        this.observableHour = FXCollections.observableArrayList();
+      }
+
+    public ObservableList<GuildVolHours> getObservableHour()
+      {
+        return observableHour;
+      }
+
+    public void setSelectedVolunteer(Volunteer selectedVol)
+      {
+        observableHour.clear();
+        observableHour.addAll(guildVolHoursManager.getVolHours(selectedVol));
+      }
     
     public ArrayList<String> getHours()
        {
