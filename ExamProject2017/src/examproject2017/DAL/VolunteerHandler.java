@@ -181,29 +181,30 @@ public class VolunteerHandler
         String phone = rs.getString("PhoneNumber");
         String info = rs.getString("Information");
         
-        //byte[] bytes = rs.getBytes("image");
-//        BufferedImage newImage;
-//        if (bytes != null)
-//          {
-//            try
-//              {
-//                ByteArrayInputStream bais;
-//                bais = new ByteArrayInputStream(rs.getBytes("image"));
-//
-//                newImage = ImageIO.read(bais);
-//              }
-//            catch (IOException ex)
-//              {
-//                Logger.getLogger(StudentHandler.class.getName()).log(Level.SEVERE, null, ex);
-//                newImage = null;
-//              }
-//          }
-//        else
-//          {
-//            newImage = null;
-//          }
-        Volunteer volunteer = new Volunteer(id, name, email, address, phone, info);
-        return volunteer;
+        
+        byte[] bytes = rs.getBytes("image");
+        BufferedImage newImage;
+        if (bytes != null)
+          {
+            try
+              {
+                ByteArrayInputStream bais;
+                bais = new ByteArrayInputStream(rs.getBytes("image"));
+
+                newImage = ImageIO.read(bais);
+              }
+            catch (IOException ex)
+              {
+                Logger.getLogger(VolunteerHandler.class.getName()).log(Level.SEVERE, null, ex);
+                newImage = null;
+              }
+          }
+        else
+          {
+            newImage = null;
+          }
+       Volunteer volunteer = new Volunteer(id, name, email, address, phone, info, newImage);
+       return volunteer;
       }
 
 }
