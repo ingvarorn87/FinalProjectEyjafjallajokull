@@ -41,6 +41,8 @@ public class GuildOverViewWindowController implements Initializable {
     private TableColumn<?, String> clmHours;
     @FXML
     private TableColumn<?, String> clmAdmin;
+    @FXML
+    private Button btnCloseGOW;
     
 
     /**
@@ -79,6 +81,21 @@ public class GuildOverViewWindowController implements Initializable {
 
                 subStage.show();
                 Stage stage = (Stage) btnaddguild.getScene().getWindow();
+                stage.close();
+    }
+
+    @FXML
+    private void CloseAndGoBackToAdmin(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
+                Parent root = loader.load();
+                AdminWindowController addAdminWindowController = (AdminWindowController) loader.getController();
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnCloseGOW.getScene().getWindow();
                 stage.close();
     }
 
