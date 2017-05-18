@@ -98,8 +98,6 @@ public class SelectedVolunteerWindowController implements Initializable
       {
         // TODO
         
-
-        addTexListener();
         CBselectGuild.setItems(observableGuilds);
 
 //        tblSeeHours.setItems(observableHour);
@@ -108,7 +106,10 @@ public class SelectedVolunteerWindowController implements Initializable
         txtInformationInput.setVisible(false);
         lblInformation.setVisible(false);
         
-
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guild"));
+        
+//        columnName.setCellValueFactory(new PropertyValueFactory<>("name"))
       }
 
     @FXML
@@ -138,47 +139,12 @@ public class SelectedVolunteerWindowController implements Initializable
         lblPhone.setText(selectedVolunteer.getPhone());
         txtInformationInput.setText(selectedVolunteer.getInfo());
 //        addListener();
-//        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer.getId()));
+        observableHour = FXCollections.observableArrayList(guildVolHoursModel.getVolHours(selectedVolunteer));
         
         tblSeeHours.setItems(observableHour);
+        
       }
 
-    public void addListener()
-      {
-        tblSeeHours.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<GuildVolHours>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends GuildVolHours> observable,
-                    GuildVolHours oldValue, GuildVolHours newValue)
-              {
-
-                System.out.println("LISTENER CHANGING");
-              }
-        });
-      }
-
-    public void addTexListener()
-      {
-        txtAddHours.textProperty().addListener(new ChangeListener<String>() 
-        {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
-              {
-                try
-                  {
-                    if (newValue.matches("\\d*") && newValue.length() < 3)
-                      {
-                        int value = Integer.parseInt(newValue);
-                      } else
-                      {
-                        txtAddHours.setText(oldValue);
-                      }
-                  } catch (NumberFormatException ex)
-                  {
-                    //do nothing
-                  }
-              }
-            });
-            
-      }
+    
+        
 }

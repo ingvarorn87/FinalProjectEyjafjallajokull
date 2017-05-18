@@ -7,10 +7,12 @@ package examproject2017.GUI.Model;
 
 import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
+
 import examproject2017.BE.Volunteer;
 import examproject2017.BLL.GuildVolHoursManager;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -18,7 +20,10 @@ import java.util.List;
  */
 public class GuildVolHoursModel
 {
+    
     private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
+            
+
     
     
     public ArrayList<String> getHours()
