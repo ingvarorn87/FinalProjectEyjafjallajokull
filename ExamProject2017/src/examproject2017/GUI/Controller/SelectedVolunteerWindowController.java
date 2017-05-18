@@ -11,6 +11,7 @@ import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildHandler;
 import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 
 import javafx.stage.Stage;
 
@@ -89,7 +94,10 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblInformation;
     @FXML
     private TextField txtAddHours;
+    @FXML
+    private ImageView imgImageHolder;
 
+    private Volunteer volunteer;
     /**
      * Initializes the controller class.
      */
@@ -145,6 +153,33 @@ public class SelectedVolunteerWindowController implements Initializable
         
       }
 
-    
+    public void altInitialize(Volunteer stud)
+      {
+       
+        if (volunteer.getVolunteerImage() != null)
+          {
+            BufferedImage bf = stud.getVolunteerImage();
+            WritableImage wr = null;
+            if (bf != null)
+              {
+                wr = new WritableImage(bf.getWidth(), bf.getHeight());
+                PixelWriter pw = wr.getPixelWriter();
+                for (int x = 0; x < bf.getWidth(); x++)
+                  {
+                    for (int y = 0; y < bf.getHeight(); y++)
+                      {
+                        pw.setArgb(x, y, bf.getRGB(x, y));
+                      }
+                  }
+              }
+            imgImageHolder.setImage(wr);
+          }
+        else
+          {
+            Image defAvatar = new Image("file:DATA/defAvatar.png");
+
+            imgImageHolder.setImage(defAvatar);
+          }
+      }
         
 }

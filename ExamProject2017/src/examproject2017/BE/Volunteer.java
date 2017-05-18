@@ -5,6 +5,8 @@
  */
 package examproject2017.BE;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author gudla
@@ -13,10 +15,10 @@ public class Volunteer extends Person
 {
     
     private String info;
+    private BufferedImage volunteerImage;
     
     
-    
-    public Volunteer(int id, String name, String email, String address, String phone, String info)
+    public Volunteer(int id, String name, String email, String address, String phone, String info, BufferedImage img)
       {
         super(name, email, id, phone, address);
 
@@ -34,9 +36,16 @@ public class Volunteer extends Person
       {
         this.info = info;
       }
+    public BufferedImage getVolunteerImage()
+      {
+        return volunteerImage;
+      }
 
+    public void setVolunteerImage(BufferedImage studentImage)
+      {
+        this.volunteerImage = studentImage;
     
-    
+      }
 
     
 }
