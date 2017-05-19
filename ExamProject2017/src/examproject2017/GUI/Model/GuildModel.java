@@ -19,22 +19,14 @@ import javafx.collections.ObservableList;
 public class GuildModel {
     
       public GuildManager guildManager = new GuildManager();
-      private final ObservableList<Guild> observableGuilds = FXCollections.observableArrayList(getAllGuilds());
+      public ObservableList<Guild> observableGuilds = FXCollections.observableArrayList(getAllGuilds());
       
       public ArrayList<Guild> getAllGuilds()
       {
           return guildManager.getAllGuilds();
       }
       
-      public ObservableList<Guild> getObservableGuilds()
-        {
-          return observableGuilds;
-        }
-      
     
-//      public ArrayList<String> getGuildHours()
-//      {
-//          return guildManager.getGuildHours();
-//      }
+      
       
 }

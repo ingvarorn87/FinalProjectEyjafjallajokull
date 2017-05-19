@@ -138,7 +138,7 @@ public class LoginWindowController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/SelectedVolunteerWindow.fxml"));
         Parent root = loader.load();
         SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
-        vController.populateFields((Volunteer) person);
+        vController.setSelectedVolunteer((Volunteer) person);
 //        vController.populateTables(selectedHours);
 
         Stage subStage = new Stage();

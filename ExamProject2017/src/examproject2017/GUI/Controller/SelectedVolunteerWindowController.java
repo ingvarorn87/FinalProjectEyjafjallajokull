@@ -53,9 +53,7 @@ public class SelectedVolunteerWindowController implements Initializable
     @FXML
     private Button btnRegister;
     @FXML
-
     private Label lblName;
-
     @FXML
     private Label lblID;
     @FXML
@@ -64,12 +62,8 @@ public class SelectedVolunteerWindowController implements Initializable
     private Label lblAddress;
     @FXML
     private Label lblPhone;
-
     @FXML
     private Button btnCloseSVW;
-   
-
-   
     @FXML
     private TableView<GuildVolHours> tblSeeHours;
     @FXML
@@ -80,14 +74,6 @@ public class SelectedVolunteerWindowController implements Initializable
     private TextArea txtInformationInput;
     @FXML
     private ComboBox<Guild> CBselectGuild;
-
-    public GuildModel guildModel = new GuildModel();
-    public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
-
-    
-
-    ObservableList<GuildVolHours> observableHour;
-   
     @FXML
     private Label lblInformation;
     @FXML
@@ -96,6 +82,8 @@ public class SelectedVolunteerWindowController implements Initializable
     private ImageView imgImageHolder;
 
     private Volunteer volunteer;
+    public GuildModel guildModel = new GuildModel();
+    public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
     /**
      * Initializes the controller class.
      */
@@ -104,7 +92,7 @@ public class SelectedVolunteerWindowController implements Initializable
       {
         // TODO
         
-        CBselectGuild.setItems(guildModel.getObservableGuilds());
+        CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
 
         txtInformationInput.setVisible(true);
         lblInformation.setVisible(false);
@@ -117,7 +105,11 @@ public class SelectedVolunteerWindowController implements Initializable
         clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildName"));
         tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
         
-        
+        /**
+         * Sets a change listener to the Volunteer
+         * Binds each label with the new value from the new selected Volunteer
+         * Then populates the labels with the right information based on the logged in volunteer
+         */
         guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>() {
             @Override
             public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
@@ -147,15 +139,12 @@ public class SelectedVolunteerWindowController implements Initializable
         stage.close();
       }
 
-    public void populateFields(Volunteer selectedVolunteer) //puts the right information into the lables
+    public void setSelectedVolunteer(Volunteer selectedVolunteer) //lets know which volunteer is selected
       {
         guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
-        
-
-        
       }
 
-    public void altInitialize(Volunteer stud)
+    public void altInitialize(Volunteer stud) //SOMETHING TO DO WITH IMAGE
       {
        
         if (volunteer.getVolunteerImage() != null)
