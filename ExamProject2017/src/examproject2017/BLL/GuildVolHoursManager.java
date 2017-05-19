@@ -20,14 +20,13 @@ public class GuildVolHoursManager
 {
     private GuildVolHoursHandler guildVolHoursHandler = new GuildVolHoursHandler();
     
-     public ArrayList<String> getHours()
-       {
-         return guildVolHoursHandler.getHours();
-       }
+    
     
      public List<GuildVolHours> getVolHours(Volunteer volId)
        {
          return guildVolHoursHandler.getVolHours(volId);
        }
+     
+     
      
 }

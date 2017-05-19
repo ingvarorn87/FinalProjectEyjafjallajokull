@@ -50,27 +50,20 @@ public class GuildVolHoursHandler
       }
     
     
-    public ArrayList<String> getHours()
+    public void addHours(Guild guildId, Volunteer volId, int hours)
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours]";
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-
-            ArrayList<String> hours = new ArrayList<>();
-            while (rs.next())
-              {
-                String volString = "";
-                volString += rs.getString("Hours");
-
-                hours.add(volString);
-              }
-            return hours;
+            String sqlCommand = "INSERT INTO GuildVolHours(guildid, volid, hours) VALUES(?, ?, ?)";
+            PreparedStatement pstat = con.prepareStatement(sqlCommand);
+            pstat.setInt(1, guildId.getId());
+            pstat.setInt(1, volId.getId());
+            pstat.setInt(1, hours);
+            
+            pstat.executeUpdate();
           } catch (SQLException sqle)
           {
             System.err.println(sqle);
-            return null;
           }
       }
     

@@ -8,6 +8,8 @@ package examproject2017.GUI.Model;
 import examproject2017.BE.Guild;
 import examproject2017.BLL.GuildManager;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 /**
@@ -17,11 +19,18 @@ import java.util.ArrayList;
 public class GuildModel {
     
       public GuildManager guildManager = new GuildManager();
+      private final ObservableList<Guild> observableGuilds = FXCollections.observableArrayList(getAllGuilds());
       
       public ArrayList<Guild> getAllGuilds()
       {
           return guildManager.getAllGuilds();
       }
+      
+      public ObservableList<Guild> getObservableGuilds()
+        {
+          return observableGuilds;
+        }
+      
     
 //      public ArrayList<String> getGuildHours()
 //      {

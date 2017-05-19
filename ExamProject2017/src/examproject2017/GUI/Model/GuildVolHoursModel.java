@@ -62,10 +62,7 @@ public class GuildVolHoursModel
         return selectedVolunteer;
       }
     
-    public ArrayList<String> getHours()
-       {
-         return guildVolHoursManager.getHours();
-       }
+    
     
     public List<GuildVolHours> getVolHours(Volunteer volId)
        {

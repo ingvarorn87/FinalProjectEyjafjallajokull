@@ -84,9 +84,7 @@ public class SelectedVolunteerWindowController implements Initializable
     public GuildModel guildModel = new GuildModel();
     public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
 
-    ObservableList<Guild> observableGuilds
-            = FXCollections.observableArrayList(guildModel.getAllGuilds()
-            );
+    
 
     ObservableList<GuildVolHours> observableHour;
    
@@ -106,7 +104,7 @@ public class SelectedVolunteerWindowController implements Initializable
       {
         // TODO
         
-        CBselectGuild.setItems(observableGuilds);
+        CBselectGuild.setItems(guildModel.getObservableGuilds());
 
         txtInformationInput.setVisible(true);
         lblInformation.setVisible(false);
