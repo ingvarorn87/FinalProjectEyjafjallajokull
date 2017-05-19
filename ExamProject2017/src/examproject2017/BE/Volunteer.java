@@ -6,6 +6,8 @@
 package examproject2017.BE;
 
 import java.awt.image.BufferedImage;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -13,8 +15,12 @@ import java.awt.image.BufferedImage;
  */
 public class Volunteer extends Person
 {
+
+    private final StringProperty info = new SimpleStringProperty();
+
     
-    private String info;
+    
+    
     private BufferedImage volunteerImage;
     
     
@@ -22,20 +28,26 @@ public class Volunteer extends Person
       {
         super(name, email, id, phone, address);
 
-        this.info = info;
+        this.info.set(info);
         
 
       }
 
     public String getInfo()
       {
-        return info;
+        return info.get();
       }
 
-    public void setInfo(String info)
+    public void setInfo(String value)
       {
-        this.info = info;
+        info.set(value);
       }
+
+    public StringProperty infoProperty()
+      {
+        return info;
+      }
+    
     public BufferedImage getVolunteerImage()
       {
         return volunteerImage;

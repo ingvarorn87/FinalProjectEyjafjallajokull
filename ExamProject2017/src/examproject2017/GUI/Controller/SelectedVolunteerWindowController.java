@@ -108,17 +108,30 @@ public class SelectedVolunteerWindowController implements Initializable
         
         CBselectGuild.setItems(observableGuilds);
 
-//        tblSeeHours.setItems(observableHour);
-//        clmHours.setCellValueFactory(
-//                new PropertyValueFactory(getHours));
-        txtInformationInput.setVisible(false);
+        txtInformationInput.setVisible(true);
         lblInformation.setVisible(false);
+        
+        lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
+        lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
+        lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         
         clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
         clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildName"));
         tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
         
-//        columnName.setCellValueFactory(new PropertyValueFactory<>("name"))
+        
+        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>() {
+            @Override
+            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
+              {
+                lblName.textProperty().bind(newValue.nameProperty());
+                lblEmail.textProperty().bind(newValue.emailProperty());
+                lblID.textProperty().bind(newValue.idProperty().asString());
+                lblPhone.textProperty().bind(newValue.phoneProperty());
+                lblAddress.textProperty().bind(newValue.addressProperty());
+                txtInformationInput.textProperty().bind(newValue.infoProperty());
+              }
+        });
       }
 
     @FXML
@@ -140,16 +153,6 @@ public class SelectedVolunteerWindowController implements Initializable
       {
         guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
         
-        
-        lblName.setText(selectedVolunteer.getName());
-        lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-        lblAddress.setText(selectedVolunteer.getAddress());
-        lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-        lblEmail.setText(selectedVolunteer.getEmail());
-        lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-        lblID.setText(Integer.toString(selectedVolunteer.getId()));
-        lblPhone.setText(selectedVolunteer.getPhone());
-        txtInformationInput.setText(selectedVolunteer.getInfo());
 
         
       }

@@ -5,76 +5,109 @@
  */
 package examproject2017.BE;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author gudla
  */
 public abstract class Person
 {
-    private String name;
-    private String email;
-    private int id;
-    private String phone;
-    private String address;
+
+    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty email = new SimpleStringProperty();
+    private final IntegerProperty id = new SimpleIntegerProperty();
+    private final StringProperty phone = new SimpleStringProperty();
+    private final StringProperty address = new SimpleStringProperty();
+
+
 
     public Person(String name, String email, int id, String phone, String address)
       {
-        this.name = name;
-        this.email = email;
-        this.id = id;
-        this.phone = phone;
-        this.address = address;
+        this.name.set(name);
+        this.email.set(email);
+        this.id.set(id);
+        this.phone.set(phone);
+        this.address.set(address);
       }
 
     public String getName()
       {
-        return name;
+        return name.get();
       }
 
-    public void setName(String name)
+    public void setName(String value)
       {
-        this.name = name;
+        name.set(value);
+      }
+
+    public StringProperty nameProperty()
+      {
+        return name;
       }
 
     public String getEmail()
       {
-        return email;
+        return email.get();
       }
 
-    public void setEmail(String email)
+    public void setEmail(String value)
       {
-        this.email = email;
+        email.set(value);
+      }
+
+    public StringProperty emailProperty()
+      {
+        return email;
       }
 
     public int getId()
       {
-        return id;
+        return id.get();
       }
 
-    public void setId(int id)
+    public void setId(int value)
       {
-        this.id = id;
+        id.set(value);
+      }
+
+    public IntegerProperty idProperty()
+      {
+        return id;
       }
 
     public String getPhone()
       {
+        return phone.get();
+      }
+
+    public void setPhone(String value)
+      {
+        phone.set(value);
+      }
+
+    public StringProperty phoneProperty()
+      {
         return phone;
       }
 
-    public void setPhone(String phone)
+    
+    public String getAddress()
       {
-        this.phone = phone;
+        return address.get();
       }
 
-    public String getAddress()
+    public void setAddress(String value)
+      {
+        address.set(value);
+      }
+
+    public StringProperty addressProperty()
       {
         return address;
       }
 
-    public void setAddress(String address)
-      {
-        this.address = address;
-      }
-    
-    
 }
