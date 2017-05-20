@@ -124,20 +124,17 @@ public class SelectedVolunteerWindowController implements Initializable
                 txtInformationInput.textProperty().bind(newValue.infoProperty());
               }
         });
-        
-    
-//        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
-//        {
-//            @Override
-//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
-//              {
-//                CBselectGuild.getSelectionModel().select(newValue.intValue());
-//                System.out.println(newValue.intValue());
-//                
-//
-//              }
-//        });
-//      
+
+        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+              {
+                CBselectGuild.getSelectionModel().select(newValue.intValue());
+                System.out.println(newValue.intValue());
+
+              }
+        });
 
       }
 
@@ -189,36 +186,26 @@ public class SelectedVolunteerWindowController implements Initializable
           }
       }
 
-    private void addListenerForCB()
-      {
-        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
-              {
-                CBselectGuild.getSelectionModel().select(newValue.intValue());
-                System.out.println(newValue.intValue());
-                
-
-              }
-        });
-      }
-    
-    
-    
-    
-
+    /**
+     * When the register button is pressed it calls the method addHours from the
+     * guildVolHoursModel That method needs the GuildId, volId and hours The
+     * hours are taken from the textfield the user puts in The Guildid comes
+     * from the selected guild in the combobox. It uses the listener in the
+     * initilize method. The VolId comes from the label that is bound to the
+     * volId in the listener from the initilize method.
+     *
+     * @param event
+     */
     @FXML
     private void registerHours(ActionEvent event)
       {
-        
-        //System.out.println(guildVolHoursModel.getSelectedVolunteer());
-        //System.out.println(Integer.parseInt(txtAddHours.getText()));
-          System.out.println(Integer.parseInt(lblID.getText()));
-          System.out.println(CBselectGuild.getSelectionModel().getSelectedIndex());
-        guildVolHoursModel.addHours(CBselectGuild.getSelectionModel().getSelectedIndex(), Integer.parseInt(lblID.getText()), Integer.parseInt(txtAddHours.getText()));
-        
-        
+        guildVolHoursModel.addHours(
+                CBselectGuild.getSelectionModel().getSelectedIndex(),
+                Integer.parseInt(lblID.getText()),
+                Integer.parseInt(txtAddHours.getText())
+                
+        );
+        tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
       }
 
 }
