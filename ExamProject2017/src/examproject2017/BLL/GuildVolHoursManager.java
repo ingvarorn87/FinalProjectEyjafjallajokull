@@ -27,6 +27,9 @@ public class GuildVolHoursManager
          return guildVolHoursHandler.getVolHours(volId);
        }
      
-     
+     public void addHours(int guildId, int volId, int hours)
+       {
+         guildVolHoursHandler.addHours(guildId, volId, hours);
+       }
      
 }

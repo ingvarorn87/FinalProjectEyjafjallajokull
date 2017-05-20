@@ -22,12 +22,10 @@ import javafx.collections.ObservableList;
  */
 public class GuildVolHoursModel
 {
-    
-    private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
-    private final ObservableList<GuildVolHours> observableHour;        
-    private final SimpleObjectProperty<Volunteer> selectedVolunteer;
 
-    
+    private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
+    private final ObservableList<GuildVolHours> observableHour;
+    private final SimpleObjectProperty<Volunteer> selectedVolunteer;
 
     public GuildVolHoursModel()
       {
@@ -61,11 +59,15 @@ public class GuildVolHoursModel
       {
         return selectedVolunteer;
       }
-    
-    
-    
+
     public List<GuildVolHours> getVolHours(Volunteer volId)
-       {
-         return guildVolHoursManager.getVolHours(volId);
-       }
+      {
+        return guildVolHoursManager.getVolHours(volId);
+      }
+
+    public void addHours(int guildId, int volId, int hours)
+      {
+        guildVolHoursManager.addHours(guildId, volId, hours);
+      }
+
 }

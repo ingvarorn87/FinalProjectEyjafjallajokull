@@ -84,6 +84,7 @@ public class SelectedVolunteerWindowController implements Initializable
     private Volunteer volunteer;
     public GuildModel guildModel = new GuildModel();
     public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
+
     /**
      * Initializes the controller class.
      */
@@ -91,26 +92,27 @@ public class SelectedVolunteerWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
-        
+
         CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
 
         txtInformationInput.setVisible(true);
         lblInformation.setVisible(false);
-        
+
         lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-        
+
         clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
         clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildName"));
         tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
-        
+
         /**
-         * Sets a change listener to the Volunteer
-         * Binds each label with the new value from the new selected Volunteer
-         * Then populates the labels with the right information based on the logged in volunteer
+         * Sets a change listener to the Volunteer Binds each label with the new
+         * value from the new selected Volunteer Then populates the labels with
+         * the right information based on the logged in volunteer
          */
-        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>() {
+        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>()
+        {
             @Override
             public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
               {
@@ -122,6 +124,21 @@ public class SelectedVolunteerWindowController implements Initializable
                 txtInformationInput.textProperty().bind(newValue.infoProperty());
               }
         });
+        
+    
+//        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
+//        {
+//            @Override
+//            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+//              {
+//                CBselectGuild.getSelectionModel().select(newValue.intValue());
+//                System.out.println(newValue.intValue());
+//                
+//
+//              }
+//        });
+//      
+
       }
 
     @FXML
@@ -146,7 +163,7 @@ public class SelectedVolunteerWindowController implements Initializable
 
     public void altInitialize(Volunteer stud) //SOMETHING TO DO WITH IMAGE
       {
-       
+
         if (volunteer.getVolunteerImage() != null)
           {
             BufferedImage bf = stud.getVolunteerImage();
@@ -164,13 +181,44 @@ public class SelectedVolunteerWindowController implements Initializable
                   }
               }
             imgImageHolder.setImage(wr);
-          }
-        else
+          } else
           {
             Image defAvatar = new Image("file:DATA/defAvatar.png");
 
             imgImageHolder.setImage(defAvatar);
           }
       }
+
+    private void addListenerForCB()
+      {
+        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+              {
+                CBselectGuild.getSelectionModel().select(newValue.intValue());
+                System.out.println(newValue.intValue());
+                
+
+              }
+        });
+      }
+    
+    
+    
+    
+
+    @FXML
+    private void registerHours(ActionEvent event)
+      {
         
+        //System.out.println(guildVolHoursModel.getSelectedVolunteer());
+        //System.out.println(Integer.parseInt(txtAddHours.getText()));
+          System.out.println(Integer.parseInt(lblID.getText()));
+          System.out.println(CBselectGuild.getSelectionModel().getSelectedIndex());
+        guildVolHoursModel.addHours(CBselectGuild.getSelectionModel().getSelectedIndex(), Integer.parseInt(lblID.getText()), Integer.parseInt(txtAddHours.getText()));
+        
+        
+      }
+
 }

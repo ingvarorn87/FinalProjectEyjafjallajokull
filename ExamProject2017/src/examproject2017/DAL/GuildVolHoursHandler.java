@@ -50,15 +50,15 @@ public class GuildVolHoursHandler
       }
     
     
-    public void addHours(Guild guildId, Volunteer volId, int hours)
+    public void addHours(int guildId, int volId, int hours)
       {
         try (Connection con = conManager.getConnection())
           {
             String sqlCommand = "INSERT INTO GuildVolHours(guildid, volid, hours) VALUES(?, ?, ?)";
             PreparedStatement pstat = con.prepareStatement(sqlCommand);
-            pstat.setInt(1, guildId.getId());
-            pstat.setInt(1, volId.getId());
-            pstat.setInt(1, hours);
+            pstat.setInt(1, guildId);
+            pstat.setInt(2, volId);
+            pstat.setInt(3, hours);
             
             pstat.executeUpdate();
           } catch (SQLException sqle)

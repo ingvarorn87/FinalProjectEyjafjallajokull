@@ -38,7 +38,7 @@
                      </VBox.margin>
                   </TextField>
                   <ComboBox fx:id="CBselectGuild" prefHeight="36.0" prefWidth="220.0" promptText="Select Guild" />
-                  <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="44.0" prefWidth="110.0" text="Register" />
+                  <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#registerHours" prefHeight="44.0" prefWidth="110.0" text="Register" />
                </children>
             </VBox>
          </children>
