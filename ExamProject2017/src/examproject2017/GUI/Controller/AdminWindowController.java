@@ -5,6 +5,8 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.GuildVolHours;
+import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -26,15 +31,25 @@ import javafx.stage.Stage;
 public class AdminWindowController implements Initializable
 {
 
-    @FXML
-    private Insets x1;
+    
+    
     @FXML
     private Button btnViewGuild;
-    
     @FXML
     private Button btnAddVolunteer;
     @FXML
     private Button btnCloseAW;
+    public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
+    @FXML
+    private Insets x1;
+    @FXML
+    private TableColumn<GuildVolHours, String> clmVolName;
+    @FXML
+    private TableColumn<GuildVolHours, String> clmGuildName;
+    @FXML
+    private TableColumn<GuildVolHours, String> clmHours;
+    @FXML
+    private TableView<GuildVolHours> tblAdminTable;
 
     /**
      * Initializes the controller class.
@@ -43,6 +58,13 @@ public class AdminWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
+        
+        
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
+        clmGuildName.setCellValueFactory(new PropertyValueFactory<>("guildName"));
+        clmVolName.setCellValueFactory(new PropertyValueFactory<>("volName"));
+        tblAdminTable.setItems(guildVolHoursModel.getObservableAllGuildVolHours());
+        
       }    
 
     @FXML

@@ -42,7 +42,9 @@ public class GuildVolHoursHandler
         int hour = rs.getInt("Hours");
         GuildVolHours guildVolHours = new GuildVolHours(guildId, volId, hour);
         String guildName = rs.getString("Name");
+        String volName = rs.getString("Name");
         guildVolHours.setGuildName(guildName);
+        guildVolHours.setVolName(volName);
         
         hours.add(guildVolHours) ;
         }
@@ -88,6 +90,24 @@ public class GuildVolHoursHandler
           }
       }
     
+    
+    public List<GuildVolHours> getAllGuildsVolHours()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [GuildVolHours] gvh INNER JOIN [Volunteers] v ON v.Volid = gvh.Volid INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            
+
+            return getHoursFromResults(pstmt);
+          }
+        catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+  
     
 
 }

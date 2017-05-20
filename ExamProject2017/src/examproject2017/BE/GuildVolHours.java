@@ -11,27 +11,20 @@ package examproject2017.BE;
  */
 public class GuildVolHours
 {
+
     private int guildId;
     private int volId;
     private int hours;
     private String guildName;
-
-    public String getGuildName()
-      {
-        return guildName;
-      }
-
-    public void setGuildName(String guildName)
-      {
-        this.guildName = guildName;
-      }
+    private String volName;
 
     public GuildVolHours(int guildId, int volId, int hours)
       {
         this.guildId = guildId;
         this.volId = volId;
-        this.hours =hours;
+        this.hours = hours;
         this.guildName = "";
+        this.volName = "";
       }
 
     public int getGuildId()
@@ -63,5 +56,25 @@ public class GuildVolHours
       {
         this.hours = hours;
       }
-    
+
+    public String getVolName()
+      {
+        return volName;
+      }
+
+    public void setVolName(String volName)
+      {
+        this.volName = volName;
+      }
+
+    public String getGuildName()
+      {
+        return guildName;
+      }
+
+    public void setGuildName(String guildName)
+      {
+        this.guildName = guildName;
+      }
+
 }

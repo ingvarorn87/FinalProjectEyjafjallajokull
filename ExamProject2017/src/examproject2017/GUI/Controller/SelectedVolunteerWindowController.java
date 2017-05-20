@@ -95,7 +95,7 @@ public class SelectedVolunteerWindowController implements Initializable
 
         CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
 
-        txtInformationInput.setVisible(true);
+        txtInformationInput.setVisible(false);
         lblInformation.setVisible(false);
 
         lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
@@ -125,6 +125,10 @@ public class SelectedVolunteerWindowController implements Initializable
               }
         });
 
+        /**
+         * Adds a listener to the combobox 
+         * Makes it possible to get the selected item.
+         */
         CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
         {
             @Override
@@ -190,9 +194,9 @@ public class SelectedVolunteerWindowController implements Initializable
      * When the register button is pressed it calls the method addHours from the
      * guildVolHoursModel That method needs the GuildId, volId and hours The
      * hours are taken from the textfield the user puts in The Guildid comes
-     * from the selected guild in the combobox. It uses the listener in the
+     * from the selected guild in the combo box. It uses the listener in the
      * initilize method. The VolId comes from the label that is bound to the
-     * volId in the listener from the initilize method.
+     * volId in the listener from the initialize method.
      *
      * @param event
      */
@@ -205,7 +209,7 @@ public class SelectedVolunteerWindowController implements Initializable
                 Integer.parseInt(txtAddHours.getText())
                 
         );
-        tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
+        
       }
 
 }
