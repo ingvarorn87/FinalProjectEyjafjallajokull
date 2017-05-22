@@ -50,6 +50,8 @@ public class AdminWindowController implements Initializable
     private TableColumn<GuildVolHours, String> clmHours;
     @FXML
     private TableView<GuildVolHours> tblAdminTable;
+    @FXML
+    private Button btnAddAdmin;
 
     /**
      * Initializes the controller class.
@@ -109,6 +111,21 @@ public class AdminWindowController implements Initializable
 
                 subStage.show();
                 Stage stage = (Stage) btnCloseAW.getScene().getWindow();
+                stage.close();
+    }
+
+    @FXML
+    private void goToAddAdminWindow(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AddAdminWindow.fxml"));
+                Parent root = loader.load();
+                AddAdminWindowController addadminController = (AddAdminWindowController) loader.getController();
+
+                Stage subStage = new Stage();
+                subStage.setScene(new Scene(root));
+
+
+                subStage.show();
+                Stage stage = (Stage) btnAddAdmin.getScene().getWindow();
                 stage.close();
     }
     
