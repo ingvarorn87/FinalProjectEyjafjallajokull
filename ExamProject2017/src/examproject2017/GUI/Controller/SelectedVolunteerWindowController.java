@@ -20,6 +20,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,8 +48,7 @@ import javafx.stage.Stage;
  *
  * @author gudla
  */
-public class SelectedVolunteerWindowController implements Initializable
-{
+public class SelectedVolunteerWindowController implements Initializable {
 
     @FXML
     private Button btnRegister;
@@ -89,8 +89,7 @@ public class SelectedVolunteerWindowController implements Initializable
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-      {
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
         CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
@@ -111,40 +110,48 @@ public class SelectedVolunteerWindowController implements Initializable
          * value from the new selected Volunteer Then populates the labels with
          * the right information based on the logged in volunteer
          */
-        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>()
-        {
+        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>() {
             @Override
-            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
-              {
+            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue) {
                 lblName.textProperty().bind(newValue.nameProperty());
                 lblEmail.textProperty().bind(newValue.emailProperty());
                 lblID.textProperty().bind(newValue.idProperty().asString());
                 lblPhone.textProperty().bind(newValue.phoneProperty());
                 lblAddress.textProperty().bind(newValue.addressProperty());
                 txtInformationInput.textProperty().bind(newValue.infoProperty());
-              }
+
+                BufferedImage bf = newValue.getVolunteerImage();
+                WritableImage wr = null;
+                if (bf != null) {
+                    wr = new WritableImage(bf.getWidth(), bf.getHeight());
+                    PixelWriter pw = wr.getPixelWriter();
+                    for (int x = 0; x < bf.getWidth(); x++) {
+                        for (int y = 0; y < bf.getHeight(); y++) {
+                            pw.setArgb(x, y, bf.getRGB(x, y));
+                        }
+                    }
+                }
+                imgImageHolder.setImage(wr);
+            }
         });
 
         /**
-         * Adds a listener to the combobox 
-         * Makes it possible to get the selected item.
+         * Adds a listener to the combobox Makes it possible to get the selected
+         * item.
          */
-        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
-        {
+        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
-              {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 CBselectGuild.getSelectionModel().select(newValue.intValue());
                 System.out.println(newValue.intValue());
 
-              }
+            }
         });
 
-      }
+    }
 
     @FXML
-    private void closeSelectedVolunteerWindow(ActionEvent event) throws IOException
-      {
+    private void closeSelectedVolunteerWindow(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/LoginWindow.fxml"));
         Parent root = loader.load();
         LoginWindowController gotoLoginWindowController = (LoginWindowController) loader.getController();
@@ -155,40 +162,12 @@ public class SelectedVolunteerWindowController implements Initializable
         subStage.show();
         Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
         stage.close();
-      }
+    }
 
     public void setSelectedVolunteer(Volunteer selectedVolunteer) //lets know which volunteer is selected
-      {
+    {
         guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
-      }
-
-//    public void altInitialize(Volunteer stud) //SOMETHING TO DO WITH IMAGE
-//      {
-//
-//        if (volunteer.getVolunteerImage() != null)
-//          {
-//            BufferedImage bf = stud.getVolunteerImage();
-//            WritableImage wr = null;
-//            if (bf != null)
-//              {
-//                wr = new WritableImage(bf.getWidth(), bf.getHeight());
-//                PixelWriter pw = wr.getPixelWriter();
-//                for (int x = 0; x < bf.getWidth(); x++)
-//                  {
-//                    for (int y = 0; y < bf.getHeight(); y++)
-//                      {
-//                        pw.setArgb(x, y, bf.getRGB(x, y));
-//                      }
-//                  }
-//              }
-//            imgImageHolder.setImage(wr);
-//          } else
-//          {
-//            Image defAvatar = new Image("file:DATA/defAvatar.png");
-//
-//            imgImageHolder.setImage(defAvatar);
-//          }
-//      }
+    }
 
     /**
      * When the register button is pressed it calls the method addHours from the
@@ -201,15 +180,13 @@ public class SelectedVolunteerWindowController implements Initializable
      * @param event
      */
     @FXML
-    private void registerHours(ActionEvent event)
-      {
+    private void registerHours(ActionEvent event) {
         guildVolHoursModel.addHours(
                 CBselectGuild.getSelectionModel().getSelectedIndex(),
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
-                
         );
-        
-      }
+
+    }
 
 }

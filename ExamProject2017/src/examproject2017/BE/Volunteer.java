@@ -13,51 +13,38 @@ import javafx.beans.property.StringProperty;
  *
  * @author gudla
  */
-public class Volunteer extends Person
-{
+public class Volunteer extends Person {
 
     private final StringProperty info = new SimpleStringProperty();
 
-    
-    
-    
     private BufferedImage volunteerImage;
-    
-    
-    public Volunteer(int id, String name, String email, String address, String phone, String info, BufferedImage img)
-      {
+
+    public Volunteer(int id, String name, String email, String address, String phone, String info, BufferedImage img) {
         super(name, email, id, phone, address);
-
+        this.volunteerImage = img;
         this.info.set(info);
-        
 
-      }
+    }
 
-    public String getInfo()
-      {
+    public String getInfo() {
         return info.get();
-      }
+    }
 
-    public void setInfo(String value)
-      {
+    public void setInfo(String value) {
         info.set(value);
-      }
+    }
 
-    public StringProperty infoProperty()
-      {
+    public StringProperty infoProperty() {
         return info;
-      }
-    
-    public BufferedImage getVolunteerImage()
-      {
+    }
+
+    public BufferedImage getVolunteerImage() {
         return volunteerImage;
-      }
+    }
 
-    public void setVolunteerImage(BufferedImage studentImage)
-      {
-        this.volunteerImage = studentImage;
-    
-      }
+    public void setVolunteerImage(BufferedImage volunteerImage) {
+        this.volunteerImage = volunteerImage;
 
-    
+    }
+
 }

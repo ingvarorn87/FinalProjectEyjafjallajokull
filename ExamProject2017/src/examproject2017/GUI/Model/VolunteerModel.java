@@ -6,7 +6,7 @@
 package examproject2017.GUI.Model;
 
 import examproject2017.BLL.VolunteerManager;
-import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 
@@ -18,9 +18,9 @@ public class VolunteerModel {
     
     public VolunteerManager volunteerManager = new VolunteerManager();
     
-   public void addVolunteer(String Name, String PhoneNumber, String Address, BufferedImage Image, String Email, String Information)
+   public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information)
    {
-       volunteerManager.addVolunteer( Name, PhoneNumber, Address, Image, Email, Information);
+       volunteerManager.addVolunteer( Name, PhoneNumber, Address, file, Email, Information);
    }
     
           

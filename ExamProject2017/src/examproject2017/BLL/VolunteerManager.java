@@ -6,7 +6,7 @@
 package examproject2017.BLL;
 
 import examproject2017.DAL.VolunteerHandler;
-import java.awt.image.BufferedImage;
+import java.io.File;
 
 /**
  *
@@ -18,8 +18,8 @@ public class VolunteerManager {
     
     private VolunteerHandler volunteerHandler = new VolunteerHandler();
     
-     public void addVolunteer(String Name, String PhoneNumber, String Address, BufferedImage Image, String Email, String Information){
-         volunteerHandler.addVolunteer(Name, PhoneNumber, Address, Image, Email, Information);
+     public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information){
+         volunteerHandler.addVolunteer(Name, PhoneNumber, Address, file, Email, Information);
      }
     
     
