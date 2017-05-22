@@ -101,8 +101,8 @@ public class SelectedVolunteerWindowController implements Initializable {
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
 
-        clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
-        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildName"));
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
         tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
 
         /**
@@ -182,7 +182,7 @@ public class SelectedVolunteerWindowController implements Initializable {
     @FXML
     private void registerHours(ActionEvent event) {
         guildVolHoursModel.addHours(
-                CBselectGuild.getSelectionModel().getSelectedIndex(),
+                CBselectGuild.getSelectionModel().getSelectedItem().getId(),
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
         );

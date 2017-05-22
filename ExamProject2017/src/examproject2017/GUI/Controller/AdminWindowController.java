@@ -60,9 +60,9 @@ public class AdminWindowController implements Initializable
         // TODO
         
         
-        clmHours.setCellValueFactory(new PropertyValueFactory<>("hours"));
-        clmGuildName.setCellValueFactory(new PropertyValueFactory<>("guildName"));
-        clmVolName.setCellValueFactory(new PropertyValueFactory<>("volName"));
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
+        clmGuildName.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
+        clmVolName.setCellValueFactory(new PropertyValueFactory<>("VolunteerName"));
         tblAdminTable.setItems(guildVolHoursModel.getObservableAllGuildVolHours());
         
       }    

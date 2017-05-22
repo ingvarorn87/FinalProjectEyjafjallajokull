@@ -23,35 +23,34 @@ import java.util.List;
  */
 public class GuildVolHoursHandler
 {
-    
-    
+
     SQLConnectionHandler conManager;
+
     public GuildVolHoursHandler()
       {
         conManager = new SQLConnectionHandler();
       }
-    
+
     public List<GuildVolHours> getHoursFromResults(PreparedStatement pstmt) throws SQLException
       {
         ResultSet rs = pstmt.executeQuery();
         ArrayList<GuildVolHours> hours = new ArrayList();
-                while(rs.next()){
-        
-        int guildId = rs.getInt("Guildid");
-        int volId = rs.getInt("Volid");
-        int hour = rs.getInt("Hours");
-        GuildVolHours guildVolHours = new GuildVolHours(guildId, volId, hour);
-        String guildName = rs.getString("Name");
-        String volName = rs.getString("Name");
-        guildVolHours.setGuildName(guildName);
-        guildVolHours.setVolName(volName);
-        
-        hours.add(guildVolHours) ;
-        }
+        while (rs.next())
+          {
+
+            int guildId = rs.getInt("GuildId");
+            int volId = rs.getInt("VolId");
+            int hour = rs.getInt("TotalHours");
+            GuildVolHours guildVolHours = new GuildVolHours(guildId, volId, hour);
+            String guildName = rs.getString("GuildName");
+            String volName = rs.getString("VolunteerName");
+            guildVolHours.setGuildName(guildName);
+            guildVolHours.setVolName(volName);
+            hours.add(guildVolHours);
+          }
         return hours;
       }
-    
-    
+
     public void addHours(int guildId, int volId, int hours)
       {
         try (Connection con = conManager.getConnection())
@@ -61,53 +60,64 @@ public class GuildVolHoursHandler
             pstat.setInt(1, guildId);
             pstat.setInt(2, volId);
             pstat.setInt(3, hours);
-            
+
             pstat.executeUpdate();
           } catch (SQLException sqle)
           {
             System.err.println(sqle);
           }
       }
-    
-    
 
-    public List<GuildVolHours> getVolHours(Volunteer volId )
+    public List<GuildVolHours> getVolHours(Volunteer volId)
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] JOIN [Guilds] ON Guilds.Guildid = GuildVolHours.Guildid WHERE Volid = ? ";
+            String query = "SELECT g.Name AS GuildName, SUM(gvh.Hours) AS TotalHours, g.Guildid AS GuildId, gvh.Volid\n"
+                    + "FROM [GuildVolHours] gvh \n"
+                    + "JOIN [Guilds] g ON g.Guildid = gvh.Guildid \n"
+                    + "WHERE Volid = ?\n"
+                    + "GROUP BY g.Name, g.Guildid, gvh.Volid\n"
+                    + "ORDER BY g.Name";
             PreparedStatement pstmt = con.prepareStatement(query);
-            
-            pstmt.setInt(1, volId.getId());
-            
 
-            return getHoursFromResults(pstmt);
+            pstmt.setInt(1, volId.getId());
+
+             ResultSet rs = pstmt.executeQuery();
+        ArrayList<GuildVolHours> hours = new ArrayList();
+        while (rs.next())
+          {
+
+            int guildId = rs.getInt("GuildId");
+            int volunteerId = rs.getInt("VolId");
+            int hour = rs.getInt("TotalHours");
+            GuildVolHours guildVolHours = new GuildVolHours(guildId, volunteerId, hour);
+            String guildName = rs.getString("GuildName");
+            
+            guildVolHours.setGuildName(guildName);
+            
+            hours.add(guildVolHours);
           }
-        catch (SQLException sqle)
+        return hours;
+          } catch (SQLException sqle)
           {
             System.err.println(sqle);
             return null;
           }
       }
-    
-    
+
     public List<GuildVolHours> getAllGuildsVolHours()
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT * FROM [GuildVolHours] gvh INNER JOIN [Volunteers] v ON v.Volid = gvh.Volid INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid";
+            String query = "SELECT v.Name AS VolunteerName, g.Name AS GuildName, SUM(gvh.Hours) AS TotalHours FROM [GuildVolHours] gvh INNER JOIN [Volunteers] v ON v.Volid = gvh.Volid INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid GROUP BY v.Name, g.Name ORDER BY v.Name";
             PreparedStatement pstmt = con.prepareStatement(query);
-            
 
             return getHoursFromResults(pstmt);
-          }
-        catch (SQLException sqle)
+          } catch (SQLException sqle)
           {
             System.err.println(sqle);
             return null;
           }
       }
-  
-    
 
 }
