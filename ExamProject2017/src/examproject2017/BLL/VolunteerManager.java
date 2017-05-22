@@ -7,6 +7,7 @@ package examproject2017.BLL;
 
 import examproject2017.DAL.VolunteerHandler;
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,6 +22,11 @@ public class VolunteerManager {
      public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information){
          volunteerHandler.addVolunteer(Name, PhoneNumber, Address, file, Email, Information);
      }
+     
+     public ArrayList<String> getAllVolunteers()
+       {
+         return volunteerHandler.getAllVolunteers();
+       }
     
     
 }

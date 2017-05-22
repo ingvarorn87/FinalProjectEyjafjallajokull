@@ -7,6 +7,7 @@ package examproject2017.GUI.Model;
 
 import examproject2017.BLL.VolunteerManager;
 import java.io.File;
+import java.util.ArrayList;
 
 
 
@@ -22,6 +23,11 @@ public class VolunteerModel {
    {
        volunteerManager.addVolunteer( Name, PhoneNumber, Address, file, Email, Information);
    }
+   
+   public ArrayList<String> getAllVolunteers()
+       {
+         return volunteerManager.getAllVolunteers();
+       }
     
           
 }

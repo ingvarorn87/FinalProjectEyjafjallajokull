@@ -32,160 +32,216 @@ import javax.imageio.ImageIO;
  *
  * @author gudla
  */
-public class VolunteerHandler {
+public class VolunteerHandler
+{
 
     SQLConnectionHandler conManager;
 
-    public VolunteerHandler() {
+    public VolunteerHandler()
+      {
         conManager = new SQLConnectionHandler();
-    }
+      }
 
-    public ArrayList<String> getVolName() {
-        try (Connection con = conManager.getConnection()) {
-            String query = "SELECT * FROM [Volunteers]";
+    public ArrayList<String> getAllVolunteers()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT Volunteers.Name AS Name\n"
+                    + "FROM [Volunteers]\n"
+                    + "ORDER BY Volunteers.Name";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-
             ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next()) {
+            while (rs.next())
+              {
                 String volString = "";
                 volString += rs.getString("Name");
 
                 volunteers.add(volString);
-            }
+              }
             return volunteers;
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public ArrayList<String> getVolId() {
-        try (Connection con = conManager.getConnection()) {
+    public ArrayList<String> getVolName()
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String query = "SELECT * FROM [Volunteers]";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next()) {
+            while (rs.next())
+              {
+                String volString = "";
+                volString += rs.getString("Name");
+
+                volunteers.add(volString);
+              }
+            return volunteers;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+
+    public ArrayList<String> getVolId()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT * FROM [Volunteers]";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            ArrayList<String> volunteers = new ArrayList<>();
+            while (rs.next())
+              {
                 String volString = "";
                 volString += rs.getString("Volid");
 
                 volunteers.add(volString);
-            }
+              }
             return volunteers;
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public ArrayList<String> getVolEmail() {
-        try (Connection con = conManager.getConnection()) {
+    public ArrayList<String> getVolEmail()
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String query = "SELECT * FROM [Volunteers]";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next()) {
+            while (rs.next())
+              {
                 String volString = "";
                 volString += rs.getString("Email");
 
                 volunteers.add(volString);
-            }
+              }
             return volunteers;
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public ArrayList<String> getVolAddress() {
-        try (Connection con = conManager.getConnection()) {
+    public ArrayList<String> getVolAddress()
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String query = "SELECT * FROM [Volunteers]";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next()) {
+            while (rs.next())
+              {
                 String volString = "";
                 volString += rs.getString("Address");
 
                 volunteers.add(volString);
-            }
+              }
             return volunteers;
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public ArrayList<String> getVolID() {
-        try (Connection con = conManager.getConnection()) {
+    public ArrayList<String> getVolID()
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String query = "SELECT * FROM [Volunteers]";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             ArrayList<String> volunteers = new ArrayList<>();
-            while (rs.next()) {
+            while (rs.next())
+              {
                 String volString = "";
                 volString += rs.getString("ID");
 
                 volunteers.add(volString);
-            }
+              }
             return volunteers;
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public Volunteer getVolunteerBasedOnName(String name) {
-        try (Connection con = conManager.getConnection()) {
+    public Volunteer getVolunteerBasedOnName(String name)
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String query = "SELECT * FROM [Volunteers] WHERE name = ?";
             PreparedStatement pstmt = con.prepareStatement(query);
             pstmt.setString(1, name);
 
             return getVolunteerFromResults(pstmt);
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
             return null;
-        }
-    }
+          }
+      }
 
-    public Volunteer getVolunteerFromResults(PreparedStatement pstmt) throws SQLException {
+    public Volunteer getVolunteerFromResults(PreparedStatement pstmt) throws SQLException
+      {
         ResultSet rs = pstmt.executeQuery();
         rs.next();
         int id = rs.getInt("Volid");
         String name = rs.getString("Name");
         String email = rs.getString("Email");
-        
+
         String address = rs.getString("Address");
         String phone = rs.getString("PhoneNumber");
         String info = rs.getString("Information");
 
         byte[] bytes = rs.getBytes("image");
         BufferedImage newImage;
-        if (bytes != null) {
-            try {
+        if (bytes != null)
+          {
+            try
+              {
                 ByteArrayInputStream bais;
                 bais = new ByteArrayInputStream(bytes);
 
                 newImage = ImageIO.read(bais);
-            } catch (IOException ex) {
+              } catch (IOException ex)
+              {
                 Logger.getLogger(VolunteerHandler.class.getName()).log(Level.SEVERE, null, ex);
                 newImage = null;
-            }
-        } else 
-        {
+              }
+          } else
+          {
             newImage = null;
-        }
+          }
         Volunteer volunteer = new Volunteer(id, name, email, address, phone, info, newImage);
         return volunteer;
-    }
+      }
 
-    public void addVolunteer(String name, String phoneNumber, String address, File file, String email, String information) {
-        try (Connection con = conManager.getConnection()) {
+    public void addVolunteer(String name, String phoneNumber, String address, File file, String email, String information)
+      {
+        try (Connection con = conManager.getConnection())
+          {
             String sqlCommand = "INSERT INTO Volunteers(Name,PhoneNumber,Address,Image,Email,Information) VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement pstat = con.prepareStatement(sqlCommand);
 
@@ -197,25 +253,29 @@ public class VolunteerHandler {
             pstat.setString(6, information);
 
             pstat.executeUpdate();
-        } catch (SQLException sqle) {
+          } catch (SQLException sqle)
+          {
             System.err.println(sqle);
-        }
-    }
+          }
+      }
 
-  
-
-    public static BufferedImage createRGBImage(byte[] bytes, int width, int height) {
+    public static BufferedImage createRGBImage(byte[] bytes, int width, int height)
+      {
         DataBufferByte buffer = new DataBufferByte(bytes, bytes.length);
-        ColorModel cm = new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), new int[]{
+        ColorModel cm = new ComponentColorModel(ColorSpace.getInstance(ColorSpace.CS_sRGB), new int[]
+          {
             8, 8, 8
-        }, false, false, Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
-        return new BufferedImage(cm, Raster.createInterleavedRaster(buffer, (width - 1), (height - 1), (width - 1) * 3, 3, new int[]{
+          }, false, false, Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
+        return new BufferedImage(cm, Raster.createInterleavedRaster(buffer, (width - 1), (height - 1), (width - 1) * 3, 3, new int[]
+          {
             0, 1, 2
-        }, null), false, null);
-    }
+          }, null), false, null);
+      }
 
-    public static byte[] getAImageAsBytes(File file) {
-        try {
+    public static byte[] getAImageAsBytes(File file)
+      {
+        try
+          {
 
             BufferedImage originalImage
                     = ImageIO.read(file);
@@ -227,9 +287,10 @@ public class VolunteerHandler {
             baos.close();
             return imageInByte;
 
-        } catch (IOException e) {
+          } catch (IOException e)
+          {
             System.out.println(e.getMessage());
-        }
+          }
         return null;
-    }
+      }
 }
