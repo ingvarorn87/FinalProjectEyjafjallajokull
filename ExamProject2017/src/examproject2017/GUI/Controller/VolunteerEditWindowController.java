@@ -5,6 +5,7 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.GUI.Model.VolunteerModel;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -18,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -32,6 +35,20 @@ public class VolunteerEditWindowController implements Initializable {
     private Button btnAddimg;
     @FXML
     private Button btnCloseVEW;
+    @FXML
+    private TextField setVolName;
+    @FXML
+    private TextField setVolAddress;
+    @FXML
+    private TextField SetVolEmail;
+    @FXML
+    private TextField SetVolPhoneNumber;
+    @FXML
+    private TextField setVolInfo;
+    @FXML
+    private Button btnAddNewVolunteer;
+    
+    public VolunteerModel volunteerModel = new VolunteerModel();
 
     /**
      * Initializes the controller class.
@@ -55,7 +72,7 @@ public class VolunteerEditWindowController implements Initializable {
         try (BufferedWriter bw
                 = new BufferedWriter(
                         new FileWriter(file.getAbsoluteFile()))) {
-            bw.write("Here we need to print the appropiate infi");
+            bw.write("Here we need to print the appropiate info");
         } catch (IOException ex) {
             //
         }
@@ -63,6 +80,27 @@ public class VolunteerEditWindowController implements Initializable {
 
     @FXML
     private void closeVolunteerEditWindow(ActionEvent event) throws IOException {
+        close();
+    }
+
+
+    @FXML
+    private void clickToAddNewVolunteer(ActionEvent event) throws IOException {
+        
+        volunteerModel.addVolunteer(
+                
+                setVolName.getText(),
+                SetVolPhoneNumber.getText(),
+                setVolAddress.getText(),
+                null,
+                SetVolEmail.getText(),
+                setVolInfo.getText());
+        close();
+        
+    }
+    
+    private void close() throws IOException
+    {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
                 Parent root = loader.load();
                 AdminWindowController gotoAdminWindowController = (AdminWindowController) loader.getController();
@@ -75,5 +113,6 @@ public class VolunteerEditWindowController implements Initializable {
                 Stage stage = (Stage) btnCloseVEW.getScene().getWindow();
                 stage.close();
     }
+    
     
 }

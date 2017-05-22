@@ -9,6 +9,7 @@ import examproject2017.BE.Volunteer;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -207,4 +208,26 @@ public class VolunteerHandler
        return volunteer;
       }
 
+    public void addVolunteer(String Name, String PhoneNumber, String Address, BufferedImage Image, String Email, String Information)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String sqlCommand = "INSERT INTO Volunteers(Name,PhoneNumber,Address,Image,Email,Information) VALUES(?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstat = con.prepareStatement(sqlCommand);
+            
+            pstat.setString(1, Name);
+            pstat.setString(2, PhoneNumber);
+            pstat.setString(3, Address);
+            pstat.setBlob(4, (Blob) Image);
+            pstat.setString(5, Email);
+            pstat.setString(6, Information);
+            
+          
+            
+            pstat.executeUpdate();
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+          }
+      }
 }
