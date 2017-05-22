@@ -101,4 +101,26 @@ public class AdminHandler
             return false;
           }
       }
+     
+     public void addAdmin(String name, String phoneNumber, String address, String email, String password)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String sqlCommand = "INSERT INTO Admins(Name,PhoneNumber,Address,Email,Password) VALUES(?, ?, ?, ?, ?)";
+            PreparedStatement pstat = con.prepareStatement(sqlCommand);
+
+            pstat.setString(1, name);
+            pstat.setString(2, phoneNumber);
+            pstat.setString(3, address);
+            pstat.setString(4, email);
+            pstat.setString(5, password);
+            
+           
+
+            pstat.executeUpdate();
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+          }
+      }
 }

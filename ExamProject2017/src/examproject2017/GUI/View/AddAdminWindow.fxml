@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="372.0" prefWidth="231.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.View.AddAdminWindowController">
+   <children>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="304.0" prefWidth="215.0">
+         <children>
+            <TextField fx:id="txtAdminName" promptText="Name">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAdminAddress" layoutX="10.0" layoutY="10.0" promptText="Address">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAdminPhone" layoutX="10.0" layoutY="47.0" promptText="Phone Number">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAdminEmail" layoutX="10.0" layoutY="84.0" promptText="Email">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAdminPass" layoutX="10.0" layoutY="121.0" promptText="Password">
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <HBox layoutX="42.0" layoutY="314.0" prefHeight="47.0" prefWidth="152.0">
+         <children>
+            <Button fx:id="btnAddAdmin" mnemonicParsing="false" onAction="#clickToAddNewAdmin" text="Add">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnCloseAddAdmin" mnemonicParsing="false" onAction="#closeAddAdminWindow" text="Close" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
