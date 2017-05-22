@@ -27,4 +27,8 @@ public class GuildManager {
 //       return guildHandler.getGuildHours();
 //   }
     
+   public void addGuild (String Name, int Adminid)
+   {
+       guildHandler.addGuild(Name, Adminid);
+   }
 }

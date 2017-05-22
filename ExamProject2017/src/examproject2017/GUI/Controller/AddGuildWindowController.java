@@ -5,6 +5,7 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.GUI.Model.GuildModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +28,13 @@ public class AddGuildWindowController implements Initializable {
 
     @FXML
     private Button btnCloseAGW;
-
+    @FXML
+    private TextField setNewGuildName;
+    @FXML
+    private TextField SetNewGuildAdmin;
+    @FXML
+    private Button btnAddnewGuild;
+    public GuildModel guildModel = new GuildModel();
     /**
      * Initializes the controller class.
      */
@@ -37,6 +45,27 @@ public class AddGuildWindowController implements Initializable {
 
     @FXML
     private void closeAddGuildWindow(ActionEvent event) throws IOException {
+        close();
+    }
+
+    @FXML
+    private void addNewGuildbyClick(ActionEvent event) throws IOException {
+       
+
+       
+       guildModel.addGuild(
+       setNewGuildName.getText(),
+       Integer.parseInt(SetNewGuildAdmin.getText()));
+       close();
+      
+
+
+               
+        
+    }
+    
+    private void close() throws IOException
+    {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/GuildOverViewWindow.fxml"));
                 Parent root = loader.load();
                 GuildOverViewWindowController goToGuildoverview = (GuildOverViewWindowController) loader.getController();
@@ -49,5 +78,4 @@ public class AddGuildWindowController implements Initializable {
                 Stage stage = (Stage) btnCloseAGW.getScene().getWindow();
                 stage.close();
     }
-    
 }

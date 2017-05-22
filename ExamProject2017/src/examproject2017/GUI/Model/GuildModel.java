@@ -26,6 +26,11 @@ public class GuildModel {
           return guildManager.getAllGuilds();
       }
       
+      public void addGuild(String Name, int Adminid)
+      {
+          guildManager.addGuild(Name, Adminid);
+      }
+      
     
       
       

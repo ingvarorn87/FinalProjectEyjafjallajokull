@@ -14,11 +14,11 @@
 <AnchorPane id="AnchorPane" prefHeight="223.0" prefWidth="365.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AddGuildWindowController">
   <children>
     <VBox layoutX="119.0" layoutY="178.0" prefHeight="49.0" prefWidth="228.0" />
-<TextField layoutX="75.0" layoutY="32.0" prefWidth="215.0" promptText="Guild Name" />
-<TextField layoutX="75.0" layoutY="79.0" prefHeight="41.0" prefWidth="215.0" promptText="Administrator" />
+<TextField fx:id="setNewGuildName" layoutX="75.0" layoutY="32.0" prefWidth="215.0" promptText="Guild Name" />
+<TextField fx:id="SetNewGuildAdmin" layoutX="75.0" layoutY="79.0" prefHeight="41.0" prefWidth="215.0" promptText="Administrator" />
   <HBox layoutX="64.0" layoutY="147.0" prefHeight="44.0" prefWidth="260.0">
          <children>
-        <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="Add">
+        <Button fx:id="btnAddnewGuild" mnemonicParsing="false" onAction="#addNewGuildbyClick" prefHeight="44.0" prefWidth="113.0" text="Add">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>

@@ -7,6 +7,7 @@ package examproject2017.DAL;
 
 import examproject2017.BE.Guild;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -71,6 +72,22 @@ public class GuildHandler
           {
             System.err.println(sqle);
             return null;
+          }
+      }
+    public void addGuild(String Name, int Adminid)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String sqlCommand = "INSERT INTO Guilds(Name, Adminid) VALUES(?, ?)";
+            PreparedStatement pstat = con.prepareStatement(sqlCommand);
+            pstat.setString(1, Name);
+            pstat.setInt(2, Adminid);
+          
+            
+            pstat.executeUpdate();
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
           }
       }
 }

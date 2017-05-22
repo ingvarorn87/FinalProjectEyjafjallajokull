@@ -162,33 +162,33 @@ public class SelectedVolunteerWindowController implements Initializable
         guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
       }
 
-    public void altInitialize(Volunteer stud) //SOMETHING TO DO WITH IMAGE
-      {
-
-        if (volunteer.getVolunteerImage() != null)
-          {
-            BufferedImage bf = stud.getVolunteerImage();
-            WritableImage wr = null;
-            if (bf != null)
-              {
-                wr = new WritableImage(bf.getWidth(), bf.getHeight());
-                PixelWriter pw = wr.getPixelWriter();
-                for (int x = 0; x < bf.getWidth(); x++)
-                  {
-                    for (int y = 0; y < bf.getHeight(); y++)
-                      {
-                        pw.setArgb(x, y, bf.getRGB(x, y));
-                      }
-                  }
-              }
-            imgImageHolder.setImage(wr);
-          } else
-          {
-            Image defAvatar = new Image("file:DATA/defAvatar.png");
-
-            imgImageHolder.setImage(defAvatar);
-          }
-      }
+//    public void altInitialize(Volunteer stud) //SOMETHING TO DO WITH IMAGE
+//      {
+//
+//        if (volunteer.getVolunteerImage() != null)
+//          {
+//            BufferedImage bf = stud.getVolunteerImage();
+//            WritableImage wr = null;
+//            if (bf != null)
+//              {
+//                wr = new WritableImage(bf.getWidth(), bf.getHeight());
+//                PixelWriter pw = wr.getPixelWriter();
+//                for (int x = 0; x < bf.getWidth(); x++)
+//                  {
+//                    for (int y = 0; y < bf.getHeight(); y++)
+//                      {
+//                        pw.setArgb(x, y, bf.getRGB(x, y));
+//                      }
+//                  }
+//              }
+//            imgImageHolder.setImage(wr);
+//          } else
+//          {
+//            Image defAvatar = new Image("file:DATA/defAvatar.png");
+//
+//            imgImageHolder.setImage(defAvatar);
+//          }
+//      }
 
     /**
      * When the register button is pressed it calls the method addHours from the
