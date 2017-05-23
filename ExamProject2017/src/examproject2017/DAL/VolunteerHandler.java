@@ -47,7 +47,7 @@ public class VolunteerHandler
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT Volunteers.Name AS Name\n"
+            String query = "SELECT *\n"
                     + "FROM [Volunteers]\n"
                     + "ORDER BY Volunteers.Name";
             Statement stmt = con.createStatement();
@@ -55,7 +55,7 @@ public class VolunteerHandler
             ArrayList<Volunteer> volu = new ArrayList<>();
             while (rs.next())
               {
-                rs.next();
+                
                 int id = rs.getInt("Volid");
                 String name = rs.getString("Name");
                 String email = rs.getString("Email");

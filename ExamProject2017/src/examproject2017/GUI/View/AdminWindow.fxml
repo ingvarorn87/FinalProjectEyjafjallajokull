@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="681.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AdminWindowController">
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="681.0" stylesheets="@MainLayout.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="examproject2017.GUI.Controller.AdminWindowController">
   <children>
   <VBox layoutX="474.0" layoutY="167.0" minHeight="101.0" prefHeight="259.0" prefWidth="176.0">
     <children>
@@ -24,12 +27,9 @@
     </children>
   </VBox>
   <TextField layoutX="342.0" layoutY="47.0" prefWidth="200.0" promptText="Search" />
-  <DatePicker layoutX="52.0" layoutY="47.0" />
       <TableView fx:id="tblAdminTable" layoutX="30.0" layoutY="155.0" prefHeight="293.0" prefWidth="401.0">
         <columns>
           <TableColumn fx:id="clmVolName" prefWidth="162.0" text="Name" />
-            <TableColumn fx:id="clmGuildName" prefWidth="121.0" text="Guild" />
-          <TableColumn fx:id="clmHours" prefWidth="75.0" text="Hours" />
         </columns>
       </TableView>
   </children>

@@ -6,7 +6,9 @@
 package examproject2017.GUI.Controller;
 
 import examproject2017.BE.GuildVolHours;
+import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.GuildVolHoursModel;
+import examproject2017.GUI.Model.VolunteerModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,15 +45,13 @@ public class AdminWindowController implements Initializable
     @FXML
     private Insets x1;
     @FXML
-    private TableColumn<GuildVolHours, String> clmVolName;
+    private TableColumn<Volunteer, String> clmVolName;
     @FXML
-    private TableColumn<GuildVolHours, String> clmGuildName;
-    @FXML
-    private TableColumn<GuildVolHours, String> clmHours;
-    @FXML
-    private TableView<GuildVolHours> tblAdminTable;
+    private TableView<Volunteer> tblAdminTable;
     @FXML
     private Button btnAddAdmin;
+    
+    private VolunteerModel volModel = new VolunteerModel();
 
     /**
      * Initializes the controller class.
@@ -62,10 +62,9 @@ public class AdminWindowController implements Initializable
         // TODO
         
         
-        clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
-        clmGuildName.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
-        clmVolName.setCellValueFactory(new PropertyValueFactory<>("VolunteerName"));
-        tblAdminTable.setItems(guildVolHoursModel.getObservableAllGuildVolHours());
+       
+        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
         
       }    
 

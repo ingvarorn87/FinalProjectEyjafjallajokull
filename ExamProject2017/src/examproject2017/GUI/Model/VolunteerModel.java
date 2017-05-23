@@ -10,6 +10,8 @@ import examproject2017.BLL.VolunteerManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 
@@ -20,7 +22,9 @@ import java.util.List;
 public class VolunteerModel {
     
     public VolunteerManager volunteerManager = new VolunteerManager();
-    
+    private final ObservableList<Volunteer> observableAllVolunteers = FXCollections.observableArrayList(getAllVolunteers());
+
+
    public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information)
    {
        volunteerManager.addVolunteer( Name, PhoneNumber, Address, file, Email, Information);
@@ -31,5 +35,9 @@ public class VolunteerModel {
          return volunteerManager.getAllVolunteers();
        }
     
+   public ObservableList<Volunteer> getObservableAllVolunteers()
+     {
+       return observableAllVolunteers;
+     }
           
 }

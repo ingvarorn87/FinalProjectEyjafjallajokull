@@ -47,6 +47,7 @@ public class GuildVolHoursModel
 
     public ObservableList<GuildVolHours> getObservableHour()
       {
+        
         return observableHour;
       }
     
@@ -65,6 +66,7 @@ public class GuildVolHoursModel
     
     public void setObservableAllGuildVolHour()
       {
+        
         observableAllGuildVolHours.clear();
         observableAllGuildVolHours.addAll(guildVolHoursManager.getAllGuildsVolHours());
       }
@@ -86,6 +88,7 @@ public class GuildVolHoursModel
     
     public List<GuildVolHours> getAllGuildsVolHours()
       {
+        
         return guildVolHoursManager.getAllGuildsVolHours();
       }
             
