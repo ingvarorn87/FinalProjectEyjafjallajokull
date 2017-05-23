@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -42,7 +43,7 @@ public class VolunteerHandler
         conManager = new SQLConnectionHandler();
       }
 
-    public ArrayList<String> getAllVolunteers()
+    public List<Volunteer> getAllVolunteers()
       {
         try (Connection con = conManager.getConnection())
           {
@@ -51,15 +52,24 @@ public class VolunteerHandler
                     + "ORDER BY Volunteers.Name";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            ArrayList<String> volunteers = new ArrayList<>();
+            ArrayList<Volunteer> volu = new ArrayList<>();
             while (rs.next())
               {
-                String volString = "";
-                volString += rs.getString("Name");
+                rs.next();
+                int id = rs.getInt("Volid");
+                String name = rs.getString("Name");
+                String email = rs.getString("Email");
 
-                volunteers.add(volString);
+                String address = rs.getString("Address");
+                String phone = rs.getString("PhoneNumber");
+                String info = rs.getString("Information");
+
+                byte[] bytes = rs.getBytes("image");
+                BufferedImage newImage;
+                newImage = null;
+                volu.add(new Volunteer(id, name, email, address, phone, info, newImage));
               }
-            return volunteers;
+            return volu;
           } catch (SQLException sqle)
           {
             System.err.println(sqle);
