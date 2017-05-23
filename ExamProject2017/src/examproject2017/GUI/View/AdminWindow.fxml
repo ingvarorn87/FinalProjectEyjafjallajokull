@@ -27,8 +27,6 @@
       <TableView fx:id="tblAdminTable" layoutX="30.0" layoutY="155.0" prefHeight="293.0" prefWidth="401.0">
         <columns>
           <TableColumn fx:id="clmVolName" prefWidth="162.0" text="Name" />
-            <TableColumn fx:id="clmGuildName" prefWidth="121.0" text="Guild" />
-          <TableColumn fx:id="clmHours" prefWidth="75.0" text="Hours" />
         </columns>
       </TableView>
   </children>

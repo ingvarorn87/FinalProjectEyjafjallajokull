@@ -5,9 +5,11 @@
  */
 package examproject2017.BLL;
 
+import examproject2017.BE.Volunteer;
 import examproject2017.DAL.VolunteerHandler;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,7 +25,7 @@ public class VolunteerManager {
          volunteerHandler.addVolunteer(Name, PhoneNumber, Address, file, Email, Information);
      }
      
-     public ArrayList<String> getAllVolunteers()
+     public List<Volunteer> getAllVolunteers()
        {
          return volunteerHandler.getAllVolunteers();
        }

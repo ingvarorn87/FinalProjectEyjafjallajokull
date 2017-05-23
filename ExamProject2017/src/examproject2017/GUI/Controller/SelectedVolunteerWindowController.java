@@ -94,6 +94,10 @@ public class SelectedVolunteerWindowController implements Initializable {
 
         CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
 
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
+        tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
+        
         txtInformationInput.setVisible(false);
         lblInformation.setVisible(false);
 
@@ -101,9 +105,7 @@ public class SelectedVolunteerWindowController implements Initializable {
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
 
-        clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
-        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
-        tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
+       
 
         /**
          * Sets a change listener to the Volunteer Binds each label with the new
@@ -147,6 +149,8 @@ public class SelectedVolunteerWindowController implements Initializable {
 
             }
         });
+        
+        
 
     }
 
@@ -186,7 +190,8 @@ public class SelectedVolunteerWindowController implements Initializable {
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
         );
+       txtAddHours.clear();
+       
 
     }
-
 }

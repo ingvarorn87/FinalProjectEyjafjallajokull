@@ -33,6 +33,7 @@ public class GuildVolHoursModel
         this.observableHour = FXCollections.observableArrayList();
         this.selectedVolunteer = new SimpleObjectProperty<>();
         this.observableAllGuildVolHours = FXCollections.observableArrayList();
+        
       }
 
     public GuildVolHoursManager getGuildVolHoursManager()
