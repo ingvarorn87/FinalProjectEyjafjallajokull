@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  */
 public class AddAdminWindowController implements Initializable {
 
+    
     @FXML
     private TextField txtAdminName;
     @FXML

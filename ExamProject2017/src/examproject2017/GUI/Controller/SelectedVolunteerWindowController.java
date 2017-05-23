@@ -186,7 +186,7 @@ public class SelectedVolunteerWindowController implements Initializable {
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
         );
-
+        txtAddHours.clear();
     }
 
 }
