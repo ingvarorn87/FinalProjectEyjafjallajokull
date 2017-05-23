@@ -152,16 +152,7 @@ public class SelectedVolunteerWindowController implements Initializable {
 
     @FXML
     private void closeSelectedVolunteerWindow(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/LoginWindow.fxml"));
-        Parent root = loader.load();
-        LoginWindowController gotoLoginWindowController = (LoginWindowController) loader.getController();
-
-        Stage subStage = new Stage();
-        subStage.setScene(new Scene(root));
-
-        subStage.show();
-        Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
-        stage.close();
+        close();
     }
 
     public void setSelectedVolunteer(Volunteer selectedVolunteer) //lets know which volunteer is selected
@@ -180,13 +171,42 @@ public class SelectedVolunteerWindowController implements Initializable {
      * @param event
      */
     @FXML
-    private void registerHours(ActionEvent event) {
+    private void registerHours(ActionEvent event) throws IOException {
         guildVolHoursModel.addHours(
                 CBselectGuild.getSelectionModel().getSelectedItem().getId(),
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
         );
         txtAddHours.clear();
+        close();
+
+//FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/RegisterHoursWindow.fxml"));
+//        Parent root = loader.load();
+//        RegisterHoursWindowController regController = (RegisterHoursWindowController) loader.getController();
+//
+//
+//        Stage subStage = new Stage();
+//        subStage.setScene(new Scene(root));
+//        
+//        subStage.show();
+//        Stage stage = (Stage) btnRegister.getScene().getWindow();
+//        stage.close();
+
+
+    }
+    
+    private void close() throws IOException 
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/LoginWindow.fxml"));
+        Parent root = loader.load();
+        LoginWindowController gotoLoginWindowController = (LoginWindowController) loader.getController();
+
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
+
+        subStage.show();
+        Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
+        stage.close();
     }
 
 }
