@@ -5,6 +5,8 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.GuildVolHours;
+import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -18,16 +20,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 
 /**
  * FXML Controller class
  *
  * @author Ingvar
  */
-public class GuildOverViewWindowController implements Initializable {
+public class GuildOverViewWindowController implements Initializable
+{
 
     @FXML
     private Button btnexportguild;
@@ -36,25 +40,31 @@ public class GuildOverViewWindowController implements Initializable {
     @FXML
     private Button btnaddguild;
     @FXML
-    private TableColumn<?, String> clmGuild;
+    private TableColumn<GuildVolHours, String> clmGuild;
     @FXML
-    private TableColumn<?, String> clmHours;
-    @FXML
-    private TableColumn<?, String> clmAdmin;
+    private TableColumn<GuildVolHours, String> clmHours;
     @FXML
     private Button btnCloseGOW;
+    @FXML
+    private TableView<GuildVolHours> tblGuildOverview;
     
+    private GuildVolHoursModel gvhModel = new GuildVolHoursModel();
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+      {
         // TODO
-    }    
+        //clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
+        //clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
+        //tblGuildOverview.setItems(gvhModel.getObservableAllGuildHours());
+      }
 
     @FXML
-    private void btnexportguild(ActionEvent event) {
+    private void btnexportguild(ActionEvent event)
+      {
         //Uses a filechooser to save dialog to load saved files 
         FileChooser fileChooser = new FileChooser();
         Stage primaryStage = (Stage) btnexportguild.getScene().getWindow();
@@ -63,42 +73,39 @@ public class GuildOverViewWindowController implements Initializable {
         fileChooser.getExtensionFilters().add(extFilter);
         //fileChooser.setInitialDirectory(new File());
         //Shows save file dialog
-         
-        
+
         File file = fileChooser.showSaveDialog(primaryStage);
-        
-    }
+
+      }
 
     @FXML
-    private void addGuildWindowLoader(ActionEvent event) throws IOException {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AddGuildWindow.fxml"));
-                Parent root = loader.load();
-                AddGuildWindowController addguildController = (AddGuildWindowController) loader.getController();
+    private void addGuildWindowLoader(ActionEvent event) throws IOException
+      {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AddGuildWindow.fxml"));
+        Parent root = loader.load();
+        AddGuildWindowController addguildController = (AddGuildWindowController) loader.getController();
 
-                Stage subStage = new Stage();
-                subStage.setScene(new Scene(root));
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
 
-
-                subStage.show();
-                Stage stage = (Stage) btnaddguild.getScene().getWindow();
-                stage.close();
-    }
+        subStage.show();
+        Stage stage = (Stage) btnaddguild.getScene().getWindow();
+        stage.close();
+      }
 
     @FXML
-    private void CloseAndGoBackToAdmin(ActionEvent event) throws IOException {
+    private void CloseAndGoBackToAdmin(ActionEvent event) throws IOException
+      {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
-                Parent root = loader.load();
-                AdminWindowController addAdminWindowController = (AdminWindowController) loader.getController();
+        Parent root = loader.load();
+        AdminWindowController addAdminWindowController = (AdminWindowController) loader.getController();
 
-                Stage subStage = new Stage();
-                subStage.setScene(new Scene(root));
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
 
+        subStage.show();
+        Stage stage = (Stage) btnCloseGOW.getScene().getWindow();
+        stage.close();
+      }
 
-                subStage.show();
-                Stage stage = (Stage) btnCloseGOW.getScene().getWindow();
-                stage.close();
-    }
-
-    
-    
 }

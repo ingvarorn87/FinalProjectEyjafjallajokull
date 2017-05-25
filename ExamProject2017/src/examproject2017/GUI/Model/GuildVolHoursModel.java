@@ -26,13 +26,13 @@ public class GuildVolHoursModel
     private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
     private final ObservableList<GuildVolHours> observableHour;
     private final SimpleObjectProperty<Volunteer> selectedVolunteer;
-    private final ObservableList<GuildVolHours> observableAllGuildVolHours;
+    //private final ObservableList<GuildVolHours> observableAllGuildHours = FXCollections.observableArrayList(getAllGuildsHours());
 
     public GuildVolHoursModel()
       {
         this.observableHour = FXCollections.observableArrayList();
         this.selectedVolunteer = new SimpleObjectProperty<>();
-        this.observableAllGuildVolHours = FXCollections.observableArrayList();
+        
       }
 
     public GuildVolHoursManager getGuildVolHoursManager()
@@ -51,10 +51,7 @@ public class GuildVolHoursModel
         return observableHour;
       }
     
-    public ObservableList<GuildVolHours> getObservableAllGuildVolHours()
-      {
-        return observableAllGuildVolHours;
-      }
+    
 
    
     public void setSelectedVolunteer(Volunteer selectedVol)
@@ -64,12 +61,7 @@ public class GuildVolHoursModel
         observableHour.addAll(guildVolHoursManager.getVolHours(selectedVol));
       }
     
-    public void setObservableAllGuildVolHour()
-      {
-        
-        observableAllGuildVolHours.clear();
-        observableAllGuildVolHours.addAll(guildVolHoursManager.getAllGuildsVolHours());
-      }
+    
     
     public SimpleObjectProperty<Volunteer> getSelectedVolunteer()
       {
@@ -86,11 +78,16 @@ public class GuildVolHoursModel
         guildVolHoursManager.addHours(guildId, volId, hours);
       }
     
-    public List<GuildVolHours> getAllGuildsVolHours()
-      {
-        
-        return guildVolHoursManager.getAllGuildsVolHours();
-      }
+//    public List<GuildVolHours> getAllGuildsHours()
+//      {
+//        
+//        return guildVolHoursManager.getAllGuildsHours();
+//      }
+//    
+//    public ObservableList<GuildVolHours> getObservableAllGuildHours()
+//      {
+//        return observableAllGuildHours;
+//      }
             
 
 }
