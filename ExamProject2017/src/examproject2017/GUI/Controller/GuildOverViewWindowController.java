@@ -5,7 +5,9 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
+import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.io.File;
 import java.io.IOException;
@@ -40,15 +42,15 @@ public class GuildOverViewWindowController implements Initializable
     @FXML
     private Button btnaddguild;
     @FXML
-    private TableColumn<GuildVolHours, String> clmGuild;
+    private TableColumn<Guild, String> clmGuild;
     @FXML
-    private TableColumn<GuildVolHours, String> clmHours;
+    private TableColumn<Guild, String> clmHours;
     @FXML
     private Button btnCloseGOW;
     @FXML
-    private TableView<GuildVolHours> tblGuildOverview;
+    private TableView<Guild> tblGuildOverview;
     
-    private GuildVolHoursModel gvhModel = new GuildVolHoursModel();
+    private GuildModel gModel = new GuildModel();
 
     /**
      * Initializes the controller class.
@@ -57,9 +59,9 @@ public class GuildOverViewWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
-        //clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
-        //clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
-        //tblGuildOverview.setItems(gvhModel.getObservableAllGuildHours());
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
+        tblGuildOverview.setItems(gModel.getObservableAllGuildHours());
       }
 
     @FXML

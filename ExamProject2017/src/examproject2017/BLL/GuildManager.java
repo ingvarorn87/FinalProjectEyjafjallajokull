@@ -8,6 +8,7 @@ package examproject2017.BLL;
 import examproject2017.BE.Guild;
 import examproject2017.DAL.GuildHandler;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -31,4 +32,9 @@ public class GuildManager {
    {
        guildHandler.addGuild(Name, Adminid);
    }
+   
+   public List<Guild> getAllGuildsHours()
+       {
+         return guildHandler.getAllGuildsHours();
+       }
 }

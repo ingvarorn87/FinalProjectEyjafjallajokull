@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -88,6 +89,37 @@ public class GuildHandler
           } catch (SQLException sqle)
           {
             System.err.println(sqle);
+          }
+      }
+    
+    public List<Guild> getAllGuildsHours()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT  g.Name AS GuildName, SUM(gvh.Hours) AS TotalHours, gvh.Guildid, gvh.Volid\n"
+                    + "FROM [GuildVolHours] gvh \n"
+                    + "INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid \n"
+                    + "GROUP BY  g.Name, gvh.Guildid, gvh.Volid\n"
+                    + "ORDER BY g.Name";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<Guild> hours = new ArrayList();
+            while (rs.next())
+              {
+
+                int guildId = rs.getInt("Guildid");
+                int hour = rs.getInt("TotalHours");
+                String guildName = rs.getString("GuildName");
+                Guild guild = new Guild(guildId, guildName);
+                
+                hours.add(guild);
+              }
+            return hours;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
           }
       }
 }

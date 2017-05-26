@@ -32,9 +32,6 @@ public class GuildVolHoursManager
          guildVolHoursHandler.addHours(guildId, volId, hours);
        }
      
-     public List<GuildVolHours> getAllGuildsHours()
-       {
-         return guildVolHoursHandler.getAllGuildsHours();
-       }
+     
      
 }
