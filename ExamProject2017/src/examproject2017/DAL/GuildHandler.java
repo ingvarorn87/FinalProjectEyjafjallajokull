@@ -39,8 +39,8 @@ public class GuildHandler
             ArrayList<Guild> guilds = new ArrayList<>();
             while (rs.next())
               {
-                String guildString = "";
-                guildString += rs.getString("Name");
+//                String guildString = "";
+//                guildString += rs.getString("Name");
 
                 guilds.add(new Guild(rs.getInt("Guildid"), rs.getString("Name")));
               }
@@ -108,12 +108,12 @@ public class GuildHandler
             while (rs.next())
               {
 
-                int guildId = rs.getInt("Guildid");
-                int hour = rs.getInt("TotalHours");
-                String guildName = rs.getString("GuildName");
-                Guild guild = new Guild(guildId, guildName);
+//                int guildId = rs.getInt("Guildid");
+//                int hour = rs.getInt("TotalHours");
+//                String guildName = rs.getString("GuildName");
+//                Guild guild = new Guild(guildId, guildName);
                 
-                hours.add(guild);
+                hours.add(new Guild(rs.getInt("Guildid"), rs.getString("GuildName")));
               }
             return hours;
           } catch (SQLException sqle)
