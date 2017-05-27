@@ -55,7 +55,7 @@ public class VolunteerHandler
             ArrayList<Volunteer> volu = new ArrayList<>();
             while (rs.next())
               {
-                
+
                 int id = rs.getInt("Volid");
                 String name = rs.getString("Name");
                 String email = rs.getString("Email");
@@ -66,7 +66,23 @@ public class VolunteerHandler
 
                 byte[] bytes = rs.getBytes("image");
                 BufferedImage newImage;
-                newImage = null;
+                if (bytes != null)
+                  {
+                    try
+                      {
+                        ByteArrayInputStream bais;
+                        bais = new ByteArrayInputStream(bytes);
+
+                        newImage = ImageIO.read(bais);
+                      } catch (IOException ex)
+                      {
+                        Logger.getLogger(VolunteerHandler.class.getName()).log(Level.SEVERE, null, ex);
+                        newImage = null;
+                      }
+                  } else
+                  {
+                    newImage = null;
+                  }
                 volu.add(new Volunteer(id, name, email, address, phone, info, newImage));
               }
             return volu;
