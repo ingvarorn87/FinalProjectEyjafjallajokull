@@ -75,6 +75,7 @@ public class GuildHandler
             return null;
           }
       }
+
     public void addGuild(String Name, int Adminid)
       {
         try (Connection con = conManager.getConnection())
@@ -83,23 +84,22 @@ public class GuildHandler
             PreparedStatement pstat = con.prepareStatement(sqlCommand);
             pstat.setString(1, Name);
             pstat.setInt(2, Adminid);
-          
-            
+
             pstat.executeUpdate();
           } catch (SQLException sqle)
           {
             System.err.println(sqle);
           }
       }
-    
+
     public List<Guild> getAllGuildsHours()
       {
         try (Connection con = conManager.getConnection())
           {
-            String query = "SELECT  g.Name AS GuildName, SUM(gvh.Hours) AS TotalHours, gvh.Guildid, gvh.Volid\n"
-                    + "FROM [GuildVolHours] gvh \n"
-                    + "INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid \n"
-                    + "GROUP BY  g.Name, gvh.Guildid, gvh.Volid\n"
+            String query = "SELECT  g.Name AS GuildName, SUM(gvh.Hours) AS TotalHours, gvh.Guildid\n"
+                    + "FROM [GuildVolHours] gvh\n"
+                    + "INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid\n"
+                    + "GROUP BY  g.Name, gvh.Guildid\n"
                     + "ORDER BY g.Name";
 
             Statement stmt = con.createStatement();
@@ -112,7 +112,6 @@ public class GuildHandler
 //                int hour = rs.getInt("TotalHours");
 //                String guildName = rs.getString("GuildName");
 //                Guild guild = new Guild(guildId, guildName);
-                
                 hours.add(new Guild(rs.getInt("Guildid"), rs.getString("GuildName")));
               }
             return hours;
