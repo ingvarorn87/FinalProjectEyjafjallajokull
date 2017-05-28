@@ -229,6 +229,60 @@ public class VolunteerHandler
           }
       }
 
+    public List<Volunteer> searchInVolNames(String searched)
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT *\n"
+                    + "FROM Volunteers\n"
+                    + "WHERE Volunteers.Name LIKE ? \n"
+                    + "ORDER BY Volunteers.Name";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, searched);
+
+            ResultSet rs = pstmt.executeQuery();
+            ArrayList<Volunteer> volu = new ArrayList<>();
+            while (rs.next())
+              {
+
+                int id = rs.getInt("Volid");
+                String name = rs.getString("Name");
+                String email = rs.getString("Email");
+
+                String address = rs.getString("Address");
+                String phone = rs.getString("PhoneNumber");
+                String info = rs.getString("Information");
+
+                byte[] bytes = rs.getBytes("image");
+                BufferedImage newImage;
+                if (bytes != null)
+                  {
+                    try
+                      {
+                        ByteArrayInputStream bais;
+                        bais = new ByteArrayInputStream(bytes);
+
+                        newImage = ImageIO.read(bais);
+                      } catch (IOException ex)
+                      {
+                        Logger.getLogger(VolunteerHandler.class.getName()).log(Level.SEVERE, null, ex);
+                        newImage = null;
+                      }
+                  } else
+                  {
+                    newImage = null;
+                  }
+                volu.add(new Volunteer(id, name, email, address, phone, info, newImage));
+              }
+            return volu;
+
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
+
     public Volunteer getVolunteerFromResults(PreparedStatement pstmt) throws SQLException
       {
         ResultSet rs = pstmt.executeQuery();

@@ -22,7 +22,13 @@ import javafx.collections.ObservableList;
 public class VolunteerModel {
     
     public VolunteerManager volunteerManager = new VolunteerManager();
-    private final ObservableList<Volunteer> observableAllVolunteers = FXCollections.observableArrayList(getAllVolunteers());
+    private final ObservableList<Volunteer> observableAllVolunteers;
+
+    public VolunteerModel()
+      {
+        observableAllVolunteers = FXCollections.observableArrayList();
+        observableAllVolunteers.addAll(getAllVolunteers());
+      }
 
 
    public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information)
@@ -39,5 +45,15 @@ public class VolunteerModel {
      {
        return observableAllVolunteers;
      }
+   
+   public List<Volunteer> searchInVolNames(String searched)
+      {
+        return volunteerManager.searchInVolNames(searched);
+      }
+   
+//   public void search(String query)
+//    {
+//      List<Volunteer> searchedVol = 
+//    }
           
 }

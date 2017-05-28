@@ -15,20 +15,24 @@ import java.util.List;
  *
  * @author Ingvar
  */
+public class VolunteerManager
+{
 
-
-public class VolunteerManager {
-    
     private VolunteerHandler volunteerHandler = new VolunteerHandler();
-    
-     public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information){
-         volunteerHandler.addVolunteer(Name, PhoneNumber, Address, file, Email, Information);
-     }
-     
-     public List<Volunteer> getAllVolunteers()
-       {
-         return volunteerHandler.getAllVolunteers();
-       }
-    
-    
+
+    public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information)
+      {
+        volunteerHandler.addVolunteer(Name, PhoneNumber, Address, file, Email, Information);
+      }
+
+    public List<Volunteer> getAllVolunteers()
+      {
+        return volunteerHandler.getAllVolunteers();
+      }
+
+    public List<Volunteer> searchInVolNames(String searched)
+      {
+        return volunteerHandler.searchInVolNames(searched);
+      }
+
 }
