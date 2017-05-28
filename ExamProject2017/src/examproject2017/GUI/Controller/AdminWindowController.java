@@ -13,6 +13,8 @@ import examproject2017.GUI.Model.VolunteerModel;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +58,8 @@ public class AdminWindowController implements Initializable
     private Person person = null;
     @FXML
     private TextField txtSearch;
+    @FXML
+    private Button search;
 
     /**
      * Initializes the controller class.
@@ -65,9 +69,25 @@ public class AdminWindowController implements Initializable
       {
         // TODO
 
-        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
+//        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+//        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
 
+//        tblAdminTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Volunteer>()
+//        {
+//            @Override
+//            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
+//              {
+//
+//              }
+//        });
+
+      }
+
+    private void performSearch()
+      {
+        String searched = txtSearch.getText().trim();
+        volModel.searchInVolNames(searched);
+        System.out.println(volModel.searchInVolNames(searched));
       }
 
     @FXML
@@ -149,10 +169,20 @@ public class AdminWindowController implements Initializable
     @FXML
     private void clickedSelectedVolunteer(MouseEvent event) throws IOException
       {
-         if (event.getClickCount() == 2){
-        person = tblAdminTable.getSelectionModel().getSelectedItem();
-        volunteerWindowLoader();
-         }
+        if (event.getClickCount() == 2)
+          {
+            person = tblAdminTable.getSelectionModel().getSelectedItem();
+            volunteerWindowLoader();
+          }
+      }
+
+    @FXML
+    private void search(ActionEvent event)
+      {
+        performSearch();
+       
+        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
       }
 
 }

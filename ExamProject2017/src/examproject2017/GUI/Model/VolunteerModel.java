@@ -51,9 +51,11 @@ public class VolunteerModel {
         return volunteerManager.searchInVolNames(searched);
       }
    
-//   public void search(String query)
-//    {
-//      List<Volunteer> searchedVol = 
-//    }
+   public void search(String searched)
+    {
+      List<Volunteer> searchedVol = searchInVolNames(searched);
+      observableAllVolunteers.clear();
+      observableAllVolunteers.addAll(searchedVol);
+    }
           
 }

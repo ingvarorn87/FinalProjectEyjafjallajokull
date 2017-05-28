@@ -238,7 +238,7 @@ public class VolunteerHandler
                     + "WHERE Volunteers.Name LIKE ? \n"
                     + "ORDER BY Volunteers.Name";
             PreparedStatement pstmt = con.prepareStatement(query);
-            pstmt.setString(1, searched);
+            pstmt.setString(1, "%" + searched + "%");
 
             ResultSet rs = pstmt.executeQuery();
             ArrayList<Volunteer> volu = new ArrayList<>();
