@@ -9,7 +9,9 @@ import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,13 +72,17 @@ public class GuildOverViewWindowController implements Initializable
         //Uses a filechooser to save dialog to load saved files 
         FileChooser fileChooser = new FileChooser();
         Stage primaryStage = (Stage) btnexportguild.getScene().getWindow();
-        //Sets extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" files (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-        //fileChooser.setInitialDirectory(new File());
-        //Shows save file dialog
-
-        File file = fileChooser.showSaveDialog(primaryStage);
+        //Sets extension filter        
+	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" file (*.xls)", "*.xls");
+        fileChooser.getExtensionFilters().add(extFilter);        
+	File file = fileChooser.showSaveDialog(primaryStage);
+        try (BufferedWriter bw
+               = new BufferedWriter(
+               new FileWriter(file.getAbsoluteFile()))) {
+            bw.write("");
+        } catch (IOException ex) {
+            //
+        }
 
       }
 
