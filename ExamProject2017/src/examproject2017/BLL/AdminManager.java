@@ -14,6 +14,18 @@ import examproject2017.DAL.AdminHandler;
 public class AdminManager {
     
     private AdminHandler adminhandler = new AdminHandler();
+    private static boolean isAdmin;
+
+    public boolean isIsAdmin()
+      {
+        return isAdmin;
+          
+      }
+
+    public void setIsAdmin(boolean isAdmin)
+      {
+        this.isAdmin = isAdmin;
+      }
     
     public void addAdmin(String name, String phoneNumber, String address, String email, String password)
     {

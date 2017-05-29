@@ -5,9 +5,11 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.Admin;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
+import examproject2017.GUI.Model.AdminModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
 import examproject2017.GUI.Model.VolunteerModel;
 import java.io.IOException;
@@ -55,6 +57,7 @@ public class AdminWindowController implements Initializable
     private Button btnAddAdmin;
 
     private VolunteerModel volModel = new VolunteerModel();
+    private AdminModel adminModel = new AdminModel();
     private Person person = null;
     @FXML
     private TextField txtSearch;
@@ -70,6 +73,8 @@ public class AdminWindowController implements Initializable
         clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         tblAdminTable.setItems(volModel.getObservableAllVolunteers());
         
+        adminModel.setIsAdminToTrue();
+
         txtSearch.textProperty().addListener(new ChangeListener<String>()
         {
             @Override
@@ -168,11 +173,10 @@ public class AdminWindowController implements Initializable
       {
         if (event.getClickCount() == 2)
           {
+            
             person = tblAdminTable.getSelectionModel().getSelectedItem();
             volunteerWindowLoader();
           }
       }
-
-    
 
 }

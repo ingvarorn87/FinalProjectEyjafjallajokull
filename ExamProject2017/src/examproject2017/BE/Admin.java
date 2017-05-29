@@ -13,6 +13,8 @@ public class Admin extends Person {
     
     private String password;
     
+
+    
     public Admin(String name, String email, int id, String phone, String address) {
         
         super(name, email, id, phone, address);
@@ -25,6 +27,8 @@ public class Admin extends Person {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    
     
     
 }

@@ -5,10 +5,12 @@
  */
 package examproject2017.GUI.Controller;
 
+import examproject2017.BE.Admin;
 import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildHandler;
+import examproject2017.GUI.Model.AdminModel;
 import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.awt.image.BufferedImage;
@@ -48,7 +50,8 @@ import javafx.stage.Stage;
  *
  * @author gudla
  */
-public class SelectedVolunteerWindowController implements Initializable {
+public class SelectedVolunteerWindowController implements Initializable
+{
 
     @FXML
     private Button btnRegister;
@@ -84,18 +87,33 @@ public class SelectedVolunteerWindowController implements Initializable {
     private Volunteer volunteer;
     public GuildModel guildModel = new GuildModel();
     public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
-
+    public AdminModel adminModel = new AdminModel();
+    
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb)
+      {
         // TODO
 
         CBselectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
 
-        txtInformationInput.setVisible(false);
-        lblInformation.setVisible(false);
+        /**
+         * Checks if an admin has logged in to the view through the admin window.
+         * if true it should show the information of the selected volunteer
+         * if false a volunteer has logged in and the view should not show the information text field 
+         * which is only for the admins.
+         */
+        if (adminModel.isAdmin() == false)
+          {
+            txtInformationInput.setVisible(false);
+            lblInformation.setVisible(false);
+          } else if (adminModel.isAdmin() == true)
+          {
+            txtInformationInput.setVisible(true);
+            lblInformation.setVisible(true);
+          }
 
         lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
@@ -110,9 +128,11 @@ public class SelectedVolunteerWindowController implements Initializable {
          * value from the new selected Volunteer Then populates the labels with
          * the right information based on the logged in volunteer
          */
-        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>() {
+        guildVolHoursModel.getSelectedVolunteer().addListener(new ChangeListener<Volunteer>()
+        {
             @Override
-            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue) {
+            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
+              {
                 lblName.textProperty().bind(newValue.nameProperty());
                 lblEmail.textProperty().bind(newValue.emailProperty());
                 lblID.textProperty().bind(newValue.idProperty().asString());
@@ -122,43 +142,62 @@ public class SelectedVolunteerWindowController implements Initializable {
 
                 BufferedImage bf = newValue.getVolunteerImage();
                 WritableImage wr = null;
-                if (bf != null) {
+                if (bf != null)
+                  {
                     wr = new WritableImage(bf.getWidth(), bf.getHeight());
                     PixelWriter pw = wr.getPixelWriter();
-                    for (int x = 0; x < bf.getWidth(); x++) {
-                        for (int y = 0; y < bf.getHeight(); y++) {
+                    for (int x = 0; x < bf.getWidth(); x++)
+                      {
+                        for (int y = 0; y < bf.getHeight(); y++)
+                          {
                             pw.setArgb(x, y, bf.getRGB(x, y));
-                        }
-                    }
-                }
+                          }
+                      }
+                  }
                 imgImageHolder.setImage(wr);
-            }
+              }
         });
 
         /**
          * Adds a listener to the combobox Makes it possible to get the selected
          * item.
          */
-        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        CBselectGuild.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>()
+        {
             @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)
+              {
                 CBselectGuild.getSelectionModel().select(newValue.intValue());
                 System.out.println(newValue.intValue());
 
-            }
+              }
         });
 
-    }
-
+      }
+    /**
+     * Checks if a admin has logged in to the view through the admin window
+     * if true it should close and go back to the admin view
+     * if false it should close and go to the login view
+     * @param event
+     * @throws IOException 
+     */
     @FXML
-    private void closeSelectedVolunteerWindow(ActionEvent event) throws IOException {
-        close();
-    }
+    private void closeSelectedVolunteerWindow(ActionEvent event) throws IOException
+      {
+        if (adminModel.isAdmin() == false)
+          {
+            goToLoginWindow();
+          } else if (adminModel.isAdmin() == true)
+          {
+            goToAdminWindow();
+          }
+        
+      }
 
     public void setSelectedVolunteer(Volunteer selectedVolunteer) //lets know which volunteer is selected
-    {
+      {
         guildVolHoursModel.setSelectedVolunteer(selectedVolunteer);
-    }
+      }
 
     /**
      * When the register button is pressed it calls the method addHours from the
@@ -171,32 +210,21 @@ public class SelectedVolunteerWindowController implements Initializable {
      * @param event
      */
     @FXML
-    private void registerHours(ActionEvent event) throws IOException {
+    private void registerHours(ActionEvent event) throws IOException
+      {
         guildVolHoursModel.addHours(
                 CBselectGuild.getSelectionModel().getSelectedItem().getId(),
                 Integer.parseInt(lblID.getText()),
                 Integer.parseInt(txtAddHours.getText())
         );
         txtAddHours.clear();
-        close();
+        closeSelectedVolunteerWindow(event);
+      }
 
-//FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/RegisterHoursWindow.fxml"));
-//        Parent root = loader.load();
-//        RegisterHoursWindowController regController = (RegisterHoursWindowController) loader.getController();
-//
-//
-//        Stage subStage = new Stage();
-//        subStage.setScene(new Scene(root));
-//        
-//        subStage.show();
-//        Stage stage = (Stage) btnRegister.getScene().getWindow();
-//        stage.close();
-
-
-    }
-    
-    private void close() throws IOException 
-    {
+    private void goToLoginWindow() throws IOException
+      {
+        adminModel.setIsAdminToFalse();
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/LoginWindow.fxml"));
         Parent root = loader.load();
         LoginWindowController gotoLoginWindowController = (LoginWindowController) loader.getController();
@@ -204,6 +232,19 @@ public class SelectedVolunteerWindowController implements Initializable {
         Stage subStage = new Stage();
         subStage.setScene(new Scene(root));
 
+        subStage.show();
+        Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
+        stage.close();
+      }
+    
+    private void goToAdminWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/AdminWindow.fxml"));
+        Parent root = loader.load();
+        AdminWindowController aController = (AdminWindowController) loader.getController();
+        
+        Stage subStage = new Stage();
+        subStage.setScene(new Scene(root));
+        
         subStage.show();
         Stage stage = (Stage) btnCloseSVW.getScene().getWindow();
         stage.close();
