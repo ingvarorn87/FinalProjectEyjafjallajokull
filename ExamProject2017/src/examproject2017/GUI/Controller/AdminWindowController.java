@@ -69,8 +69,8 @@ public class AdminWindowController implements Initializable
       {
         // TODO
 
-//        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-//        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
+        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
 
 //        tblAdminTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Volunteer>()
 //        {
@@ -181,8 +181,6 @@ public class AdminWindowController implements Initializable
       {
         performSearch();
        
-        clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        tblAdminTable.setItems(volModel.getObservableAllVolunteers());
       }
 
 }
