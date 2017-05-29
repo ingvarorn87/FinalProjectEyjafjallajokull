@@ -32,6 +32,5 @@
           <TableColumn fx:id="clmVolName" prefWidth="265.0" text="Name" />
         </columns>
       </TableView>
-      <Button fx:id="search" layoutX="350.0" layoutY="118.0" mnemonicParsing="false" onAction="#search" text="search" />
   </children>
 </AnchorPane>

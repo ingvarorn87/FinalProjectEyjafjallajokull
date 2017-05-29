@@ -46,7 +46,7 @@ public class VolunteerModel {
        return observableAllVolunteers;
      }
    
-   public List<Volunteer> searchInVolNames(String searched)
+   private List<Volunteer> searchInVolNames(String searched)
       {
         return volunteerManager.searchInVolNames(searched);
       }
