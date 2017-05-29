@@ -26,6 +26,8 @@ public class GuildVolHoursModel
     private GuildVolHoursManager guildVolHoursManager = new GuildVolHoursManager();
     private final ObservableList<GuildVolHours> observableHour;
     private final SimpleObjectProperty<Volunteer> selectedVolunteer;
+    private final ObservableList<GuildVolHours> observableAllGuildHours = FXCollections.observableArrayList(getAllGuildsHours());
+      
     
 
     public GuildVolHoursModel()
@@ -78,7 +80,16 @@ public class GuildVolHoursModel
         guildVolHoursManager.addHours(guildId, volId, hours);
       }
     
+    public List<GuildVolHours> getAllGuildsHours()
+      {
+        
+        return guildVolHoursManager.getAllGuildsHours();
+      }
     
+    public ObservableList<GuildVolHours> getObservableAllGuildHours()
+      {
+        return observableAllGuildHours;
+      }
             
 
 }

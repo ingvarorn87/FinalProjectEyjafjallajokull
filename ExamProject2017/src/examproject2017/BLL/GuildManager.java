@@ -33,8 +33,5 @@ public class GuildManager {
        guildHandler.addGuild(Name, Adminid);
    }
    
-   public List<Guild> getAllGuildsHours()
-       {
-         return guildHandler.getAllGuildsHours();
-       }
+   
 }

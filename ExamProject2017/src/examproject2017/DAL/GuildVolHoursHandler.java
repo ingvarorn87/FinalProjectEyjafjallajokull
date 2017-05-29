@@ -105,6 +105,33 @@ public class GuildVolHoursHandler
           }
       }
 
-    
+    public List<GuildVolHours> getAllGuildsHours()
+      {
+        try (Connection con = conManager.getConnection())
+          {
+            String query = "SELECT  g.Name AS GuildName, gvh.Hours AS TotalHours, gvh.Guildid, gvh.Volid\n"
+                    + "FROM [GuildVolHours] gvh\n"
+                    + "INNER JOIN [Guilds] g ON g.Guildid = gvh.Guildid\n"
+                    + "ORDER BY g.Name";
+
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<GuildVolHours> hours = new ArrayList();
+            while (rs.next())
+              {
+
+//                int guildId = rs.getInt("Guildid");
+//                int hour = rs.getInt("TotalHours");
+//                String guildName = rs.getString("GuildName");
+//                Guild guild = new Guild(guildId, guildName);
+                hours.add(new GuildVolHours(rs.getInt("Guildid"), rs.getInt("VolId"), rs.getInt("TotalHours")));
+              }
+            return hours;
+          } catch (SQLException sqle)
+          {
+            System.err.println(sqle);
+            return null;
+          }
+      }
 
 }

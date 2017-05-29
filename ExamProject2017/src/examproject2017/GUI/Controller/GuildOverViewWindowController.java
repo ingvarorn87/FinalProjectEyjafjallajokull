@@ -42,15 +42,15 @@ public class GuildOverViewWindowController implements Initializable
     @FXML
     private Button btnaddguild;
     @FXML
-    private TableColumn<Guild, String> clmGuild;
+    private TableColumn<GuildVolHours, String> clmGuild;
     @FXML
-    private TableColumn<Guild, String> clmHours;
+    private TableColumn<GuildVolHours, String> clmHours;
     @FXML
     private Button btnCloseGOW;
     @FXML
-    private TableView<Guild> tblGuildOverview;
+    private TableView<GuildVolHours> tblGuildOverview;
     
-    private GuildModel gModel = new GuildModel();
+    private GuildVolHoursModel gvhModel = new GuildVolHoursModel();
 
     /**
      * Initializes the controller class.
@@ -59,9 +59,9 @@ public class GuildOverViewWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
-        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
-        clmHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
-        tblGuildOverview.setItems(gModel.getObservableAllGuildHours());
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildId"));
+        clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
+        tblGuildOverview.setItems(gvhModel.getObservableAllGuildHours());
       }
 
     @FXML
