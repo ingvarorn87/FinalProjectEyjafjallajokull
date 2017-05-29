@@ -58,8 +58,6 @@ public class AdminWindowController implements Initializable
     private Person person = null;
     @FXML
     private TextField txtSearch;
-    @FXML
-    private Button search;
 
     /**
      * Initializes the controller class.
@@ -71,23 +69,22 @@ public class AdminWindowController implements Initializable
 
         clmVolName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         tblAdminTable.setItems(volModel.getObservableAllVolunteers());
-
-//        tblAdminTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Volunteer>()
-//        {
-//            @Override
-//            public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue)
-//              {
-//
-//              }
-//        });
+        
+        txtSearch.textProperty().addListener(new ChangeListener<String>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+              {
+                performSearch();
+              }
+        });
 
       }
 
     private void performSearch()
       {
         String searched = txtSearch.getText().trim();
-        volModel.searchInVolNames(searched);
-        System.out.println(volModel.searchInVolNames(searched));
+        volModel.search(searched);
       }
 
     @FXML
@@ -176,11 +173,6 @@ public class AdminWindowController implements Initializable
           }
       }
 
-    @FXML
-    private void search(ActionEvent event)
-      {
-        performSearch();
-       
-      }
+    
 
 }
