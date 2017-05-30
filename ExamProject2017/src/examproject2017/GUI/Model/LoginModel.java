@@ -20,10 +20,7 @@ public class LoginModel
     public LoginManager loginManager = new LoginManager();
     private static final LoginModel volLoginModel = new LoginModel();
 
-    public ArrayList<String> getVolName()
-      {
-        return loginManager.getVolName();
-      }
+
 
     public Person LoginChecker(String name, String password)
       {

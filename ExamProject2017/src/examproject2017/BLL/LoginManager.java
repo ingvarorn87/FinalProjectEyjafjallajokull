@@ -19,19 +19,12 @@ import java.util.ArrayList;
 public class LoginManager
 {
 
-    private VolunteerHandler volHandler = new VolunteerHandler();
+    
     private VolunteerLoginHandler volLoginHandler = new VolunteerLoginHandler();
     private AdminLoginHandler adLoginHandler = new AdminLoginHandler();
 
-    public ArrayList<String> getVolName()
-      {
-        return volHandler.getVolName();
-      }
 
-//    public Volunteer LoginChecker(String name)
-//      {
-//        return volLoginHandler.LoginChecker(name);
-//      }
+
 
     public Person LoginChecker(String name, String password)
       {
