@@ -172,6 +172,20 @@ public class SelectedVolunteerWindowController implements Initializable
 
               }
         });
+        
+        txtAddHours.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                try {
+                    if (newValue.matches("\\d*") && newValue.length() < 3) {
+                        int value = Integer.parseInt(newValue);
+                    } else {
+                        txtAddHours.setText(oldValue);
+                    }
+                } catch (NumberFormatException ex) {
+                    //do nothing
+                }
+            }});
 
       }
     /**

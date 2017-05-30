@@ -61,7 +61,7 @@ public class GuildOverViewWindowController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
       {
         // TODO
-        clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildId"));
+        clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
         clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
         tblGuildOverview.setItems(gvhModel.getObservableAllGuildHours());
         
