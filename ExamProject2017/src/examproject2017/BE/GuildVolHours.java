@@ -27,6 +27,15 @@ public class GuildVolHours
         this.volName = "";
       }
 
+    public GuildVolHours(int guildId, int volId, int hours, String guildName)
+      {
+        this.guildId = guildId;
+        this.volId = volId;
+        this.hours = hours;
+        this.guildName = guildName;
+      }
+    
+
     public int getGuildId()
       {
         return guildId;
