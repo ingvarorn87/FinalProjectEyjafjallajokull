@@ -124,7 +124,7 @@ public class GuildVolHoursHandler
 //                int hour = rs.getInt("TotalHours");
 //                String guildName = rs.getString("GuildName");
 //                Guild guild = new Guild(guildId, guildName);
-                hours.add(new GuildVolHours(rs.getInt("Guildid"), rs.getInt("VolId"), rs.getInt("TotalHours")));
+                hours.add(new GuildVolHours(rs.getInt("Guildid"), rs.getInt("VolId"), rs.getInt("TotalHours"), rs.getString("GuildName")));
               }
             return hours;
           } catch (SQLException sqle)
