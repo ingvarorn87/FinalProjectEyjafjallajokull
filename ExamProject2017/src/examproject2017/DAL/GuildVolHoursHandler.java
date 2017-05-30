@@ -119,12 +119,11 @@ public class GuildVolHoursHandler
             ArrayList<GuildVolHours> hours = new ArrayList();
             while (rs.next())
               {
-
-//                int guildId = rs.getInt("Guildid");
-//                int hour = rs.getInt("TotalHours");
-//                String guildName = rs.getString("GuildName");
-//                Guild guild = new Guild(guildId, guildName);
-                hours.add(new GuildVolHours(rs.getInt("Guildid"), rs.getInt("VolId"), rs.getInt("TotalHours"), rs.getString("GuildName")));
+                hours.add(
+                        new GuildVolHours(rs.getInt("Guildid"), 
+                                rs.getInt("VolId"), 
+                                rs.getInt("TotalHours"), 
+                                rs.getString("GuildName")));
               }
             return hours;
           } catch (SQLException sqle)

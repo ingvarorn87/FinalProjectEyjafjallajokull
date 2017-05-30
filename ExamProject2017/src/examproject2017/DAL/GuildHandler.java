@@ -39,9 +39,6 @@ public class GuildHandler
             ArrayList<Guild> guilds = new ArrayList<>();
             while (rs.next())
               {
-//                String guildString = "";
-//                guildString += rs.getString("Name");
-
                 guilds.add(new Guild(rs.getInt("Guildid"), rs.getString("Name")));
               }
             return guilds;

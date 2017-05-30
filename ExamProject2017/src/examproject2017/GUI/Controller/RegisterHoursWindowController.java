@@ -67,11 +67,6 @@ public class RegisterHoursWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
          cbSelectGuild.setItems(guildModel.observableGuilds);//populates the Combobox
          
-
-
-       
-
-        
         /**
          * Sets a change listener to the Volunteer Binds each label with the new
          * value from the new selected Volunteer Then populates the labels with
@@ -82,8 +77,6 @@ public class RegisterHoursWindowController implements Initializable {
             public void changed(ObservableValue<? extends Volunteer> observable, Volunteer oldValue, Volunteer newValue) {
                 
                 lblID.textProperty().bind(newValue.idProperty().asString());
-
-                
             }
         });
 
@@ -96,7 +89,6 @@ public class RegisterHoursWindowController implements Initializable {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 cbSelectGuild.getSelectionModel().select(newValue.intValue());
                 System.out.println(newValue.intValue());
-
             }
         });
         

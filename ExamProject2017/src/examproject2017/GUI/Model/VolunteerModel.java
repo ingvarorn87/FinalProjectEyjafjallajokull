@@ -30,7 +30,6 @@ public class VolunteerModel {
         observableAllVolunteers.addAll(getAllVolunteers());
       }
 
-
    public void addVolunteer(String Name, String PhoneNumber, String Address, File file, String Email, String Information)
    {
        volunteerManager.addVolunteer( Name, PhoneNumber, Address, file, Email, Information);

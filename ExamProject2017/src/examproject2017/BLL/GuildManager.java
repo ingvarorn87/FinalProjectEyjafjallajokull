@@ -23,10 +23,6 @@ public class GuildManager {
        return guildHandler.getAllGuilds();
    }
    
-//   public ArrayList<String> getGuildHours()
-//   {
-//       return guildHandler.getGuildHours();
-//   }
     
    public void addGuild (String Name, int Adminid)
    {

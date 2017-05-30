@@ -16,11 +16,8 @@ import java.util.ArrayList;
  */
 public class LoginModel
 {
-
     public LoginManager loginManager = new LoginManager();
     private static final LoginModel volLoginModel = new LoginModel();
-
-
 
     public Person LoginChecker(String name, String password)
       {

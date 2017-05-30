@@ -53,17 +53,12 @@ public class GuildVolHoursModel
         return observableHour;
       }
     
-    
-
-   
     public void setSelectedVolunteer(Volunteer selectedVol)
       {
         selectedVolunteer.set(selectedVol);
         observableHour.clear();
         observableHour.addAll(guildVolHoursManager.getVolHours(selectedVol));
       }
-    
-    
     
     public SimpleObjectProperty<Volunteer> getSelectedVolunteer()
       {

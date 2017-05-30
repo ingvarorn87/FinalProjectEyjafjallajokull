@@ -83,7 +83,6 @@ public class SelectedVolunteerWindowController implements Initializable
     @FXML
     private ImageView imgImageHolder;
 
-    private Volunteer volunteer;
     public GuildModel guildModel = new GuildModel();
     public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
     public AdminModel adminModel = new AdminModel();

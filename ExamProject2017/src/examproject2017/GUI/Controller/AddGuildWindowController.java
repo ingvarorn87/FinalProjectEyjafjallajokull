@@ -51,17 +51,11 @@ public class AddGuildWindowController implements Initializable {
     @FXML
     private void addNewGuildbyClick(ActionEvent event) throws IOException {
        
-
-       
        guildModel.addGuild(
        setNewGuildName.getText(),
        Integer.parseInt(SetNewGuildAdmin.getText()));
        close();
       
-
-
-               
-        
     }
     
     private void close() throws IOException

@@ -158,7 +158,6 @@ public class AdminWindowController implements Initializable
         Parent root = loader.load();
         SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
         vController.setSelectedVolunteer((Volunteer) person);
-//        vController.populateTables(selectedHours);
 
         Stage subStage = new Stage();
         subStage.setScene(new Scene(root));

@@ -92,9 +92,6 @@ public class LoginWindowController implements Initializable {
     
     @FXML
     private void login(ActionEvent event) throws IOException {
-        //txtName.getText().trim();
-        //volunteer = loginModel.LoginChecker(txtName.getText().trim());
-
         if (person == null) {
             person = loginModel.LoginChecker(txtName.getText().trim(), txtPass.getText().trim());
         }
@@ -116,9 +113,6 @@ public class LoginWindowController implements Initializable {
             
         }
 
-        //volunteerWindowLoader();
-        //System.out.println(volunteer.getName());
-        //System.out.println(volLoginModel.getHours());
     }
     
     private void adminWindowLoader() throws IOException {
@@ -139,8 +133,7 @@ public class LoginWindowController implements Initializable {
         Parent root = loader.load();
         SelectedVolunteerWindowController vController = (SelectedVolunteerWindowController) loader.getController();
         vController.setSelectedVolunteer((Volunteer) person);
-//        vController.populateTables(selectedHours);
-
+        
         Stage subStage = new Stage();
         subStage.setScene(new Scene(root));
         
