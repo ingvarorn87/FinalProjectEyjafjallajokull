@@ -64,6 +64,7 @@ public class GuildOverViewWindowController implements Initializable
         clmGuild.setCellValueFactory(new PropertyValueFactory<>("guildId"));
         clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
         tblGuildOverview.setItems(gvhModel.getObservableAllGuildHours());
+        
       }
 
     @FXML
@@ -73,13 +74,17 @@ public class GuildOverViewWindowController implements Initializable
         FileChooser fileChooser = new FileChooser();
         Stage primaryStage = (Stage) btnexportguild.getScene().getWindow();
         //Sets extension filter        
-	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" file (*.xls)", "*.xls");
+	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" file (*.csv)", "*.csv");
         fileChooser.getExtensionFilters().add(extFilter);        
 	File file = fileChooser.showSaveDialog(primaryStage);
+        String output = "Guild ID" + ", "+ "Hours" + String.format("%n");
+          for (GuildVolHours item : tblGuildOverview.getItems()) {
+              output += item.getGuildId()+", "+item.getHours()+String.format("%n");
+          }
         try (BufferedWriter bw
                = new BufferedWriter(
                new FileWriter(file.getAbsoluteFile()))) {
-            bw.write("");
+            bw.write(output);
         } catch (IOException ex) {
             //
         }
