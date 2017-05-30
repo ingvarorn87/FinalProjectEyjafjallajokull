@@ -73,8 +73,7 @@ public class SelectedVolunteerWindowController implements Initializable
     private TableColumn<GuildVolHours, String> clmGuild;
     @FXML
     private TableColumn<GuildVolHours, String> clmHours;
-    @FXML
-    private TextArea txtInformationInput;
+    
     @FXML
     private ComboBox<Guild> CBselectGuild;
     @FXML
@@ -88,6 +87,8 @@ public class SelectedVolunteerWindowController implements Initializable
     public GuildModel guildModel = new GuildModel();
     public GuildVolHoursModel guildVolHoursModel = new GuildVolHoursModel();
     public AdminModel adminModel = new AdminModel();
+    @FXML
+    private Label lblInformationOutput;
     
     /**
      * Initializes the controller class.
@@ -107,18 +108,19 @@ public class SelectedVolunteerWindowController implements Initializable
          */
         if (adminModel.isAdmin() == false)
           {
-            txtInformationInput.setVisible(false);
+            lblInformationOutput.setVisible(false);
             lblInformation.setVisible(false);
           } else if (adminModel.isAdmin() == true)
           {
-            txtInformationInput.setVisible(true);
+            lblInformationOutput.setVisible(true);
             lblInformation.setVisible(true);
           }
 
         lblName.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblAddress.wrapTextProperty().set(true); // sets the label to move to next line if line is full
         lblEmail.wrapTextProperty().set(true); // sets the label to move to next line if line is full
-
+        lblInformationOutput.wrapTextProperty().set(true);// sets the label to move to next line if line is full
+                
         clmHours.setCellValueFactory(new PropertyValueFactory<>("Hours"));
         clmGuild.setCellValueFactory(new PropertyValueFactory<>("GuildName"));
         tblSeeHours.setItems(guildVolHoursModel.getObservableHour());
@@ -138,7 +140,7 @@ public class SelectedVolunteerWindowController implements Initializable
                 lblID.textProperty().bind(newValue.idProperty().asString());
                 lblPhone.textProperty().bind(newValue.phoneProperty());
                 lblAddress.textProperty().bind(newValue.addressProperty());
-                txtInformationInput.textProperty().bind(newValue.infoProperty());
+                lblInformationOutput.textProperty().bind(newValue.infoProperty());
 
                 BufferedImage bf = newValue.getVolunteerImage();
                 WritableImage wr = null;
