@@ -9,10 +9,6 @@ import examproject2017.BE.Guild;
 import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
-import examproject2017.DAL.GuildVolHoursHandler;
-import examproject2017.DAL.GuildHandler;
-        
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,9 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import javafx.stage.Stage;
 
 /**

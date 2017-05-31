@@ -5,24 +5,18 @@
  */
 package examproject2017.GUI.Controller;
 
-import examproject2017.BE.Admin;
 import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
-import examproject2017.DAL.GuildHandler;
 import examproject2017.GUI.Model.AdminModel;
 import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,10 +29,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;

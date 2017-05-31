@@ -6,13 +6,8 @@
 package examproject2017.BLL;
 
 import examproject2017.BE.Person;
-import examproject2017.BE.Volunteer;
-import examproject2017.DAL.AdminLoginHandler;
 import examproject2017.DAL.IAdLogHandler;
 import examproject2017.DAL.IVolLogHand;
-import examproject2017.DAL.VolunteerHandler;
-import examproject2017.DAL.VolunteerLoginHandler;
-import java.util.ArrayList;
 
 /**
  *

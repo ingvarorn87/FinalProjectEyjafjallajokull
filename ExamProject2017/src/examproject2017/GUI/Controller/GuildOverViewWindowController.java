@@ -5,9 +5,7 @@
  */
 package examproject2017.GUI.Controller;
 
-import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
-import examproject2017.GUI.Model.GuildModel;
 import examproject2017.GUI.Model.GuildVolHoursModel;
 import java.io.BufferedWriter;
 import java.io.File;

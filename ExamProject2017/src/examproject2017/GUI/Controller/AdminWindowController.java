@@ -5,8 +5,6 @@
  */
 package examproject2017.GUI.Controller;
 
-import examproject2017.BE.Admin;
-import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
 import examproject2017.GUI.Model.AdminModel;
