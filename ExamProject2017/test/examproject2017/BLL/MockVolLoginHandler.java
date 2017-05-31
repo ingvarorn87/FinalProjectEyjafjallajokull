@@ -3,30 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package examproject2017.DAL;
+package examproject2017.BLL;
 
 import examproject2017.BE.Volunteer;
+import examproject2017.DAL.IVolLogHand;
 
 /**
  *
  * @author gudla
  */
-public class VolunteerLoginHandler implements IVolLogHand
+public class MockVolLoginHandler implements IVolLogHand
 {
-
-    VolunteerHandler volHandler = new VolunteerHandler();
 
     @Override
     public Volunteer LoginChecker(String name)
       {
-        for (String string : volHandler.getVolName())
+        if (name.equals("Bilbo"))
           {
-            if (string.equals(name))
-              {
-                return volHandler.getVolunteerBasedOnName(string);
-
-              }
+            return new Volunteer(0, "Bilbo", "", "", "", "", null);
+          } else
+          {
+            return null;
           }
-        return null;
       }
+
 }

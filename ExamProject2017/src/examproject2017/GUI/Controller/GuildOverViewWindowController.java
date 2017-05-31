@@ -77,9 +77,9 @@ public class GuildOverViewWindowController implements Initializable
 	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" file (*.csv)", "*.csv");
         fileChooser.getExtensionFilters().add(extFilter);        
 	File file = fileChooser.showSaveDialog(primaryStage);
-        String output = "Guild ID" + ", "+ "Hours" + String.format("%n");
+        String output = "Guild Name" + ", "+ "Hours" + String.format("%n");
           for (GuildVolHours item : tblGuildOverview.getItems()) {
-              output += item.getGuildId()+", "+item.getHours()+String.format("%n");
+              output += item.getGuildName()+", "+item.getHours()+String.format("%n");
           }
         try (BufferedWriter bw
                = new BufferedWriter(

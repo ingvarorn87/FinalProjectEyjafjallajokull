@@ -11,10 +11,11 @@ import examproject2017.BE.Admin;
  *
  * @author gudla
  */
-public class AdminLoginHandler
+public class AdminLoginHandler implements IAdLogHandler
 {
     AdminHandler adHandler = new AdminHandler();
     
+    @Override
     public Admin LoginChecker(String name, String password)
       {
         for (String string : adHandler.getAdName())

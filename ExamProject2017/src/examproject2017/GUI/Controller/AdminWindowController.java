@@ -125,6 +125,8 @@ public class AdminWindowController implements Initializable
     @FXML
     private void closeAdminWindow(ActionEvent event) throws IOException
       {
+        adminModel.setIsAdminToFalse();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/examproject2017/GUI/View/LoginWindow.fxml"));
         Parent root = loader.load();
         LoginWindowController goToLoginWindowController = (LoginWindowController) loader.getController();

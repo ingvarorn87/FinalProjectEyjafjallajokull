@@ -8,6 +8,8 @@ package examproject2017.BLL;
 import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.AdminLoginHandler;
+import examproject2017.DAL.IAdLogHandler;
+import examproject2017.DAL.IVolLogHand;
 import examproject2017.DAL.VolunteerHandler;
 import examproject2017.DAL.VolunteerLoginHandler;
 import java.util.ArrayList;
@@ -20,11 +22,14 @@ public class LoginManager
 {
 
     
-    private VolunteerLoginHandler volLoginHandler = new VolunteerLoginHandler();
-    private AdminLoginHandler adLoginHandler = new AdminLoginHandler();
+    private IVolLogHand volLoginHandler;
+    private IAdLogHandler adLoginHandler;
 
-
-
+    public LoginManager(IVolLogHand volLoginHandler, IAdLogHandler adLoginHandler)
+      {
+        this.adLoginHandler = adLoginHandler;
+        this.volLoginHandler = volLoginHandler;
+      }
 
     public Person LoginChecker(String name, String password)
       {

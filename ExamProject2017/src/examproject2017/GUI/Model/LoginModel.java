@@ -8,6 +8,8 @@ package examproject2017.GUI.Model;
 import examproject2017.BE.Person;
 import examproject2017.BE.Volunteer;
 import examproject2017.BLL.LoginManager;
+import examproject2017.DAL.AdminLoginHandler;
+import examproject2017.DAL.VolunteerLoginHandler;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,7 @@ import java.util.ArrayList;
  */
 public class LoginModel
 {
-    public LoginManager loginManager = new LoginManager();
+    public LoginManager loginManager = new LoginManager(new VolunteerLoginHandler(), new AdminLoginHandler());
     private static final LoginModel volLoginModel = new LoginModel();
 
     public Person LoginChecker(String name, String password)
