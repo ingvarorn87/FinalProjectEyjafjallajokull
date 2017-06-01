@@ -63,7 +63,10 @@ public class VolunteerHandler
                 String address = rs.getString("Address");
                 String phone = rs.getString("PhoneNumber");
                 String info = rs.getString("Information");
-
+                
+                /**
+                 * Gets image as bytes from the Database
+                 */
                 byte[] bytes = rs.getBytes("image");
                 BufferedImage newImage;
                 if (bytes != null)
@@ -72,7 +75,9 @@ public class VolunteerHandler
                       {
                         ByteArrayInputStream bais;
                         bais = new ByteArrayInputStream(bytes);
-
+                        /**
+                         * returns it as a Two-Dimensional Array named newImage
+                         */
                         newImage = ImageIO.read(bais);
                       } catch (IOException ex)
                       {

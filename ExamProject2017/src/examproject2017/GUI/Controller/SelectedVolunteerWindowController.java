@@ -132,11 +132,18 @@ public class SelectedVolunteerWindowController implements Initializable
                 lblPhone.textProperty().bind(newValue.phoneProperty());
                 lblAddress.textProperty().bind(newValue.addressProperty());
                 lblInformationOutput.textProperty().bind(newValue.infoProperty());
-
+                
+                //Gets the image from the Volunteer in the BE as a buffered image.
                 BufferedImage bf = newValue.getVolunteerImage();
                 WritableImage wr = null;
                 if (bf != null)
                   {
+                      /**
+                       * Reads the buffered Image as a Two-Dimensional Array of x and y 
+                       * Sets each pixel according to the buffered image in the new variable wr as a Writable image
+                       */
+                              
+
                     wr = new WritableImage(bf.getWidth(), bf.getHeight());
                     PixelWriter pw = wr.getPixelWriter();
                     for (int x = 0; x < bf.getWidth(); x++)
@@ -147,6 +154,10 @@ public class SelectedVolunteerWindowController implements Initializable
                           }
                       }
                   }
+                /**
+                 * places the image in the imageview named imgImageHolder
+                 */
+                
                 imgImageHolder.setImage(wr);
               }
         });

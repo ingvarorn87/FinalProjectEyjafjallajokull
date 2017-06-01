@@ -5,11 +5,9 @@
  */
 package examproject2017.BLL;
 
-import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
 import examproject2017.DAL.GuildVolHoursHandler;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

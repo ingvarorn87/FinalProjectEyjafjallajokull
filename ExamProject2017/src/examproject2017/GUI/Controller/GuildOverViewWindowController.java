@@ -75,7 +75,15 @@ public class GuildOverViewWindowController implements Initializable
 	FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(" file (*.csv)", "*.csv");
         fileChooser.getExtensionFilters().add(extFilter);        
 	File file = fileChooser.showSaveDialog(primaryStage);
+        /**Sets output as the string to save with the filechooser
+         * Sets the first 2 columns headers as "Guild Name" and "Hours"
+         * Uses comma separation to set into different columns and "%n" to go to next line.
+        */
         String output = "Guild Name" + ", "+ "Hours" + String.format("%n");
+        /**
+        *A for loop that gets each item from the BE GuildVolHours and is in the Table called "tblGuildOverview" in this controller.
+        *Gets each item using getGuildName and getHours
+        */
           for (GuildVolHours item : tblGuildOverview.getItems()) {
               output += item.getGuildName()+", "+item.getHours()+String.format("%n");
           }

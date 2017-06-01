@@ -5,7 +5,6 @@
  */
 package examproject2017.DAL;
 
-import examproject2017.BE.Guild;
 import examproject2017.BE.GuildVolHours;
 import examproject2017.BE.Volunteer;
 
